@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
@@ -31,7 +31,7 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-        abort_if(Auth::user()->cannot('Create user'), 403, 'Access Denied');
+        // abort_if(Auth::user()->cannot('Create user'), 403, 'Access Denied');
         $validatedData = $request->validate([
             'name' => 'required | string | max:255',
             'email' => 'required | string | email | max:255 | unique:users',
@@ -51,7 +51,7 @@ class UserController extends Controller
     }
     public function destroy($id)
     {
-        abort_if(Auth::user()->cannot('Deleta User'), 403, 'Access Denied');
+        // abort_if(Auth::user()->cannot('Deleta User'), 403, 'Access Denied');
         $role = User::findOrFail($id);
         $role->delete();
         Alert::success('Success!', 'Successfully deleted');
@@ -60,7 +60,7 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-      abort_if(Auth::user()->cannot('Edit user'), 403, 'Access Denied');
+    //   abort_if(Auth::user()->cannot('Edit user'), 403, 'Access Denied');
             $user = User::findOrFail($id);
     
             return view('user-management.users.editUser', compact('user'));

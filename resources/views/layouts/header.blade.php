@@ -11,19 +11,23 @@
   <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
 
   <!-- Libs CSS -->
-  <link rel="stylesheet" href="assets/fonts/feather/feather.min.css">
-  <link rel="stylesheet" href="assets/libs/highlight.js/styles/vs2015.css">
-  <link rel="stylesheet" href="assets/libs/quill/dist/quill.core.css">
-  <link rel="stylesheet" href="assets/libs/select2/dist/css/select2.min.css">
-  <link rel="stylesheet" href="assets/libs/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="/assets/fonts/feather/feather.min.css">
+  <link rel="stylesheet" href="/assets/libs/highlight.js/styles/vs2015.css">
+  <link rel="stylesheet" href="/assets/libs/quill/dist/quill.core.css">
+  <link rel="stylesheet" href="/assets/libs/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="/assets/libs/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+  
+
+
 
   <!-- Theme CSS -->
 
-  <link rel="stylesheet" href="assets/css/theme.min.css" id="stylesheetLight">
+  <link rel="stylesheet" href="/assets/css/theme.min.css" id="stylesheetLight">
 
-  <link rel="stylesheet" href="assets/css/theme-dark.min.css" id="stylesheetDark">
+  <!-- <link rel="stylesheet" href="/assets/css/theme-dark.min.css" id="stylesheetDark"> -->
 
-  <style>body { display: none; }</style>
+  <!-- <style>body { display: none; }</style> -->
 
   <script>
     var colorScheme = (localStorage.getItem('dashkitColorScheme')) ? localStorage.getItem('dashkitColorScheme') : 'light';

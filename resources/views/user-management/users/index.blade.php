@@ -29,7 +29,7 @@
                         <td>
                             <div class="d-flex">
                                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Edit</a>
-                                <button href="{{ route('users.edit', $user->id) }}" data-id="{{$user->id}}" class="btn btn-info" data-toggle="modal" data-target="#editRole">Role</button>
+                                <button href="{{ route('users.edit', $user->id) }}" data-id="{{$user->id}}" class="ml-4 btn btn-info" data-toggle="modal" data-target="#editRole">Role</button>
                                 <form action="{{ route('users.destroy', $user->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')

@@ -47,7 +47,7 @@ class RoleController extends Controller
         ]);
 
         $role->syncPermissions($request->permissions);
-        Alert::success('Success!', 'Successfully Role updated');
+        Alert::success('Success!', 'Successfully updated');
         return back();
     }
     public function destroy($id)

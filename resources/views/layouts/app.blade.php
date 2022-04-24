@@ -14,7 +14,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="{{'home'}}">
-        <img src="assets/img/logo.svg" class="navbar-brand-img 
+        <img src="/assets/img/logo.svg" class="navbar-brand-img 
             mx-auto" alt="...">
       </a>
 
@@ -28,7 +28,7 @@
           <a href="#!" id="sidebarIcon" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <div class="avatar avatar-sm avatar-online">
-              <img src="assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
+              <img src="/assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
             </div>
           </a>
       
@@ -71,148 +71,92 @@
 
         <!-- Navigation -->
         <ul class="navbar-nav">
-       
+        @can('View Dashboard')
           <li class="nav-item {{ Request::url() == url('/home') ? 'active' : '' }}">">
             <a class="nav-link" href="{{route('home')}}">
               <i class="fe fe-home"></i> Dashboards
             </a>
          </li>
-       
-         
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#sidebarComponents" data-toggle="collapse" role="button" aria-expanded="false"
+       @endcan
+         @canany(['View users','View role'])
+          <li class="nav-item dropdown {{ Request::url() == url('user-management') ? 'active' : '' }}">
+            <a class="nav-link" href="#sidebarComponent" data-toggle="collapse" role="button" aria-expanded="false"
               aria-controls="sidebarComponents">
-              <i class="fe fe-user"></i> user-management
+              <i class="fe fe-users"></i> user-management
             </a>
-            <div class="collapse " id="sidebarComponents">
+            <div class="collapse " id="sidebarComponent">
               <ul class="nav nav-sm flex-column">
            
                 <li class="nav-item">
+                @can('View users')
                   <a href="{{ route('users.index') }}" class="nav-link">
                     Users
                   </a>
+                  @endcan
                 </li>
                
                 <li class="nav-item">
+                @can('View role')
                   <a href="{{ route('roles.index') }}" class="nav-link">
                     Roles
                   </a>
+                  @endcan
                 </li>
               
                </ul>     
             </div>        
           </li>
-      
-          <li class="nav-item">
+          @endcan
+          @canany(['View department','View designation'])
+          <li class="nav-item dropdown {{ Request::url() == url('organization') ? 'active' : '' }}">
             <a class="nav-link" href="#sidebarAuth" data-toggle="collapse" role="button" aria-expanded="false"
               aria-controls="sidebarAuth">
-              <i class="fe fe-user"></i> Authentication
+              <i class="fe fe-layout"></i> Organization
             </a>
             <div class="collapse" id="sidebarAuth">
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                  <a href="#sidebarSignIn" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false"
-                    aria-controls="sidebarSignIn">
-                    Sign in
+                @can('View department')
+                  <a href="{{ route('department.index') }}" class="nav-link">
+                    Department
                   </a>
-                  <div class="collapse" id="sidebarSignIn">
-                    <ul class="nav nav-sm flex-column">
-                      <li class="nav-item">
-                        <a href="sign-in-cover.html" class="nav-link">
-                          Cover
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="sign-in-illustration.html" class="nav-link">
-                          Illustration
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="sign-in.html" class="nav-link">
-                          Basic
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                  @endcan
                 </li>
                 <li class="nav-item">
-                  <a href="#sidebarSignUp" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false"
-                    aria-controls="sidebarSignUp">
-                    Sign up
+                @can('View designation')
+                  <a href="#{{ route('department.index') }}" class="nav-link">
+                    Designation
                   </a>
-                  <div class="collapse" id="sidebarSignUp">
-                    <ul class="nav nav-sm flex-column">
-                      <li class="nav-item">
-                        <a href="sign-up-cover.html" class="nav-link">
-                          Cover
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="sign-up-illustration.html" class="nav-link">
-                          Illustration
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="sign-up.html" class="nav-link">
-                          Basic
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a href="#sidebarPassword" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false"
-                    aria-controls="sidebarPassword">
-                    Password reset
-                  </a>
-                  <div class="collapse" id="sidebarPassword">
-                    <ul class="nav nav-sm flex-column">
-                      <li class="nav-item">
-                        <a href="password-reset-cover.html" class="nav-link">
-                          Cover
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="password-reset-illustration.html" class="nav-link">
-                          Illustration
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="password-reset.html" class="nav-link">
-                          Basic
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a href="#sidebarError" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false"
-                    aria-controls="sidebarError">
-                    Error
-                  </a>
-                  <div class="collapse" id="sidebarError">
-                    <ul class="nav nav-sm flex-column">
-                      <li class="nav-item">
-                        <a href="error-illustration.html" class="nav-link">
-                          Illustration
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="error.html" class="nav-link">
-                          Basic
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                  @endcan
                 </li>
               </ul>
             </div>
           </li>
-          <li class="nav-item d-md-none">
-            <a class="nav-link" href="#sidebarModalActivity" data-toggle="modal">
-              <span class="fe fe-bell"></span> Notifications
+          @endcan
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#sidebarComponents" data-toggle="collapse" role="button" aria-expanded="false"
+              aria-controls="sidebarComponents">
+              <i class="fe fe-users"></i> Employees
             </a>
-          </li>
+            <div class="collapse " id="sidebarComponents">
+              <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                  <a href="components.html#alerts" class="nav-link">
+                    employee
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="components.html#avatars" class="nav-link">
+                    Disciplinary
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="components.html#badges" class="nav-link">
+                    In-active
+                  </a>
+                </li>
+             </li>
+           </div>
         </ul>
 
         <!-- Divider -->
@@ -432,7 +376,7 @@
 
                         <!-- Avatar -->
                         <div class="avatar avatar-sm">
-                          <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                          <img src="/assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
                         </div>
 
                       </div>
@@ -466,7 +410,7 @@
             <!-- Toggle -->
             <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-              <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+              <img src="/assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
             </a>
 
             <!-- Menu -->
