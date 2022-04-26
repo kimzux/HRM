@@ -124,7 +124,7 @@
                 </li>
                 <li class="nav-item">
                 @can('View designation')
-                  <a href="#{{ route('department.index') }}" class="nav-link">
+                  <a href="{{ route('designation.index') }}" class="nav-link">
                     Designation
                   </a>
                   @endcan
@@ -133,6 +133,7 @@
             </div>
           </li>
           @endcan
+          @canany(['View employee','View disciplinary','in-active'])
           <li class="nav-item dropdown">
             <a class="nav-link" href="#sidebarComponents" data-toggle="collapse" role="button" aria-expanded="false"
               aria-controls="sidebarComponents">
@@ -141,9 +142,11 @@
             <div class="collapse " id="sidebarComponents">
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                  <a href="components.html#alerts" class="nav-link">
+                @can('View employee')
+                  <a href="{{route('employee.index')}}" class="nav-link">
                     employee
                   </a>
+                  @endcan
                 </li>
                 <li class="nav-item">
                   <a href="components.html#avatars" class="nav-link">
@@ -156,9 +159,10 @@
                   </a>
                 </li>
              </li>
+             @endcan
            </div>
         </ul>
-
+      
         <!-- Divider -->
         <hr class="navbar-divider my-3">
         <!-- Heading -->

@@ -8,8 +8,8 @@
   <script src="/assets/libs/list.js/dist/list.min.js"></script>
   <script src="/assets/libs/quill/dist/quill.min.js"></script>
   <script src="/assets/libs/dropzone/dist/min/dropzone.min.js"></script>
-  <!-- <!-- <script src="/assets/libs/select2/dist/js/select2.min.js"></script> -->
-  <!-- <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script> -->
+  <script src="/assets/libs/select2/dist/js/select2.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script> 
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 
   <!-- Theme JS -->

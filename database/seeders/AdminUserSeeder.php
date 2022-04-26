@@ -23,7 +23,7 @@ class AdminUserSeeder extends Seeder
 
             'name' => 'senorita michael', 
 
-            'email' => 'admin@gmail.com',
+            'email' => 'admin@mail.com',
 
             'password' => bcrypt('seno@ark.co.tz')
 
