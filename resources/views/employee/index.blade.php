@@ -53,7 +53,7 @@
                 <form action="{{ route('employee.destroy', $employees->id)}}" method="post">
                   @csrf
                   @method('DELETE')
-                  <button class="ml-4 btn btn-danger" type="submit" onclick="return confirm('Are you sure  you want to delete?')">Delete</button>
+                  <button hidden="hidden" class="ml-4 btn btn-danger" type="submit" onclick="return confirm('Are you sure  you want to delete?')">Delete</button>
                   <?=csrf_field()?>
                 </form>
               </div>

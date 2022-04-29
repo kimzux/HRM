@@ -18,34 +18,33 @@
     </div>
 
             
-    <div class="container-fluid">
-      <div class="row m-b-10"> 
-            <div class="col-12">
-                        <!-- <button type="button" class="btn btn-primary"><i class="fa fa-bars"></i><a href="{{route('employee.index')}}" class="text-white"><i class="" aria-hidden="true"></i>  Employee List</a></button> -->
-                <ul class="nav nav-tabs">
-                   <li class="nav-item">
-                     <a href="#registration" class="nav-link active" data-toggle="tab">Registration</a>
-                   </li>
-                    <li class="nav-item">
-                      <a href="#profile" class="nav-link" data-toggle="tab">Excel Registration</a>
-                    </li>
-               
-                </ul>
-                        <!-- <button type="button" class="btn btn-primary"><i class="fa fa-bars"></i><a href="mployee/Disciplinary" class="text-white"><i class="" aria-hidden="true"></i>  Disciplinary List</a></button> -->
-            </div>
-        </div>
-       
-           
+    <div class="container-fluid">    
         <div class="row mt-4">
                     <div class="col-12" >
-                        <div class="card card-outline-info tab-pane fade show active"  id="registration">
+                        
                             <div class="card-header">
-                                <h4 class="m-b-0 "><i class="fe fe-user" aria-hidden="true"></i> Edit Employee<span class="pull-right " ></span></h4>
-                            </div>
+                            <div class="col-md-5 align-self-center">
+                    <h3 class="mb-0 "><i class="fe fe-user" style="color:#1976d2"></i> <?php echo $employee->first_name .' '.$employee->last_name; ?></h3>
+                </div><!-- <h4 class="m-b-0 "><i class="fe fe-user" aria-hidden="true"></i> Edit Employee<span class="pull-right " ></span></h4> -->
+              </div>
+              <ul class="nav nav-tabs profile-tab ml-4" role="tablist">
+                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab" style="font-size: 14px;">  Personal Info </a> </li>
+                                <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab" style="font-size: 14px;"> Address </a> </li> -->
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#education" role="tab" style="font-size: 14px;"> Education</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#experience" role="tab" style="font-size: 14px;"> Experience</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#bank" role="tab" style="font-size: 14px;"> Bank Account</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#document" role="tab" style="font-size: 14px;"> Document</a> </li>
+                                <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#salary" role="tab" style="font-size: 14px;"> Salary</a> </li> -->
+                                <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#leave" role="tab" style="font-size: 14px;"> Leave</a> </li> -->
+                                <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#social" role="tab" style="font-size: 14px;"> Social Media</a> </li> -->
+                            </ul>
+                            <div class="tab-content">
+                            <div class="card card-outline-info tab-pane fade show active"  id="home" role="tabpanel">
                             <div class="card-body">
-
                                 <form class="row" method="post" action="{{ route('employee.update', $employee->id ) }}" enctype="multipart/form-data">
-                                    <div class="form-group col-md-3 m-t-20">
+                                            @csrf
+                                       @method('PUT') 
+                                <div class="form-group col-md-3 m-t-20">
                                         <label>First Name</label>
                                         <input type="text" name="first_name" class="form-control form-control-line" value="{{ $employee->first_name }}" placeholder="Your first name" minlength="2" required > 
                                     </div>
@@ -129,28 +128,12 @@
                                     </div>
                                     <?=csrf_field()?>  
                                 </form>
-                            </div>
+                                 </div>
+                                 </div>
+            
+              @include('employee.education.index')
                         </div>
-                        <div class="tab-pane fade" id="profile">
-                  <div class="card bg-light mb-3" style="max-width: 60rem">
-                    <div class="card-header">Upload the Students From Excel File 
-                     
-                    </div>
-                    <div class="card-body">
-                      
-                      <h5 class="card-title">
-                      <br><p class="card-text pt-4" >This part allows you to upload all students information.</p>
-                      <form method="post" action="" enctype="multipart/form-data">
-                      <input id="fileSelect" type="file" name="select_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" /> 
-                      <div class="col-sm-offset-8 col-sm-8">
-                        <hr class="sidebar-divider d-none d-md-block">
-                        <button type="submit" name="submit" class="btn btn-primary" autocomplete="off">Save</button>
-                    </div>
-                    <?=csrf_field()?>
-                  </form> 
-                      </h5>
-                    </div>
-                  </div>
+</div>
                   
                 </div>
               

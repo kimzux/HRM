@@ -132,13 +132,13 @@
                         </div>
                         <div class="tab-pane fade" id="profile">
                   <div class="card bg-light mb-3" style="max-width: 60rem">
-                    <div class="card-header">Upload the Students From Excel File 
+                    <div class="card-header">Upload the Employee From Excel File 
                      
                     </div>
                     <div class="card-body">
                       
                       <h5 class="card-title">
-                      <br><p class="card-text pt-4" >This part allows you to upload all students information.</p>
+                      <br><p class="card-text pt-4" >This part allows you to upload all employee information.</p>
                       <form method="post" action="" enctype="multipart/form-data">
                       <input id="fileSelect" type="file" name="select_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" /> 
                       <div class="col-sm-offset-8 col-sm-8">

@@ -73,7 +73,7 @@
         <ul class="navbar-nav">
         @can('View Dashboard')
           <li class="nav-item {{ Request::url() == url('/home') ? 'active' : '' }}">">
-            <a class="nav-link" href="{{route('home')}}">
+            <a class="nav-link" href="{{ route('home') }}">
               <i class="fe fe-home"></i> Dashboards
             </a>
          </li>
@@ -158,11 +158,126 @@
                     In-active
                   </a>
                 </li>
-             </li>
+             </ul>
              @endcan
            </div>
-        </ul>
-      
+        </li>
+        <li class="nav-item dropdown ">
+            <a class="nav-link" href="#sidebarRu" data-toggle="collapse" role="button" aria-expanded="false"
+              aria-controls="sidebarRu">
+              <i class="fe fe-layout"></i>Leave
+            </a>
+            <div class="collapse" id="sidebarRu">
+              <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+             
+                  <a href="{{ route('department.index') }}" class="nav-link">
+                    Department
+                  </a>
+            
+                </li>
+                <li class="nav-item">
+              
+                  <a href="{{ route('designation.index') }}" class="nav-link">
+                    Designation
+                  </a>
+               
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item dropdown ">
+            <a class="nav-link" href="#sidebarkipa" data-toggle="collapse" role="button" aria-expanded="false"
+              aria-controls="sidebarkipa">
+              <i class="fe fe-layout"></i>project
+            </a>
+            <div class="collapse" id="sidebarkipa">
+              <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+             
+                  <a href="" class="nav-link">
+                    Department
+                  </a>
+            
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">
+                    Designation
+                  </a>
+               
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item dropdown ">
+            <a class="nav-link" href="#sidebarj" data-toggle="collapse" role="button" aria-expanded="false"
+              aria-controls="sidebarj">
+              <i class="fe fe-layout"></i>Loan
+            </a>
+            <div class="collapse" id="sidebarj">
+              <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+             
+                  <a href="" class="nav-link">
+                    Department
+                  </a>
+            
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">
+                    Designation
+                  </a>
+               
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item dropdown ">
+            <a class="nav-link" href="#sidebarch" data-toggle="collapse" role="button" aria-expanded="false"
+              aria-controls="sidebarch">
+              <i class="fe fe-layout"></i>Assets
+            </a>
+            <div class="collapse" id="sidebarch">
+              <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+             
+                  <a href="" class="nav-link">
+                    Department
+                  </a>
+            
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">
+                    Designation
+                  </a>
+               
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item dropdown ">
+            <a class="nav-link" href="#sidebarone" data-toggle="collapse" role="button" aria-expanded="false"
+              aria-controls="sidebarone">
+              <i class="fe fe-layout"></i>Payrol
+            </a>
+            <div class="collapse" id="sidebarone">
+              <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+             
+                  <a href="" class="nav-link">
+                    Department
+                  </a>
+            
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">
+                    Designation
+                  </a>
+               
+                </li>
+              </ul>
+            </div>
+          </li>
         <!-- Divider -->
         <hr class="navbar-divider my-3">
         <!-- Heading -->

@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedInteger('employee_id')->nullable()->change()->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreignId('employee_id')->nullable()->constrained('employee')->onDelete('cascade')->onUpdate('cascade');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -32,9 +32,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('employee_id')->nullable(false)->change();
-        });
-       
+        Schema::dropIfExists('users');
     }
 }

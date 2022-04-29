@@ -16,7 +16,7 @@ class CreateEmployeeTable extends Migration {
 			$table->foreignId('department_id')->constrained('department');
 			$table->string('em_code', 60)->unique();
 			$table->string('em_address', 200);
-			$table->boolean('status')->nullable();;
+			$table->boolean('status')->nullable();
 			$table->string('em_gender', 200);
 			$table->string('em_phone', 100);
 			$table->string('em_birthday', 200);

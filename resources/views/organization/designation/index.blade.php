@@ -15,7 +15,6 @@
         </div> 
      </div>
     </div> <!-- / .header -->
-            <div class="message"></div> 
             <div class="container-fluid">         
                 <div class="row">
                     <div class="col-lg-5">

@@ -6,6 +6,7 @@ use App\Models\Employee;
 use App\Models\Designation;
 use App\Models\Department;
 use App\Models\User;
+use App\Models\Education;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
@@ -31,9 +32,19 @@ class EmployeeController extends Controller
       $employee->save();
       $employee_user= new User();
       $employee_user->email = request('email');
+      $employee_user->employee_id=$employee->id;
       $employee_user->name = request('first_name');
       $employee_user->password = Hash::make( request('email'));
       $employee_user->save();
+      // $education = new Education();
+      // $education->employee_id = $request->employee_id;
+      // $education->education_type = request('education_level');
+      // $education->institute = request('institute');
+      // $education->result = request('result');
+      // $education->year= request('year');
+
+      // $education->save();
+     
       Alert::success('Success!', 'Successfully added');
       return back();
 
@@ -59,12 +70,13 @@ class EmployeeController extends Controller
     $employee = Employee::findOrFail($id);
     $employees = Department::select('id', 'dep_name')->get();
     $value = Designation::select('id', 'des_name')->get();
-    return view('employee.edit', ['employee'=> $employee,'employees'=> $employees,'value'=> $value]);
+    return view('employee.edit', ['employee'=> $employee,'employees'=> $employees,'value'=> $value,$id]);
   }
   public function update(Request $request, $id)
   {
-    $employee= Employee::findOrFail($id);
-    $employee->first_name=request('first_name');
+   
+      $employee= Employee::findOrFail($id);
+      $employee->first_name=request('first_name');
       $employee->last_name=request('last_name');
       $employee->email=request('email');
       $employee->em_address=request('em_address');
@@ -77,16 +89,15 @@ class EmployeeController extends Controller
       $employee->em_joining_date=request('joindate');
       $employee->em_contract_end=request('leavedate');
       $employee->em_nid=request('em_nid');
-      $employee->save();
-      $employee_user= Employee::findOrFail($id);
+      $employee->update();
+      $employee_user= User::findOrFail($id);
       $employee_user->email = request('email');
       $employee_user->name = request('first_name');
-      $employee_user->password = Hash::make( request('email'));
       $employee_user->save();
-
+      
 
       Alert::success('Success!', 'Successfully updated');
-      return back();
+      return view('employee.edit');
   }
 
   public function destroy($id)
@@ -100,6 +111,7 @@ class EmployeeController extends Controller
   }
   public function show(Department $dep)
   {
-    return view('organization.department.index', compact('dep'));
+    $this->data['total_employees'] = Employee::all()->count();
+        return view('home', $this->data);
   } 
 }

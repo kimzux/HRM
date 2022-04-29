@@ -39,25 +39,21 @@
                 <div class="col">
 
                   <!-- Title -->
-                  <h6 class="card-title text-uppercase text-muted mb-2">
-                    Budget
-                  </h6>
-
+                  <a href="{{route('employee.index')}}" ><h4 class="card-title text-uppercase text-black mb-2">
+                    Total Employees
+                  </h4>
+                  
                   <!-- Heading -->
                   <span class="h2 mb-0">
-                    $24,500
+                  <?= $total_employees?? '' ?>
                   </span>
 
-                  <!-- Badge -->
-                  <span class="badge badge-soft-success mt--1">
-                    +3.5%
-                  </span>
-
+                  </a>
                 </div>
                 <div class="col-auto">
 
                   <!-- Icon -->
-                  <span class="h2 fe fe-dollar-sign text-muted mb-0"></span>
+                  <span class="h2 fe fe-users text-muted mb-0"></span>
 
                 </div>
               </div> <!-- / .row -->

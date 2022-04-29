@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
@@ -65,17 +66,41 @@ class UserController extends Controller
     
             return view('user-management.users.editUser', compact('user'));
     }
-    public function update(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required | string | max:255',
-            'email' => 'required | string | email | max:255 | unique:users',
-            'password' => 'required | min:8 ',
-        ]);
-        User::whereId($id)->update($validatedData);
-        Alert::success('Success!', 'Successfully Updated');
-        return back();
+    // public function update(Request $request, $id)
+    // {
+    //     $validatedData = $request->validate([
+    //         'name' => 'required | string | max:255',
+    //         'email' => 'required | string | email | max:255 | unique:users',
+    //         'password' => 'required | min:8 ',
+    //     ]);
+    //     User::whereId($id)->update($validatedData);
+    //     Alert::success('Success!', 'Successfully Updated');
+    //     return back();
         //   return redirect('/foodie')->with('success', 'Corona Case is successfully saved');
-
+        public function update(Request $request, $id)
+        { 
+            $validator = Validator::make($request->all(), [
+                'name' => 'required | string | max:255',
+                'email' => 'required|email|unique:users,email,' . $id. ',id',
+                'password' => 'required | min:8 ',
+            ]);
+     
+            if ($validator->fails()) {
+                return back()
+                            ->withErrors($validator)
+                            ->withInput();
+            }
+            $validated = $validator->validated();
+           
+            
+            // Retrieve the validated input...
+            $validated = $validator->safe()->only(['name', 'email', 'password']);
+            // $validated = $validator->safe()->except(['name', 'email']);
+            User::whereId($id)->update($validated);
+            Alert::success('Success!', 'Successfully Updated');
+            return back();
+            // Store the blog post...
+        }
     }
-}
+    
+

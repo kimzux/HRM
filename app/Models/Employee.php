@@ -25,4 +25,8 @@ class Employee extends Model
         return $this->belongsTo('User');
     }
 
+    public function education()
+    {
+        return $this->hasMany('Education');
+    }
 }
