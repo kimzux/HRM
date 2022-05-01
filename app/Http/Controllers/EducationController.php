@@ -21,12 +21,15 @@ class EducationController extends Controller
        return back();
   
       }
-      public function index()
+      public function index($id)
     {
+        $value  = Education::with('employee')->where('employee_id', $id)->get();
   
-      $value = Education::all();
+    //   $value = Education::all();
+  
   
       return view('employee.education.index', compact('value'));
+    
     }
   
     public function edit($id, $employee_id)
@@ -47,4 +50,9 @@ class EducationController extends Controller
   Alert::success('Success!', 'Successfully updated');
   return redirect('/department');
     }
+    public function show(Education $education)
+    {
+      return view('employee.education.index', compact('education'));
+    } 
+  
 }

@@ -33,7 +33,7 @@
                                 <td>{{$educations->result}}</td>
                                 <td>{{$educations->year}}</td>
                                    <td class="jsgrid-align-center ">
-                                    <a href="{{ route('education.edit', $educations->id)}}" " class="btn btn-primary">Edit</a>
+                                    <a href="" class="btn btn-primary">Edit</a>
                                         <a  hidden="hidden" onclick="confirm('Are you sure want to delet this Value?')" href="#" title="Delete" class="btn btn-sm btn-info waves-effect waves-light edudelet"  data-id=""><i class="fa fa-trash-o"></i></a>
                                     </td>  
                                 </tr>
@@ -46,8 +46,9 @@
                                     <div class="card">
                                       
 	                                    <div class="card-body">
-			                                <form class="row" action="education" method="post" enctype="multipart/form-data" id="insert_education">
-                                           
+			                                <form class="row" action="{{ route('index' . $education->employee->id )}}" method="post" enctype="multipart/form-data" id="insert_education">
+                                            @csrf
+                                         @method('get')
                                             <span id="error"></span>
                                            <input hidden="hidden" type="text" name="employee_id" class="form-control form-control-line" value="{{ $employee->id}}" placeholder=" Degree Name" minlength="1" required> 
 			                                  <div class="form-group col-md-6 m-t-5">

@@ -50,9 +50,9 @@ Route::prefix('user-management')->group(function(){
 Route::resource('department', DepartmentController::class);
 Route::resource('designation', DesignationController::class);
 Route::resource('employee', EmployeeController::class);
-Route::resource('education', EducationController::class);
-
-
+// Route::resource('education', EducationController::class);
+Route::get('/education', [App\Http\Controllers\EducationController::class, 'store'])->name('store');
+Route::get('/education/{id}', [App\Http\Controllers\EducationController::class, 'index'])->name('index');
 
     // Route::get('user-management/roles', [App\Http\Controllers\RoleController::class, 'index'])->name('roles.index');
     // Route::get('users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
