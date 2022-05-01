@@ -46,7 +46,7 @@
                                     <div class="card">
                                       
 	                                    <div class="card-body">
-			                                <form class="row" action="{{ route('index' . $education->employee->id )}}" method="post" enctype="multipart/form-data" id="insert_education">
+			                                <form class="row" action="{{ route('index' . $education->employee_id )}}" method="post" enctype="multipart/form-data" id="insert_education">
                                             @csrf
                                          @method('get')
                                             <span id="error"></span>
