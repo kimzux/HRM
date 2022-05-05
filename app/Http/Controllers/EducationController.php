@@ -7,29 +7,32 @@ use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 class EducationController extends Controller
 {
-    public function store(Request $request)
+    public function store($employee_id, Request $request)
     {
       
         $education = new Education();
-        $education->employee_id=request('employee_id');
+        $education->employee_id->$employee_id=request('employee_id');
         $education->education_type = request('education_level');
         $education->institute = request('institute');
         $education->result = request('result');
         $education->year= request('year');
         $education->save();
         Alert::success('Success!', 'Successfully added');
-       return back();
+        return redirect()->route('employee.education.index', $employee_id);
   
       }
-      public function index($id)
+
+      public function index($employee_id)
     {
-        $value  = Education::with('employee')->where('employee_id', $id)->get();
-  
-    //   $value = Education::all();
-  
-  
-      return view('employee.education.index', compact('value'));
+        $education = Education::with('employee')->where('employee_id', $id)->get();
+        return view('employee.education.index', compact('value','employee_id'));
+    }
+
+
     
+    public function create($employee_id)
+    {
+        return view('employee.education.index', compact('employee_id'));
     }
   
     public function edit($id, $employee_id)
@@ -39,6 +42,10 @@ class EducationController extends Controller
   
       return view('organization.department.edit_dep', compact('dep'));
     }
+
+
+
+
     public function update(Request $request, $id)
     {
   $validatedData =  $request->validate([

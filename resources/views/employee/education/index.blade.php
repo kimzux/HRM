@@ -46,9 +46,9 @@
                                     <div class="card">
                                       
 	                                    <div class="card-body">
-			                                <form class="row" action="{{ route('index' . $education->employee_id )}}" method="post" enctype="multipart/form-data" id="insert_education">
-                                            @csrf
-                                         @method('get')
+                                       
+			                                <form class="row" action="{{ route("employee.education.store") }}" method="post" enctype="multipart/form-data" id="insert_education">
+                                        
                                             <span id="error"></span>
                                            <input hidden="hidden" type="text" name="employee_id" class="form-control form-control-line" value="{{ $employee->id}}" placeholder=" Degree Name" minlength="1" required> 
 			                                  <div class="form-group col-md-6 m-t-5">
