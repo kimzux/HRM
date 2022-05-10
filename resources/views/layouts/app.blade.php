@@ -185,7 +185,7 @@
                 </li>
                 <li class="nav-item">
               
-                  <a href="{{route('disciplinary.index')}}" class="nav-link">
+                  <a href="{{route('leave_apply.index')}}" class="nav-link">
                     Leave Application
                   </a>
                

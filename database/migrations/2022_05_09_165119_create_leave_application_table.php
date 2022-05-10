@@ -11,8 +11,8 @@ class CreateLeaveApplicationTable extends Migration {
 			$table->increments('id');
 			$table->foreignId('employee_id')->constrained('employee');
 			$table->string('leave_id')->constrained('leave_type');
-			$table->string('start_date', 200);
-			$table->string('end_date', 200);
+			$table->date('start_date');
+			$table->date('end_date');
 			$table->string('reason');
 			$table->boolean('status')->nullable();;
 		

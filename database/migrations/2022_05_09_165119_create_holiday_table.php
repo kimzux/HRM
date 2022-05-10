@@ -11,7 +11,7 @@ class CreateHolidayTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('name', 200);
-			$table->string('date', 500);
+			$table->date('date');
 		});
 	}
 

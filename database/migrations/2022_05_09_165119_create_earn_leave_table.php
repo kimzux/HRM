@@ -10,8 +10,8 @@ class CreateEarnLeaveTable extends Migration {
 		Schema::create('earn_leave', function(Blueprint $table) {
 			$table->increments('id');
 			$table->foreignId('employee_id')->constrained('employee');
-			$table->string('start_date', 200);
-			$table->string('end_date', 500);
+			$table->date('start_date');
+			$table->date('end_date');
 			
 		});
 	}

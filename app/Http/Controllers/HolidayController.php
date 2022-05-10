@@ -53,12 +53,8 @@ class HolidayController extends Controller
           'date' => 'required',
 
       ]);
-
-  
-
+      
       $holiday->update($request->all());
-
-  
       Alert::success('Success!', 'Successfully updated');
       return redirect()->route('holiday.index');
      
