@@ -7,59 +7,51 @@ use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 class EducationController extends Controller
 {
-    public function store($employee_id, Request $request)
+    public function store($employee_id , Request $request)
     {
-      
+      // Education::create($request->all() + ['employee_id' => $employee_id]);
+      // Alert::success('Success!', 'Successfully added');
+      // return redirect()->route('employee.education.index',$employee_id);
         $education = new Education();
-        $education->employee_id->$employee_id=request('employee_id');
-        $education->education_type = request('education_level');
+        $education-> employee_id=$employee_id=request('employee_id');
+        $education->education_type = request('education_type');
         $education->institute = request('institute');
         $education->result = request('result');
         $education->year= request('year');
         $education->save();
         Alert::success('Success!', 'Successfully added');
-        return redirect()->route('employee.education.index', $employee_id);
+        return redirect()->route('employee.education.index',$employee_id);
+    
   
       }
-
       public function index($employee_id)
     {
-        $education = Education::with('employee')->where('employee_id', $id)->get();
-        return view('employee.education.index', compact('value','employee_id'));
-    }
-
-
+        $education = Education::with('employee')->where('employee_id', $employee_id)->get();
+        return view('education.index', compact('education','employee_id'));
     
-    public function create($employee_id)
-    {
-        return view('employee.education.index', compact('employee_id'));
     }
   
-    public function edit($id, $employee_id)
+   
+    public function show($employee_id, Education $education)
     {
-      
-      $dep = Department::findOrFail($id);
-  
-      return view('organization.department.edit_dep', compact('dep'));
+        return view('employee.education.index', compact('employee_id', 'education'));
     }
 
-
-
-
-    public function update(Request $request, $id)
+    public function edit($employee_id, Education $education)
     {
-  $validatedData =  $request->validate([
-      'dep_name' => 'required',
-      
-  ]);
-  
-  Department::whereId($id)->update($validatedData);
-  Alert::success('Success!', 'Successfully updated');
-  return redirect('/department');
+        return view('education.edit', compact('employee_id', 'education'));
     }
-    public function show(Education $education)
+
+    public function update($employee_id, Request $request, Education $education)
     {
-      return view('employee.education.index', compact('education'));
-    } 
-  
+        $education->update($request->all());
+        Alert::success('Success!', 'Successfully updated');
+        return redirect()->route('employee.education.index', $employee_id);
+    }
+    public function show_exp($employee_id)
+    {
+        $experience= Experience::with('employee')->where('employee_id', $employee_id)->get();
+        return view('experience.index', compact('experience','employee_id'));
+    
+    }
 }

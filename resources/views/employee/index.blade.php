@@ -50,6 +50,7 @@
             <td>
               <div class="d-flex">
                 <a href="{{ route('employee.edit', $employees->id)}}" class="btn btn-primary">Edit</a>
+                <a href="{{ route('employee.show', $employees->id)}}" class="ml-4 btn btn-success">Details</a>
                 <form action="{{ route('employee.destroy', $employees->id)}}" method="post">
                   @csrf
                   @method('DELETE')

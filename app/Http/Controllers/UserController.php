@@ -14,6 +14,7 @@ class UserController extends Controller
 {
     public function index()
     {
+        abort_if(Auth::user()->cannot('View user'), 403, 'Access Denied');
        
         $users = User::with('roles')->get();
         $roles = Role::all();
@@ -22,6 +23,7 @@ class UserController extends Controller
 
     public function updateRole(Request $request, User $user)
     {
+        abort_if(Auth::user()->cannot('update user'), 403, 'Access Denied');
         $request->validate([
             'role' => ['required']
         ]);

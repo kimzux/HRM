@@ -5,6 +5,12 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EducationController;
+use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\BankController;
+use App\Http\Controllers\HolidayController;
+use App\Http\Controllers\DisciplinaryController;
+use App\Http\Controllers\Leave_typeController;
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +45,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+Route::get('/exp', function () {
+    return view('experience.index');
+});
 Route::prefix('user-management')->group(function(){
          Route::resource('roles', 'App\Http\Controllers\RoleController' , ['except' => ['show', 'create']]);
          Route::put('users/roles/{user}', [App\Http\Controllers\UserController::class, 'updateRole'])->name('users.roles.update');
@@ -50,7 +59,14 @@ Route::prefix('user-management')->group(function(){
 Route::resource('department', DepartmentController::class);
 Route::resource('designation', DesignationController::class);
 Route::resource('employee', EmployeeController::class);
-Route::resource('employee/education', EducationController::class);
+Route::resource('employee.education', EducationController::class);
+Route::resource('employee.experience', ExperienceController::class);
+Route::resource('employee.bank', BankController::class);
+Route::resource('employee.document', FileController::class);
+Route::resource('disciplinary', DisciplinaryController::class);
+Route::resource('holiday', HolidayController::class);
+Route::resource('leave_type', Leave_typeController::class);
+// Route::resource('countries.cities', 'CitiesController');
 // Route::post('/education', [App\Http\Controllers\EducationController::class, 'store'])->name('education_tore');
 // Route::get('/education/{id}', [App\Http\Controllers\EducationController::class, 'index'])->name('eduction_index');
 

@@ -27,17 +27,7 @@
                     <h3 class="mb-0 "><i class="fe fe-user" style="color:#1976d2"></i> <?php echo $employee->first_name .' '.$employee->last_name; ?></h3>
                 </div><!-- <h4 class="m-b-0 "><i class="fe fe-user" aria-hidden="true"></i> Edit Employee<span class="pull-right " ></span></h4> -->
               </div>
-              <ul class="nav nav-tabs profile-tab ml-4" role="tablist">
-                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab" style="font-size: 14px;">  Personal Info </a> </li>
-                                <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab" style="font-size: 14px;"> Address </a> </li> -->
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#education" role="tab" style="font-size: 14px;"> Education</a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#experience" role="tab" style="font-size: 14px;"> Experience</a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#bank" role="tab" style="font-size: 14px;"> Bank Account</a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#document" role="tab" style="font-size: 14px;"> Document</a> </li>
-                                <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#salary" role="tab" style="font-size: 14px;"> Salary</a> </li> -->
-                                <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#leave" role="tab" style="font-size: 14px;"> Leave</a> </li> -->
-                                <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#social" role="tab" style="font-size: 14px;"> Social Media</a> </li> -->
-                            </ul>
+              -->
                             <div class="tab-content">
                             <div class="card card-outline-info tab-pane fade show active"  id="home" role="tabpanel">
                             <div class="card-body">

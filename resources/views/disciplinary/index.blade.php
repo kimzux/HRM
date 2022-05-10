@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-        <div class="message"></div>
-         <div class="page-wrapper">
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor"><i class="fa fa-compass" style="color:#1976d2"></i> Disciplinary</h3>
-                </div>
-                <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Disciplinary</li>
-                    </ol>
-                </div>
+<div class="header">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-end">
+            <div class="col">
+              <h1 class="header-title">
+                Disciplinary
+               </h1>
             </div>
+            </div> 
+        </div> 
+     </div>
+    </div>
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
@@ -25,9 +25,9 @@
                 </div>         
                 <div class="row">
                     <div class="col-12">
-                        <div class="card card-outline-info">
+                        <div class="card card-outline-info mt-4">
                             <div class="card-header">
-                                <h4 class="m-b-0 text-white"> Disciplinary Action List</h4>
+                                <h4 class="m-b-0"> Disciplinary Action List</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive ">
@@ -35,7 +35,6 @@
                                         <thead>
                                             <tr>
                                                 <th>Employee Name</th>
-                                                <th>PIN</th>
                                                 <th>Title </th>
                                                 <th>Description</th>
                                                 <th>Status</th>
@@ -45,7 +44,6 @@
                                         <tfoot>
                                             <tr>
                                                 <th>Employee Name</th>
-                                                <th>PIN</th>
                                                 <th>Title </th>
                                                 <th>Description</th>
                                                 <th>Status</th>
@@ -53,21 +51,27 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                           <?php foreach($desciplinary as $value): ?>
-                                            <tr>
-                                                <td ><?php echo $value->first_name.' '.$value->last_name; ?></td>
-                                                <td ><?php echo $value->em_code; ?></td>
-                                                <td ><?php echo substr("$value->title",0,15).'...' ?></td>
-                                                <td><?php echo substr("$value->description",0,10).'...' ?> </td>
-                                                <td><button class="btn btn-sm btn-success"><?php echo $value->action; ?></button></td>
-                                                <td  class="jsgrid-align-center ">
-                                                    <a href="#" title="Edit" class="btn btn-sm btn-info waves-effect waves-light disiplinary" data-id="<?php echo $value->id; ?>"><i class="fa fa-pencil-square-o"></i></a>
-                                                    <a href="DeletDisiplinary?D=<?php echo $value->id; ?>" onclick="confirm('Are you sure want to delet this value?')" title="Delete" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
+                                        @foreach($disciplinary as $disciplinarys)
+                                <tr>
+                                <td>{{$disciplinarys->employee->first_name}}</td>
+                                <td>{{$disciplinarys->title}}</td>
+                                <td>{{$disciplinarys->details}}</td>
+                                <td><button class="btn btn-sm btn-success">{{$disciplinarys->disciplinary_action}}</button></td>
+                                    <td class="row">
+                                    <a href="{{ route('disciplinary.edit', $disciplinarys->id)}}" class="btn btn-primary ml-4">Edit</a>
+                                    <form action="{{ route('disciplinary.destroy', $disciplinarys->id)}}" method="post">
+                  @csrf
+                  @method('DELETE')
+                                    <button class="ml-4 btn btn-danger " type="submit"
+                                        onclick="return confirm('Are you sure  you want to delete?')">Delete</button>
+                                        <?=csrf_field()?>
+                                   </form>
+                                    </td> 
+                                    </td>  
+                                </tr>
+                                @endforeach
+                            </tbody>            
+</table>
                                     <!-- sample modal content -->
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
                                         <div class="modal-dialog" role="document">
@@ -76,20 +80,21 @@
                                                     <h4 class="modal-title" id="exampleModalLabel1">Disciplinary Notice</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
-                                                <form method="post" action="add_Desciplinary" id="btnSubmit" enctype="multipart/form-data">
+                                                <form method="post" action="{{route('disciplinary.store')}}" id="btnSubmit" enctype="multipart/form-data">
                                                 <div class="modal-body">
                                                     
                                                         <div class="form-group">
                                                             <label class="control-label">Employee Name</label>
-                                                            <select class="form-control custom-select" name="emid" data-placeholder="Choose a Category" tabindex="1" value="" required>
-                                                               <?php foreach($allemployees as $value): ?>
-                                                                <option value="<?php echo $value->em_id ?>"><?php echo $value->first_name.' '.$value->last_name ?></option>
-                                                                <?php endforeach; ?>
+                                                            <select class="form-control custom-select" name="first_name" data-placeholder="Choose a Category" tabindex="1" value="" required>
+                                                            @foreach ($disci as $disciplinary)
+
+                                        <option value="{{ $disciplinary->id }}"> {{ $disciplinary->first_name }} </option>
+                                                                     @endforeach
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Disciplinary Action</label>
-                                                            <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="warning" value="">
+                                                            <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="disciplinary_action" value="">
                                                                 <option value="Verbel Warning">Verbel Warning</option>
                                                                 <option value="Writing Warning">Writing Warning</option>
                                                                 <option value="Demotion">Demotion</option>
@@ -111,6 +116,7 @@
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                     <button type="submit" class="btn btn-primary">Submit</button>
                                                 </div>
+                                                <?=csrf_field()?>  
                                                 </form>
                                             </div>
                                         </div>
@@ -138,10 +144,10 @@
                                                     console.log(response);
                                                     // Populate the form fields with the data returned from server
 													$('#btnSubmit').find('[name="id"]').val(response.desipplinary.id).end();
-                                                    $('#btnSubmit').find('[name="emid"]').val(response.desipplinary.em_id).end();
-                                                    $('#btnSubmit').find('[name="warning"]').val(response.desipplinary.action).end();
+                                                    $('#btnSubmit').find('[name="employee_id"]').val(response.desipplinary.employee_id).end();
+                                                    $('#btnSubmit').find('[name="disciplinary_action"]').val(response.desipplinary.disciplinary_action).end();
                                                     $('#btnSubmit').find('[name="title"]').val(response.desipplinary.title).end();
-                                                    $('#btnSubmit').find('[name="details"]').val(response.desipplinary.description).end();
+                                                    $('#btnSubmit').find('[name="details"]').val(response.desipplinary.details).end();
 												});
                                             });
                                         });

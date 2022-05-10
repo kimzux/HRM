@@ -149,7 +149,7 @@
                   @endcan
                 </li>
                 <li class="nav-item">
-                  <a href="components.html#avatars" class="nav-link">
+                  <a href="{{route('disciplinary.index')}}"  class="nav-link">
                     Disciplinary
                   </a>
                 </li>
@@ -171,18 +171,39 @@
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
              
-                  <a href="{{ route('department.index') }}" class="nav-link">
-                    Department
+                  <a href="{{route('holiday.index')}}" class="nav-link">
+                    Holiday
                   </a>
             
                 </li>
                 <li class="nav-item">
               
-                  <a href="{{ route('designation.index') }}" class="nav-link">
-                    Designation
+                  <a href="{{route('leave_type.index')}}" class="nav-link">
+                    Leave Type
                   </a>
                
                 </li>
+                <li class="nav-item">
+              
+                  <a href="{{route('disciplinary.index')}}" class="nav-link">
+                    Leave Application
+                  </a>
+               
+                </li>
+                <li class="nav-item">
+              
+              <a href="{{route('disciplinary.index')}}" class="nav-link">
+                Leave Earn
+              </a>
+           
+            </li>
+                <li class="nav-item">
+              
+              <a href="{{route('disciplinary.index')}}"class="nav-link">
+                Report
+              </a>
+           
+            </li>
               </ul>
             </div>
           </li>

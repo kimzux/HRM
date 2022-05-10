@@ -7,6 +7,7 @@ use App\Models\Designation;
 use App\Models\Department;
 use App\Models\User;
 use App\Models\Education;
+use App\Models\Experience;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
@@ -109,9 +110,16 @@ class EmployeeController extends Controller
     return back();
     // return redirect('/foodie')->with('success', 'Corona Case Data is successfully deleted');
   }
-  public function show(Department $dep)
-  {
-    $this->data['total_employees'] = Employee::all()->count();
-        return view('home', $this->data);
-  } 
+  public function show($employee_id)
+    {
+        $education = Education::with('employee')->where('employee_id', $employee_id)->get();
+        return view('education.index', compact('education','employee_id'));
+    
+    }
+    public function show_exp($employee_id)
+    {
+        $experience= Experience::with('employee')->where('employee_id', $employee_id)->get();
+        return view('experience.index', compact('experience','employee_id'));
+    
+    }
 }

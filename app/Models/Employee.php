@@ -29,4 +29,16 @@ class Employee extends Model
     {
         return $this->hasMany('Education');
     }
+    public function bank_info()
+    {
+        return $this->hasOne('Bank_info');
+    }
+    public function employee_file()
+    {
+        return $this->hasMany('Employee_file');
+    }
+    public function disciplinary()
+    {
+        return $this->hasMany('Disciplinary');
+    }
 }
