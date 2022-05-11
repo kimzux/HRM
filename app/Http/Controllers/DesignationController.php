@@ -30,7 +30,7 @@ class DesignationController extends Controller
       
       $des = Designation::findOrFail($id);
   
-      return view('organization.designation.edit_des', compact('des'));
+      return view('organization.designation.edit', compact('des'));
     }
     public function update(Request $request, $id)
     {

@@ -116,10 +116,5 @@ class EmployeeController extends Controller
         return view('education.index', compact('education','employee_id'));
     
     }
-    public function show_exp($employee_id)
-    {
-        $experience= Experience::with('employee')->where('employee_id', $employee_id)->get();
-        return view('experience.index', compact('experience','employee_id'));
     
-    }
 }

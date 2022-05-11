@@ -3,36 +3,34 @@
 @section('content')
 <div class="page-wrapper">
     <div class="message"></div>
-    <div class="row page-titles">
     <div class="header">
       <div class="container-fluid">
-            <div class="header-body ml-3">
+            <div class="header-body ml-4">
               <div class="row align-items-end">
                    <div class="col">
                       <h1 class="header-title">
-                Apply leave
+                Leave application
                        </h1>
                     </div>
                 </div> 
             </div> 
         </div>
-    </div>
-    </div>
     <!-- Container fluid  -->
     <!-- ============================================================== -->
     <div class="container-fluid">
-    <div class="row m-b-10">
-            
+        <div class="row m-b-10">
+           
             <div class="col-12">
                 <button type="button" class="btn btn-info"><i class="fa fa-plus"></i><a data-toggle="modal" data-target="#appmodel" data-whatever="@getbootstrap" class="text-white"><i class="" aria-hidden="true"></i> Add Application </a></button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-bars"></i><a href="" class="text-white"><i class="" aria-hidden="true"></i>  Holiday List</a></button>
             </div>
-            
+          
         </div>
         <div class="row mt-4">
             <div class="col-12">
                 <div class="card card-outline-info">
                     <div class="card-header">
-                        <h4 class="m-b-0 "> Application List
+                        <h4 class="m-b-0 text-white"> Application List
                         </h4>
                     </div>
                    
@@ -66,8 +64,7 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                   
-                                </tbody>
+                                    
                             </table>
                         </div>
                     </div>
@@ -81,21 +78,27 @@
                         <h4 class="modal-title" id="exampleModalLabel1">Leave Application</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
-                    <form method="post" action="Add_Applications" id="leaveapply" enctype="multipart/form-data">
+                    <form method="post" action="{{route('leave_apply.store')}}"" id="leaveapply" enctype="multipart/form-data">
                         <div class="modal-body">
                             
                             <div class="form-group">
                                 <label>Employee</label>
                                 <select class=" form-control custom-select selectedEmployeeID"  tabindex="1" name="employee_id" required>
-                                    <option value=""></option>
+                                <option>Select Department</option>
+                                            @foreach ($employee as $employees)
+                                             <option value="{{ $employees->id }}"> {{ $employees->first_name }} </option>
+                                                 @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Leave Type</label>
-                                <select class="form-control custom-select assignleave"  tabindex="1" name="leave_id" id="leavetype" required>
+                                <select class="form-control custom-select assignleave"  tabindex="1" name="typeid" id="leavetype" required>
                                     <option value="">Select Here..</option>
-                                    <option value=""></option>
-                                 </select>
+                                    <option>Select Department</option>
+                                            @foreach ($leave_type as $leave)
+                                             <option value="{{ $leave->id }}"> {{ $leave->leavename }} </option>
+                                                 @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <span style="color:red" id="total"></span>
@@ -104,11 +107,12 @@
                                 </div>
                                 <br>
                             </div>
+                            
                             <div class="form-group">
-                                <label class="control-label" id="hourlyFix">Start Date</label>
+                                <label class="control-label" id="hourlyFix">Date</label>
                                 <input type="date" name="startdate" class="form-control" id="recipient-name1" required>
                             </div>
-                            <div class="form-group" id="enddate" style="display:none">
+                            <div class="form-group" id="enddate">
                                 <label class="control-label">End Date</label>
                                 <input type="date" name="enddate" class="form-control" id="recipient-name1">
                             </div>
@@ -144,10 +148,11 @@
                         }); 
                         </script>
                         <div class="modal-footer">
-                            <input type="hidden" name="employee_id" class="form-control" id="recipient-name1" required>
+                            <input type="hidden" name="id" class="form-control" id="recipient-name1" required>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
+                        <?=csrf_field()?>
                     </form>
                 </div>
             </div>
@@ -210,4 +215,4 @@
                 });
             });
         </script>
-       @endsection
+        @endsection

@@ -27,7 +27,7 @@
                     <h3 class="mb-0 "><i class="fe fe-user" style="color:#1976d2"></i> <?php echo $employee->first_name .' '.$employee->last_name; ?></h3>
                 </div><!-- <h4 class="m-b-0 "><i class="fe fe-user" aria-hidden="true"></i> Edit Employee<span class="pull-right " ></span></h4> -->
               </div>
-              -->
+            
                             <div class="tab-content">
                             <div class="card card-outline-info tab-pane fade show active"  id="home" role="tabpanel">
                             <div class="card-body">
@@ -121,7 +121,6 @@
                                  </div>
                                  </div>
             
-              @include('employee.education.index')
                         </div>
 </div>
                   
