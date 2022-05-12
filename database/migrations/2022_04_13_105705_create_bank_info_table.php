@@ -8,7 +8,7 @@ class CreateBankInfoTable extends Migration {
 	public function up()
 	{
 		Schema::create('bank_info', function(Blueprint $table) {
-			$table->increments('id');
+			$table->id();
 			$table->foreignId('employee_id')->constrained('employee');
 			$table->string('holder_name', 200);
 			$table->string('bank_name', 200);

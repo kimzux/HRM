@@ -8,7 +8,7 @@ class CreateEducationTable extends Migration {
 	public function up()
 	{
 		Schema::create('education', function(Blueprint $table) {
-			$table->increments('id');
+			$table->id();
 			$table->foreignId('employee_id')->constrained('employee');
 			$table->string('education_type', 200);
 			$table->string('institute', 200);

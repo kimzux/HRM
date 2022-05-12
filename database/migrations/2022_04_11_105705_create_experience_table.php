@@ -8,7 +8,7 @@ class CreateExperienceTable extends Migration {
 	public function up()
 	{
 		Schema::create('experience', function(Blueprint $table) {
-			$table->increments('id');
+			$table->id();
 			$table->foreignId('employee_id')->constrained('employee');
 			$table->string('exp_company', 100);
 			$table->string('exp_com_position', 100);

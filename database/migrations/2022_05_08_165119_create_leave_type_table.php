@@ -8,7 +8,7 @@ class CreateLeaveTypeTable extends Migration {
 	public function up()
 	{
 		Schema::create('leave_type', function(Blueprint $table) {
-			$table->increments('id');
+			$table->id();
 			$table->string('leavename', 200);
 			$table->double('day_no');
 		});

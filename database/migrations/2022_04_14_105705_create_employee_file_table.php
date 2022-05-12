@@ -8,7 +8,7 @@ class CreateEmployeeFileTable extends Migration {
 	public function up()
 	{
 		Schema::create('employee_file', function(Blueprint $table) {
-			$table->increments('id');
+			$table->id();
 			$table->foreignId('employee_id')->constrained('employee');
 			$table->string('file_title', 500);
 			$table->string('file_url', 500);
