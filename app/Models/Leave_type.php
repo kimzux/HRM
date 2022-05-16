@@ -15,5 +15,8 @@ class Leave_type extends Model
 		'leavename','day_no',   
 	];
 
-
+  public function leave_application()
+  {
+      return $this->hasMany('Leave_application');
+  }
 }

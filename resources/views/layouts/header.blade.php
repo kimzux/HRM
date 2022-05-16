@@ -30,9 +30,7 @@
 
   <!-- <style>body { display: none; }</style> -->
 
-  <script>
-    var colorScheme = (localStorage.getItem('dashkitColorScheme')) ? localStorage.getItem('dashkitColorScheme') : 'light';
-  </script>
+
 
 
   <title>HRM</title>

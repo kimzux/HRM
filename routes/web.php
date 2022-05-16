@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',function () {
-    return view('welcome');
+    return view('auth.login');
 });
 Route::get('/employee_edit',function () {
     return view('employee_edit');
@@ -68,6 +68,8 @@ Route::resource('disciplinary', DisciplinaryController::class);
 Route::resource('holiday', HolidayController::class);
 Route::resource('leave_type', Leave_typeController::class);
 Route::resource('leave_apply', Leave_applyController::class);
+Route::get('/approve/{id}', [App\Http\Controllers\Leave_applyController::class, 'approve'])->name('leave.approve');
+Route::get('/decline/{id}', [App\Http\Controllers\Leave_applyController::class, 'decline'])->name('leave.decline');
 // Route::resource('countries.cities', 'CitiesController');
 // Route::post('/education', [App\Http\Controllers\EducationController::class, 'store'])->name('education_tore');
 // Route::get('/education/{id}', [App\Http\Controllers\EducationController::class, 'index'])->name('eduction_index');

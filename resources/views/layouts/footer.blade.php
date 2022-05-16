@@ -14,6 +14,8 @@
 
   <!-- Theme JS -->
   <script src="assets/js/theme.min.js"></script>
+  
+</head>
   @stack('scripts')
 
 </body>

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <button type="submit" data-toggle="modal" data-target="#addUserModal" class="btn btn-primary mb-4">Click here to add User</button>
+        <button type="submit" data-toggle="modal" data-target="#addUserModal" class="btn btn-primary m-4">Click here to add User</button>
     </div>
     <div class="uper">
         @if (session()->get('success'))
@@ -11,7 +11,7 @@
             </div>
             <br />
         @endif
-        <table id="users_datatable" class="table table-striped">
+        <table id="users_datatable" class="table table-bordered data-table p-2">
             <thead>
                 <tr>
                     <td>ID</td>
@@ -122,7 +122,7 @@
                 </div>
             </div>
 @endsection
-@push('scripts')
+    @push('scripts')
     <script>
         $('#users_datatable').DataTable({});
         $('#editRole').on('show.bs.modal', function(event) {

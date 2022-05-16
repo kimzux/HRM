@@ -42,7 +42,7 @@
                                         <th>Employee Name</th>
                                         <th>PIN</th>
                                         <th>Leave Type</th>
-                                        <th>Apply Date</th>
+                                     
                                         <th>start Date</th>
                                         <th>End Date</th>
                                         <th>Leave Duration</th>
@@ -55,7 +55,6 @@
                                     <th>Employee Name</th>
                                     <th>PIN</th>
                                     <th>Leave Type</th>
-                                    <th>Apply Date</th>
                                     <th>start Date</th>
                                     <th>End Date</th>
                                     <th>Leave Duration</th>
@@ -64,7 +63,29 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                    
+                                @foreach($leave_apply as $apply)
+                                    <tr style="vertical-align:top">
+                                       
+                                        <td><mark>{{$apply->employee->first_name}}</mark></td>
+                                        <td>{{$apply->employee->em_code}}</td>
+                                        <td>{{$apply->leave_type->leavename}}</td>
+                                        <td>{{$apply->start_date}}</td>
+                                        <td>{{$apply->end_date}}</td>
+                                        <td>{{$apply->total_day}} days</td>
+                                         @if($apply->status ==0)
+                                        <td>Not approved</td>
+                                        @endif
+                                        
+                                        <td class="row">
+                
+                                            <a href="{{route('leave.approve', $apply->id)}}"" title="Edit" class="btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $apply->id; ?>">Approved</a>
+                                            <a href="{{route('leave.decline', $apply->id)}}" title="Edit" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $apply->id; ?>" data-value="Rejected" >Reject</a><br>
+                                          
+                                            <a href="{{ route('leave_apply.edit', $apply->id)}}" title="Edit" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $apply->id; ?>" >Edit</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                            </tbody>   
                             </table>
                         </div>
                     </div>
@@ -83,8 +104,8 @@
                             
                             <div class="form-group">
                                 <label>Employee</label>
-                                <select class=" form-control custom-select selectedEmployeeID"  tabindex="1" name="employee_id" required>
-                                <option>Select Department</option>
+                                <select class=" form-control custom-select selectedEmployeeID"  tabindex="1" name="first_name" required>
+                                <option value="">Select Here..</option>
                                             @foreach ($employee as $employees)
                                              <option value="{{ $employees->id }}"> {{ $employees->first_name }} </option>
                                                  @endforeach
@@ -92,24 +113,17 @@
                             </div>
                             <div class="form-group">
                                 <label>Leave Type</label>
-                                <select class="form-control custom-select assignleave"  tabindex="1" name="typeid" id="leavetype" required>
+                                <select class="form-control custom-select assignleave"  tabindex="1" name="leavename" id="leavetype" required>
                                     <option value="">Select Here..</option>
-                                    <option>Select Department</option>
                                             @foreach ($leave_type as $leave)
                                              <option value="{{ $leave->id }}"> {{ $leave->leavename }} </option>
                                                  @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <span style="color:red" id="total"></span>
-                                <div class="span pull-right">
-                                    <button class="btn btn-info fetchLeaveTotal">Fetch Total Leave</button>
-                                </div>
-                                <br>
-                            </div>
+                            
                             
                             <div class="form-group">
-                                <label class="control-label" id="hourlyFix">Date</label>
+                                <label class="control-label" id="hourlyFix">Start Date</label>
                                 <input type="date" name="startdate" class="form-control" id="recipient-name1" required>
                             </div>
                             <div class="form-group" id="enddate">
@@ -120,33 +134,12 @@
                                 <label class="control-label">Reason</label>
                                 <textarea class="form-control" name="reason" id="message-text1" required minlength="10"></textarea>                                                
                             </div>
+                            <div class="form-group">
+                                <input hide="hidden" type="hidden" class="form-control"  name="total_day" id="message-text1" required minlength="10">                                                
+                            </div>
                             
                         </div>
-                        <script>
-                        $(document).ready(function () {
-                            $('#leaveapply input').on('change', function(e) {
-                                e.preventDefault(e);
-
-                                // Get the record's ID via attribute  
-                                var duration = $('input[name=type]:checked', '#leaveapply').attr('data-value');
-
-                                if(duration =='Half'){
-                                    $('#enddate').hide();
-                                    $('#hourlyFix').text('Date');
-                                    $('#hourAmount').show();
-                                }
-                                else if(duration =='Full'){
-                                    $('#enddate').hide();  
-                                    $('#hourAmount').hide();  
-                                    $('#hourlyFix').text('Start date');  
-                                }
-                                else if(duration =='More'){
-                                    $('#enddate').show();
-                                    $('#hourAmount').hide();
-                                }
-                            });
-                        }); 
-                        </script>
+                        
                         <div class="modal-footer">
                             <input type="hidden" name="id" class="form-control" id="recipient-name1" required>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -157,34 +150,8 @@
                 </div>
             </div>
         </div>
-<script>
-    $(document).ready(function () {
 
-        $('.fetchLeaveTotal').on('click', function (e) {
-            e.preventDefault();
-            var selectedEmployeeID = $('.selectedEmployeeID').val();
-            var leaveTypeID = $('.assignleave').val();
-            console.log(selectedEmployeeID, leaveTypeID);
-            $.ajax({
-                url: 'LeaveAssign?leaveID=' + leaveTypeID + '&employeeID=' +selectedEmployeeID,
-                method: 'GET',
-                data: '',
-            }).done(function (response) {
-                //console.log(response);
-                $("#total").html(response);
-            });
-        });
-    });
-</script>
-        <script type="text/javascript">
-            $('#duration').on('input', function() {
-                var day = parseInt($('#duration').val());
-                console.log('gfhgf');
-                var hour = 8;
-                $('.totalhour').val((day * hour ? day * hour : 0).toFixed(2));
-
-            });
-        </script>
+        
         <!-- Set leaves approved for ADMIN? -->
         <script type="text/javascript">
             $(document).ready(function() {

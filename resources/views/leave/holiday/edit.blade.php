@@ -18,9 +18,9 @@
             </div><br />
         @endif
 
-        <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
-         <h1 class="h3 mb-0 text-gray-800">Add student</h1>
-         </div> -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
+         <h1 class="h2 mb-0 text-gray-800">Edit Holiday</h1>
+         </div>
         <hr class="sidebar-divider d-none d-md-block">
         <div class="card bg-light mb-3" style="max-width: 50rem">
             <div class="align-items-center justify-content-between mb-4">

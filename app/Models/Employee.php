@@ -41,4 +41,8 @@ class Employee extends Model
     {
         return $this->hasMany('Disciplinary');
     }
+    public function leave_application()
+    {
+        return $this->hasMany('Leave_application');
+    }
 }

@@ -42,10 +42,9 @@
         <tr>
             <td>{{$employees->id}}</td>
             <td>{{$employees->first_name}}</td>
-            <td>{{$employees->last_name}}</td>
             <td>{{$employees->em_code}}</td>
             <td>{{$employees->email}}</td>
-            <td>{{$employees->contact}}</td>
+            <td>{{$employees->em_phone}}</td>
             <div class="d-flex">
             <td>
               <div class="d-flex">

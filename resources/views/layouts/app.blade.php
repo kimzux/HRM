@@ -72,7 +72,7 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
         @can('View Dashboard')
-          <li class="nav-item {{ Request::url() == url('/home') ? 'active' : '' }}">">
+          <li class="nav-item {{ Request::url() == url('/home') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('home') }}">
               <i class="fe fe-home"></i> Dashboards
             </a>
