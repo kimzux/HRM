@@ -29,20 +29,23 @@ class Leave_applyController extends Controller
         $dt = Carbon::parse(request('startdate'));
         $dt2 = Carbon::parse(request('enddate'));
         $leave->total_day=$interval = $dt->diffInDays($dt2 );
-        $leave->status=0;
+        $leave->day_remain=$days=($leave->leave_type->day_no)-$interval;
         if($interval>($leave->leave_type->day_no)){
           Alert::Warning('warning!', 'its exceed the total leave day');
           return back();
         }
+        if($days< 0){
+          Alert::Warning('warning!', 'you cant apply since your leave day finish');
+          return back();
+        }
          else{
         $leave->save();
-        Alert::success('Success!', 'application successful');
+        Alert::success('Success!', 'application successful added');
       return back();
          }
  }
  public function edit($id)
   {
-    
     $leave_apply = Leave_application::findOrFail($id);
     $employee = Employee::select('id', 'first_name')->get();
     $leave_type = Leave_type::select('id', 'leavename')->get();
@@ -60,15 +63,19 @@ class Leave_applyController extends Controller
       $dt = Carbon::parse(request('startdate'));
       $dt2 = Carbon::parse(request('enddate'));
       $leave->total_day=$interval = $dt->diffInDays($dt2 );
-      $leave->status=0;
+      $leave->day_remain=$days=($leave->leave_type->day_no)-$interval;
       if($interval>($leave->leave_type->day_no)){
         Alert::Warning('warning!', 'its exceed the total leave day');
+        return back();
+      }
+      if($days< 0){
+        Alert::Warning('warning!', 'you cant apply since your leave day finish');
         return back();
       }
        else{
       $leave->update();
       Alert::success('Success!', 'application successful updated');
-      return back();
+      return redirect()->route('leave_apply.index');
        }
       }
 
@@ -76,6 +83,7 @@ class Leave_applyController extends Controller
         $leave = Leave_application::findOrFail($id);
         $leave->status = 1; //Approved
         $leave->save();
+        Alert::success('Approved!', 'application successful approved');
         return redirect()->back(); //Redirect user somewhere
      }
      
@@ -83,7 +91,9 @@ class Leave_applyController extends Controller
         $leave = Leave_application::findOrFail($id);
         $leave->status = 0; //Declined
         $leave->save();
+        Alert::info('Rejected!', 'application successful rejected');
         return redirect()->back(); //Redirect user somewhere
+       
      }
 
 }

@@ -16,9 +16,13 @@
   <link rel="stylesheet" href="/assets/libs/highlight.js/styles/vs2015.css">
   <link rel="stylesheet" href="/assets/libs/quill/dist/quill.core.css">
   <link rel="stylesheet" href="/assets/libs/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/libs/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-  
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
 
 
 

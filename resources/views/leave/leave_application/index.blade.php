@@ -5,7 +5,7 @@
     <div class="message"></div>
     <div class="header">
       <div class="container-fluid">
-            <div class="header-body ml-4">
+            <div class="header-body ml-1">
               <div class="row align-items-end">
                    <div class="col">
                       <h1 class="header-title">
@@ -17,7 +17,7 @@
         </div>
     <!-- Container fluid  -->
     <!-- ============================================================== -->
-    <div class="container-fluid">
+    <div class="container-fluid mt-4">
         <div class="row m-b-10">
            
             <div class="col-12">
@@ -30,7 +30,7 @@
             <div class="col-12">
                 <div class="card card-outline-info">
                     <div class="card-header">
-                        <h4 class="m-b-0 text-white"> Application List
+                        <h4 class="m-b-0"> Application List
                         </h4>
                     </div>
                    
@@ -42,12 +42,12 @@
                                         <th>Employee Name</th>
                                         <th>PIN</th>
                                         <th>Leave Type</th>
-                                     
                                         <th>start Date</th>
                                         <th>End Date</th>
                                         <th>Leave Duration</th>
+                                        <th>Day Remain</th>
                                         <th>Leave Status</th>
-                                        <th>Action</th>
+                                       <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -58,6 +58,7 @@
                                     <th>start Date</th>
                                     <th>End Date</th>
                                     <th>Leave Duration</th>
+                                    <th>Day Remain</th>
                                     <th>Leave Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -72,16 +73,24 @@
                                         <td>{{$apply->start_date}}</td>
                                         <td>{{$apply->end_date}}</td>
                                         <td>{{$apply->total_day}} days</td>
-                                         @if($apply->status ==0)
-                                        <td>Not approved</td>
-                                        @endif
-                                        
+                                        <td>{{$apply->day_remain}} days</td>
+                                        <td>
+                                            @if(is_null($apply->status))
+        <span class="p-2 mb-1 bg-primary text-white">Pending</span>
+                    @elseif($apply->status == 1)
+        <span class="p-2 mb-1 bg-success text-white">Approved</span>
+                  @elseif($apply->status == 0)
+        <span class="p-2 mb-1 bg-danger text-white">Rejected</span>
+                 @endif</td>
+                                     
                                         <td class="row">
-                
+                                        @if(is_null($apply->status))
                                             <a href="{{route('leave.approve', $apply->id)}}"" title="Edit" class="btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $apply->id; ?>">Approved</a>
                                             <a href="{{route('leave.decline', $apply->id)}}" title="Edit" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $apply->id; ?>" data-value="Rejected" >Reject</a><br>
-                                          
                                             <a href="{{ route('leave_apply.edit', $apply->id)}}" title="Edit" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $apply->id; ?>" >Edit</a>
+                                            @elseif($apply->status == 1)
+                                            @elseif($apply->status == 0)
+                                        @endif
                                         </td>
                                     </tr>
                                     @endforeach
@@ -99,7 +108,7 @@
                         <h4 class="modal-title" id="exampleModalLabel1">Leave Application</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
-                    <form method="post" action="{{route('leave_apply.store')}}"" id="leaveapply" enctype="multipart/form-data">
+                    <form method="post" action="{{route('leave_apply.store')}}" id="leaveapply" enctype="multipart/form-data">
                         <div class="modal-body">
                             
                             <div class="form-group">
@@ -137,6 +146,9 @@
                             <div class="form-group">
                                 <input hide="hidden" type="hidden" class="form-control"  name="total_day" id="message-text1" required minlength="10">                                                
                             </div>
+                            <div class="form-group">
+                                <input hide="hidden" type="hidden" class="form-control"  name="day_remain" id="message-text1" required minlength="10">                                                
+                            </div>
                             
                         </div>
                         
@@ -153,33 +165,5 @@
 
         
         <!-- Set leaves approved for ADMIN? -->
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $(".leaveapproval").click(function(e) {
-                    e.preventDefault(e);
-                    // Get the record's ID via attribute
-                    var iid = $(this).attr('data-id');
-                    $('#leaveapplyval').trigger("reset");
-                    $('#appmodelcc').modal('show');
-                    $.ajax({
-                        url: 'LeaveAppbyid?id=' + iid,
-                        method: 'GET',
-                        data: '',
-                        dataType: 'json',
-                    }).done(function(response) {
-                        console.log(response);
-                        // Populate the form fields with the data returned from server
-                        $('#leaveapplyval').find('[name="id"]').val(response.leaveapplyvalue.id).end();
-                        $('#leaveapplyval').find('[name="emid"]').val(response.leaveapplyvalue.em_id).end();
-                        $('#leaveapplyval').find('[name="applydate"]').val(response.leaveapplyvalue.apply_date).end();
-                        $('#leaveapplyval').find('[name="typeid"]').val(response.leaveapplyvalue.typeid).end();
-                        $('#leaveapplyval').find('[name="startdate"]').val(response.leaveapplyvalue.start_date).end();
-                        $('#leaveapplyval').find('[name="enddate"]').val(response.leaveapplyvalue.end_date).end();
-                        $('#leaveapplyval').find('[name="duration"]').val(response.leaveapplyvalue.leave_duration).end();
-                        $('#leaveapplyval').find('[name="reason"]').val(response.leaveapplyvalue.reason).end();
-                        $('#leaveapplyval').find('[name="status"]').val(response.leaveapplyvalue.leave_status).end();
-                    });
-                });
-            });
-        </script>
+       
         @endsection

@@ -14,6 +14,7 @@ class CreateLeaveApplicationTable extends Migration {
 			$table->date('start_date');
 			$table->date('end_date');
 			$table->double('total_day');
+			$table->double('day_remain');
 			$table->string('reason');
 			$table->boolean('status')->nullable();;
 		

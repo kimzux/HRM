@@ -192,7 +192,7 @@
                 </li>
                 <li class="nav-item">
               
-              <a href="{{route('disciplinary.index')}}" class="nav-link">
+              <a href="{{route('leave_earn.index')}}" class="nav-link">
                 Leave Earn
               </a>
            
@@ -216,14 +216,20 @@
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
              
-                  <a href="" class="nav-link">
-                    Department
+                  <a href="{{route('project.index')}}" class="nav-link">
+                    projects
                   </a>
             
                 </li>
                 <li class="nav-item">
+                  <a href="{{route('task.index')}}" class="nav-link">
+                  Tasks list
+                  </a>
+               
+                </li>
+                <li class="nav-item">
                   <a href="" class="nav-link">
-                    Designation
+                  Field visit
                   </a>
                
                 </li>

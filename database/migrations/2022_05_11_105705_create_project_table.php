@@ -8,7 +8,7 @@ class CreateProjectTable extends Migration {
 	public function up()
 	{
 		Schema::create('project', function(Blueprint $table) {
-			$table->increments('id');
+			$table->id();
 			$table->string('project_title', 100);
 			$table->date('project_startdate');
 			$table->date('project_enddate');

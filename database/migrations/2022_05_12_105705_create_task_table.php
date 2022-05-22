@@ -8,7 +8,7 @@ class CreateTaskTable extends Migration {
 	public function up()
 	{
 		Schema::create('task', function(Blueprint $table) {
-			$table->increments('id');
+			$table->id();
 			$table->foreignId('employee_id')->constrained('employee');
 			$table->foreignId('project_id')->constrained('project');
 			$table->string('task_title', 100);

@@ -11,10 +11,11 @@
   <script src="/assets/libs/select2/dist/js/select2.min.js"></script>
   <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script> 
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-
   <!-- Theme JS -->
-  <script src="assets/js/theme.min.js"></script>
-  
+  <script src="/assets/js/theme.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 </head>
   @stack('scripts')
 

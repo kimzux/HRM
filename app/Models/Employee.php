@@ -45,4 +45,12 @@ class Employee extends Model
     {
         return $this->hasMany('Leave_application');
     }
+    public function Earn_leave()
+    {
+        return $this->hasMany('Earn_leave');
+    }
+    public function Task()
+    {
+        return $this->belongsToMany('App\Task')->using('App\Collaborator');
+    }
 }

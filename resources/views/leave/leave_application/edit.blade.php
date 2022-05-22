@@ -71,6 +71,9 @@
                         <div class="form-group">
                                 <input hide="hidden" type="hidden" class="form-control"  name="total_day" value="{{$leave_apply->total_day}}" id="message-text1" required minlength="10">                                                
                             </div>
+                            <div class="form-group">
+                                <input hide="hidden" type="hidden" class="form-control"  name="day_remain" value="{{$leave_apply->day_remain}}" id="message-text1" required minlength="10">                                                
+                            </div>
                             
 
                         <div class="form-group row">

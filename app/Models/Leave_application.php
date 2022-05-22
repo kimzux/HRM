@@ -10,7 +10,7 @@ class Leave_application extends Model
     protected $table = 'leave_application';
     public $timestamps = false;
     protected $fillable = [
-		'id','leave_id','employee_id','start_date','end_date','reason','status',    
+		'id','leave_id','employee_id','start_date','end_date','reason','status',  'total_day' , 'day_remain',
 	];
 
     public function employee()

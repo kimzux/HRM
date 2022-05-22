@@ -12,6 +12,7 @@ class CreateEarnLeaveTable extends Migration {
 			$table->foreignId('employee_id')->constrained('employee');
 			$table->date('start_date');
 			$table->date('end_date');
+			$table->double('total_earndays');
 			
 		});
 	}
