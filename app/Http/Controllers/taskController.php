@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\Employee;
 use App\Models\Task;
-use App\Models\Collaborator;
+use App\Models\Employee_Task;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -13,11 +13,13 @@ class taskController extends Controller
 {
     public function index()
     {
-  
-      $task= Task::all();
+    
+      $task= Task::with('project','employee')->get();
       $employee = Employee::select('id', 'first_name')->get();
       $project = Project::select('id', 'project_title','project_startdate','project_enddate')->get();
-      return view('task.index',  ['employee'=> $employee,'task'=> $task, 'project'=>$project]);
+      $collab = Employee_Task::with('employee', 'task')->get();
+      // $patient = Patient::with('reports.analyzes')->find(1);
+      return view('task.index',  ['employee'=> $employee,'task'=> $task, 'project'=>$project, 'collab'=>  $collab]);
     }
 
     public function store(Request $request)
@@ -38,17 +40,14 @@ class taskController extends Controller
 
         $data = $request->all();
 
-        $collar = [];
+        $assignto = [];
 
   //insert using foreach loop
-   foreach($collar as   $value) {
-   $Collaborator = new Collaborator();
+   foreach($request->assignto as   $employee_id) {
+   $Collaborator = new Employee_Task();
    $Collaborator->task_id=$task->id;
-   $Collaborator->$value =[
-    'employee_id' => request('assignto'),
-    array_push($value),
-   ]; 
-  $Collaborator->save(); 
+   $Collaborator->employee_id=$employee_id;
+   $Collaborator->save(); 
    
   }
 

@@ -268,14 +268,14 @@
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
              
-                  <a href="" class="nav-link">
-                    Department
+                  <a href="{{route('asset.index')}}" class="nav-link">
+                    Asset Category
                   </a>
             
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
-                    Designation
+                  <a href="{{route('assetlist.index')}}" class="nav-link">
+                    Asset List
                   </a>
                
                 </li>

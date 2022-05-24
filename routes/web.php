@@ -15,6 +15,8 @@ use App\Http\Controllers\Leave_earnController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\taskController;
+use App\Http\Controllers\AssetController;
+use App\Http\Controllers\AssetListController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -74,6 +76,8 @@ Route::resource('leave_apply', Leave_applyController::class);
 Route::resource('leave_earn', Leave_earnController::class);
 Route::resource('project', ProjectController::class);
 Route::resource('task', TaskController::class);
+Route::resource('asset', AssetController::class);
+Route::resource('assetlist', AssetListController::class);
 Route::get('/approve/{id}', [App\Http\Controllers\Leave_applyController::class, 'approve'])->name('leave.approve');
 Route::get('/decline/{id}', [App\Http\Controllers\Leave_applyController::class, 'decline'])->name('leave.decline');
 // Route::resource('countries.cities', 'CitiesController');

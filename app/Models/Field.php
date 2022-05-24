@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class Field extends Model
 {
     use HasFactory;
-    protected $table = 'task';
+    protected $table = 'field';
     public $timestamps = false;
     protected $fillable = [
-		'id','employee_id','project_id','task_title','task_startdate','task_enddate','task_details','task_status', 'task_type',
+		'id','employee_id','project_id','field_location','field_startdate','field_enddate','field_totaldays','notes',    
 	];
     public function project()
     {
@@ -19,11 +19,7 @@ class Task extends Model
     }
     public function employee()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo('App\Models\Employee', 'employee_id', 'id');
     }
-
-    public function employee_task()
-    {
-        return $this->hasMany(Employee_Task::class);
-    }
+    
 }
