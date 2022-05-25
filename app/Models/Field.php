@@ -11,7 +11,7 @@ class Field extends Model
     protected $table = 'field';
     public $timestamps = false;
     protected $fillable = [
-		'id','employee_id','project_id','field_location','field_startdate','field_enddate','field_totaldays','notes',    
+		'id','employee_id','project_id','field_location','field_startdate','field_enddate','field_totaldays','notes', 'status',  'return_date',
 	];
     public function project()
     {

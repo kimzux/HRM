@@ -14,12 +14,12 @@ class taskController extends Controller
     public function index()
     {
     
-      $task= Task::with('project','employee')->get();
+      $task= Task::with('project','employee','employee_task.employee')->get();
       $employee = Employee::select('id', 'first_name')->get();
       $project = Project::select('id', 'project_title','project_startdate','project_enddate')->get();
-      $collab = Employee_Task::with('employee', 'task')->get();
+   
       // $patient = Patient::with('reports.analyzes')->find(1);
-      return view('task.index',  ['employee'=> $employee,'task'=> $task, 'project'=>$project, 'collab'=>  $collab]);
+      return view('task.index',  ['employee'=> $employee,'task'=> $task, 'project'=>$project]);
     }
 
     public function store(Request $request)
@@ -38,7 +38,6 @@ class taskController extends Controller
         $task->save();
 
 
-        $data = $request->all();
 
         $assignto = [];
 

@@ -19,4 +19,9 @@ class Asset extends Model
   {
       return $this->hasOne('Assetlist');
   }
+  public function logistic()
+  {
+      return $this->hasOne('Logistic');
+  }
+  
 }

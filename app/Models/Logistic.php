@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Logistic extends Model
 {
     use HasFactory;
-    protected $table = 'project';
+    protected $table = 'logistic';
     public $timestamps = false;
     protected $fillable = [
-		'id','project_title','project_startdate','project_enddate','details','project_summary','project_status', 
+		'id','project_id','asset_id','employee_id','task_id','','startdate','enddate','remark','quantity',
 	];
     public function task()
   {
@@ -21,9 +21,4 @@ class Project extends Model
   {
       return $this->hasMany('Field');
   }
-  public function logistic()
-  {
-      return $this->hasMany('Logistic');
-  }
-  
 }

@@ -26,4 +26,9 @@ class Task extends Model
     {
         return $this->hasMany(Employee_Task::class);
     }
+    public function logistic()
+    {
+        return $this->hasMany('Logistic');
+    }
+    
 }

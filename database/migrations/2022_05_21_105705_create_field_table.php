@@ -14,6 +14,7 @@ class CreateFieldTable extends Migration {
 			$table->string('field_location', 100);
 			$table->date('field_startdate');
 			$table->date('field_enddate');
+			$table->date('return_date')->nullable();
 			$table->double('field_totaldays');
 			$table->string('notes', 500);
 			$table->boolean('status')->nullable();

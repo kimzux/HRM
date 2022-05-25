@@ -15,10 +15,7 @@ class Employee_Task extends  Model
     protected $fillable = [
 		'id','employee_id', 'task_id',    
 	];
-    public function task()
-	{
-		return $this->belongsTo(Task::class);
-	}
+  
 
 	public function employee()
 	{
