@@ -62,6 +62,7 @@
                                 @endif
                             </div>
                         </div>
+                        <?=csrf_field()?>
                     </form>
                 </div>
             </div>

@@ -19,8 +19,16 @@ class Task extends Model
     }
     public function employee()
     {
-        return $this->belongsToMany('App\Employee')->using('App\Collaborator');
+        return $this->belongsTo(Employee::class);
     }
 
-
+    public function employee_task()
+    {
+        return $this->hasMany(Employee_Task::class);
+    }
+    public function logistic()
+    {
+        return $this->hasMany('Logistic');
+    }
+    
 }

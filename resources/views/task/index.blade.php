@@ -23,7 +23,7 @@
                     <div class="col-12">
                                              
                         <button type="button" class="btn btn-info"><i class="fa fa-plus"></i><a data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" class="text-white"><i class="" aria-hidden="true"></i> Add Task </a></button>
-                        <button type="button" class="btn btn-primary"><i class="fa fa-bars"></i><a href="" class="text-white"><i class="" aria-hidden="true"></i>  Project List</a></button>
+                        <button type="button" class="btn btn-primary"><i class="fa fa-bars"></i><a href="{{route('project.index')}}" class="text-white"><i class="" aria-hidden="true"></i>  Project List</a></button>
                         <button type="button" class="btn btn-primary"><i class="fa fa-bars"></i><a href="" class="text-white"><i class="" aria-hidden="true"></i>  Field Visit</a></button>
                         
                     </div>
@@ -59,7 +59,26 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                           
+                                        @foreach($task as $tasks)
+                                            <tr>
+                                                <td>{{$tasks->project->project_title}}</td>
+                                                <td>{{$tasks->task_title}}</td>
+                                                <td>{{$tasks->task_startdate}}</td>
+                                                <td>{{$tasks->task_enddate}}</td>
+                                                <td>
+                                            
+                                                {{$tasks->employee->first_name}}, 
+                                                @foreach($tasks->employee_task as $collabs)
+                                                {{ $loop->first ? '' : ', ' }}
+                                                {{$collabs->employee->first_name}}
+                                             @endforeach
+                                                </td>
+<!--                                                <td class="jsgrid-align-center ">
+                                                    <a href="#" title="Edit" class="btn btn-sm btn-info waves-effect waves-light taskmodal" data-id="<?php #echo $value->id ?>"><i class="fa fa-pencil-square-o"></i></a>
+                                                    <a onclick="alert('Are you sure want to delet this Value?')" href="#" title="Delete" class="btn btn-sm btn-info waves-effect waves-light TasksDelet" data-id="<?php #echo $value->id ?>"><i class="fa fa-trash-o"></i></a>
+                                                </td>-->
+                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -99,6 +118,7 @@
                                                    @foreach($employee as $employees)
                                                     <option value="{{ $employees->id}}">{{ $employees->first_name}}</option>
                                                     @endforeach
+                                        
                                                 </select>
                                                    </div>
                                                 <label class="control-label col-md-2">Collaborators</label>

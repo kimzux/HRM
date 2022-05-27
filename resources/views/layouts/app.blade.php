@@ -228,7 +228,7 @@
                
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{route('field.index')}}" class="nav-link">
                   Field visit
                   </a>
                
@@ -245,14 +245,14 @@
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
              
-                  <a href="" class="nav-link">
-                    Department
+                  <a href="{{route('loan.index')}}" class="nav-link">
+                    Grand Loan
                   </a>
             
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
-                    Designation
+                  <a href="{{route('loan_installment.index')}}" class="nav-link">
+                    Installment Loan
                   </a>
                
                 </li>
@@ -268,14 +268,20 @@
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
              
-                  <a href="" class="nav-link">
-                    Department
+                  <a href="{{route('asset.index')}}" class="nav-link">
+                    Asset Category
                   </a>
             
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
-                    Designation
+                  <a href="{{route('assetlist.index')}}" class="nav-link">
+                    Asset List
+                  </a>
+               
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('logistic.index')}}" class="nav-link">
+                    Logistic List
                   </a>
                
                 </li>
@@ -320,6 +326,9 @@
        
       </div> <!-- / .navbar-collapse -->
     </div>
+          </li>
+        <!-- Divider -->
+        
   </nav>
   <!-- MAIN CONTENT
     ================================================== -->

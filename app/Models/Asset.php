@@ -8,10 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Asset extends Model
 {
     use HasFactory;
-    protected $table = 'asset';
     public $timestamps = false;
+    protected $table = 'asset';
+
     protected $fillable = [
-		'id','category_name','category_type',
+		'id','category_type','category_name',    
 	];
 
+  public function assetlist()
+  {
+      return $this->hasOne('Assetlist');
+  }
+  public function logistic()
+  {
+      return $this->hasOne('Logistic');
+  }
+  
 }

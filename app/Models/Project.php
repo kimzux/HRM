@@ -13,4 +13,17 @@ class Project extends Model
     protected $fillable = [
 		'id','project_title','project_startdate','project_enddate','details','project_summary','project_status', 
 	];
+    public function task()
+  {
+      return $this->hasMany('Task');
+  }
+  public function field()
+  {
+      return $this->hasMany('Field');
+  }
+  public function logistic()
+  {
+      return $this->hasMany('Logistic');
+  }
+  
 }
