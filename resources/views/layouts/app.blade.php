@@ -262,7 +262,7 @@
           <li class="nav-item dropdown ">
             <a class="nav-link" href="#sidebarch" data-toggle="collapse" role="button" aria-expanded="false"
               aria-controls="sidebarch">
-              <i class="fe fe-layout"></i>Assets
+              <i class="fe fe-printer"></i>Assets
             </a>
             <div class="collapse" id="sidebarch">
               <ul class="nav nav-sm flex-column">
@@ -285,7 +285,7 @@
           <li class="nav-item dropdown ">
             <a class="nav-link" href="#sidebarone" data-toggle="collapse" role="button" aria-expanded="false"
               aria-controls="sidebarone">
-              <i class="fe fe-layout"></i>Payrol
+              <i class="fe fe-credit-card"></i>Payrol
             </a>
             <div class="collapse" id="sidebarone">
               <ul class="nav nav-sm flex-column">
@@ -302,164 +302,22 @@
                   </a>
                
                 </li>
+                
               </ul>
             </div>
-          </li>
-        <!-- Divider -->
-        <hr class="navbar-divider my-3">
-        <!-- Heading -->
-        <h6 class="navbar-heading">
-          Documentation
-        </h6>
-
-        <!-- Navigation -->
-        <ul class="navbar-nav mb-md-4">
-          <li class="nav-item">
-            <a class="nav-link " href="getting-started.html">
-              <i class="fe fe-clipboard"></i> Getting started
+            <li class="nav-item {{ Request::url() == url('/home') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('home') }}">
+              <i class="fe fe-file-text"></i>Notice
             </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#sidebarComponents" data-toggle="collapse" role="button" aria-expanded="false"
-              aria-controls="sidebarComponents">
-              <i class="fe fe-book-open"></i> Components
+         </li>
+         <li class="nav-item {{ Request::url() == url('/home') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('home') }}">
+              <i class="fe fe-settings"></i> settings
             </a>
-            <div class="collapse " id="sidebarComponents">
-              <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                  <a href="components.html#alerts" class="nav-link">
-                    Alerts
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#avatars" class="nav-link">
-                    Avatars
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#badges" class="nav-link">
-                    Badges
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#breadcrumb" class="nav-link">
-                    Breadcrumb
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#buttons" class="nav-link">
-                    Buttons
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#button-group" class="nav-link">
-                    Button group
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#cards" class="nav-link">
-                    Cards
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#charts" class="nav-link">
-                    Charts
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#dropdowns" class="nav-link">
-                    Dropdowns
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#forms" class="nav-link">
-                    Forms
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#icons" class="nav-link">
-                    Icons
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#lists" class="nav-link">
-                    Lists
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#loaders" class="nav-link">
-                    Loaders
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#modal" class="nav-link">
-                    Modal
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#navs" class="nav-link">
-                    Navs
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#navbarExample" class="nav-link">
-                    Navbar
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#page-headers" class="nav-link">
-                    Page headers
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#pagination" class="nav-link">
-                    Pagination
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#popovers" class="nav-link">
-                    Popovers
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#progress" class="nav-link">
-                    Progress
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#social-posts" class="nav-link">
-                    Social post
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#tables" class="nav-link">
-                    Tables
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#tooltips" class="nav-link">
-                    Tooltips
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#typography" class="nav-link">
-                    Typography
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="components.html#utilities" class="nav-link">
-                    Utilities
-                  </a>
-                </li>
-              </ul>
-            </div>
+         </li>
           </li>
-          <li class="nav-item">
-            <a class="nav-link " href="changelog.html">
-              <i class="fe fe-git-branch"></i> Changelog <span class="badge badge-primary ml-auto">v1.3.0</span>
-            </a>
-          </li>
-        </ul>
+       
+       
       </div> <!-- / .navbar-collapse -->
     </div>
   </nav>
@@ -573,7 +431,7 @@
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     class="d-none">
-                                    @csrf
+                                    <?=csrf_field()?>
                                 </form>
           </div>
 
