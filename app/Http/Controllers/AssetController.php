@@ -1,19 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
-
-=======
 use App\Models\Asset;
 use RealRashid\SweetAlert\Facades\Alert;
->>>>>>> 065f7495ec549ff55a34e837f931ed0e291006d1
 use Illuminate\Http\Request;
 
 class AssetController extends Controller
 {
-<<<<<<< HEAD
-    //
-=======
     public function index()
     {
         $asset = Asset::all();
@@ -50,5 +43,4 @@ class AssetController extends Controller
   Alert::success('Success!', 'Successfully updated');
   return redirect()->route('asset.index');
 }
->>>>>>> 065f7495ec549ff55a34e837f931ed0e291006d1
 }

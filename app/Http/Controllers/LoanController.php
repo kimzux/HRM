@@ -45,7 +45,6 @@ class LoanController extends Controller
     public function edit($id)
   {
     $loan =Loan::findOrFail($id);
-    Product::where('id',$id)->sum('quantity');
     $employee= Employee::select('id', 'first_name')->get();
     return view('loan.edit',  ['employee'=> $employee,'loan'=> $loan, ]);
     } 

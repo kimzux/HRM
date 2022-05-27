@@ -10,7 +10,7 @@ class CreateLoanTable extends Migration {
 		Schema::create('loan', function(Blueprint $table) {
 			$table->id();
 			$table->foreignId('employee_id')->constrained('employee');
-			$table->double('amount', 10, 8);
+			$table->double('amount', 10, 4);
 			$table->date('approve_date');
 			$table->double('period');
 			$table->double('install_amount', 5,4);
