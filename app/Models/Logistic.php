@@ -11,14 +11,13 @@ class Logistic extends Model
     protected $table = 'logistic';
     public $timestamps = false;
     protected $fillable = [
-		'id','project_id','asset_id','employee_id','task_id','','startdate','enddate','remark','quantity',
+		'id','','logistic_name','description','entry_date','logistic_sup','quantity',
 	];
-    public function task()
-  {
-      return $this->hasMany('Task');
-  }
-  public function field()
-  {
-      return $this->hasMany('Field');
-  }
+   
+    public function logsupport()
+    {
+        return $this->hasMany(Logsupport::class);
+    }
+    
+
 }

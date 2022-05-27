@@ -30,7 +30,8 @@
                   @endforeach
                   </select>
                   </div>
-                          <label> Category Type</label>     
+                  <div class="form-group">
+                          <label> Employee Name</label>     
                           <select class="js-example-basic-single"  tabindex="1" name="first_name" style="width:100%"  required>
                   <option value="">Select Here</option>
                       @foreach($employee as $employees)

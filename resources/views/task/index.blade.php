@@ -114,14 +114,11 @@
                                                 <label class="control-label col-md-3">Assign To</label>
                                                 <div class="col-md-4 ">
                                                 <select class="js-example-basic-single" data-placeholder="Choose a Category" tabindex="1" name="first_name">
-                                                @foreach($employee as $employees)
-                                                    <option value="{{ $employees->id}}">{{ $employees->first_name}}</option>
-                                                    @endforeach
                                                   <option value="">Select Here</option>
                                                    @foreach($employee as $employees)
                                                     <option value="{{ $employees->id}}">{{ $employees->first_name}}</option>
                                                     @endforeach
-                                                
+                                        
                                                 </select>
                                                    </div>
                                                 <label class="control-label col-md-2">Collaborators</label>

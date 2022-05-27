@@ -61,9 +61,14 @@ class Employee extends Model
   {
     return $this->hasMany(Employee_Task::class);
   }
-  public function logistic()
+  public function logsupport()
   {
-      return $this->hasMany('Logistic');
+      return $this->hasMany('Logsupport');
   }
+public function loan()
+{
+    return $this->hasMany('Loan');
+}
   
 }
+

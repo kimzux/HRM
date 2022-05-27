@@ -93,17 +93,17 @@
         <span class="p-2 mb-1 bg-primary text-white">Pending</span>
                     @elseif($field_visit->status == 1)
         <span class="p-2 mb-1 bg-success text-white">Approved</span>
-                  @elseif($field_visit>status == 0)
+                  @elseif($field_visit->status == 0)
         <span class="p-2 mb-1 bg-danger text-white">Rejected</span>
                  @endif</td>
                                      
                                         <td class="row">
                                         @if(is_null($field_visit->status))
-                                            <a href="{{route('field.approve', $field_visit->id)}}" title="Edit" class="btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $field_visit->id; ?>">Approved</a>
-                                            <a href="{{route('field.decline',$field_visit->id)}}" title="Edit" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $field_visit; ?>" data-value="Rejected" >Reject</a><br>
+                                            <a href="{{route('field.approved', $field_visit->id)}}" title="Edit" class="btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $field_visit->id; ?>">Approved</a>
+                                            <a href="{{route('field.declined',$field_visit->id)}}" title="Edit" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $field_visit; ?>" data-value="Rejected" >Reject</a><br>
                                             <a href="{{ route('field.edit', $field_visit->id)}}" title="Edit" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $field_visit; ?>" >Edit</a>
                                             @elseif($field_visit->status == 1)
-                                            @elseif($field_visit>status == 0)
+                                            @elseif($field_visit->status == 0)
                                         @endif
                                         </td>
                                     </tr>

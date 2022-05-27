@@ -36,7 +36,7 @@ class FieldController extends Controller
       return back(); 
  
 }
-public function approve($id){
+public function approved($id){
   $field = Field::findOrFail($id);
   $field->status = 1; //Approved
   $field->save();
@@ -44,8 +44,8 @@ public function approve($id){
   return redirect()->back(); //Redirect user somewhere
 }
 
-public function decline($id){
-  $field= Leave_application::findOrFail($id);
+public function declined($id){
+  $field= Field::findOrFail($id);
   $field->status = 0; //Declined
   $field->save();
   Alert::warning('Rejected!', 'application successful rejected');
