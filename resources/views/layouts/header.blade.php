@@ -5,11 +5,13 @@
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="refresh" content="{{ config('session.lifetime') * 60 }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- Libs CSS -->
   <link rel="stylesheet" href="/assets/fonts/feather/feather.min.css">
@@ -33,7 +35,6 @@
   <!-- <link rel="stylesheet" href="/assets/css/theme-dark.min.css" id="stylesheetDark"> -->
 
   <!-- <style>body { display: none; }</style> -->
-
 
 
 

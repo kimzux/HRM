@@ -71,15 +71,15 @@
                 <div class="col">
 
                   <!-- Title -->
-                  <h6 class="card-title text-uppercase text-muted mb-2">
-                    Total Hours
-                  </h6>
+                  <a href="{{route('leave_apply.index')}}" ><h4 class="card-title text-uppercase text-black mb-2">
+                    Total Leaves
+                  </h4>
 
                   <!-- Heading -->
                   <span class="h2 mb-0">
-                    763.5
+                  <?= $total_leaves?? '' ?>
                   </span>
-
+                  </a>
                 </div>
                 <div class="col-auto">
 
@@ -99,39 +99,26 @@
             <div class="card-body">
               <div class="row align-items-center">
                 <div class="col">
+                <a href="{{route('project.index')}}" ><h4 class="card-title text-uppercase text-black mb-2">
+                    Total Projects
+                  </h4>
 
-                  <!-- Title -->
-                  <h6 class="card-title text-uppercase text-muted mb-2">
-                    Progress
-                  </h6>
-
-                  <div class="row align-items-center no-gutters">
-                    <div class="col-auto">
-
-                      <!-- Heading -->
-                      <span class="h2 mr-2 mb-0">
-                        84.5%
-                      </span>
-
-                    </div>
-                    <div class="col">
-
-                      <!-- Progress -->
-                      <div class="progress progress-sm">
-                        <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85"
-                          aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-
-                    </div>
-                  </div> <!-- / .row -->
-
+                  <!-- Heading -->
+                  <span class="h2 mb-0">
+                  <?= $total_projects?? '' ?>
+                  </span>
+                  </a>
                 </div>
                 <div class="col-auto">
 
                   <!-- Icon -->
-                  <span class="h2 fe fe-clipboard text-muted mb-0"></span>
+                  <span class="h2 fe fe-briefcase text-muted mb-0"></span>
 
-                </div>  
+                </div>
+              </div> <!-- / .row -->
+
+            </div>
+                  
 
             </div>
          </div>

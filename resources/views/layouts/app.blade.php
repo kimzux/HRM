@@ -79,7 +79,8 @@
          </li>
        @endcan
          @canany(['View users','View role'])
-          <li class="nav-item dropdown {{ Request::url() == url('user-management') ? 'active' : '' }}">
+       
+         <li class="nav-item {{ Request::url() == url('user-management') ? 'active' : '' }}">
             <a class="nav-link" href="#sidebarComponent" data-toggle="collapse" role="button" aria-expanded="false"
               aria-controls="sidebarComponents">
               <i class="fe fe-users"></i> user-management
@@ -107,7 +108,7 @@
             </div>        
           </li>
           @endcan
-          @canany(['View department','View designation'])
+          @canany(['View Department','View Designation'])
           <li class="nav-item dropdown {{ Request::url() == url('organization') ? 'active' : '' }}">
             <a class="nav-link" href="#sidebarAuth" data-toggle="collapse" role="button" aria-expanded="false"
               aria-controls="sidebarAuth">
@@ -116,14 +117,14 @@
             <div class="collapse" id="sidebarAuth">
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                @can('View department')
+                @can('View Department')
                   <a href="{{ route('department.index') }}" class="nav-link">
                     Department
                   </a>
                   @endcan
                 </li>
                 <li class="nav-item">
-                @can('View designation')
+                @can('View Designation')
                   <a href="{{ route('designation.index') }}" class="nav-link">
                     Designation
                   </a>
@@ -311,16 +312,18 @@
                 
               </ul>
             </div>
-            <li class="nav-item {{ Request::url() == url('/home') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('home') }}">
+            <li class="nav-item {{ Request::url() == url('/notice') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('notice.index') }}">
               <i class="fe fe-file-text"></i>Notice
             </a>
          </li>
-         <li class="nav-item {{ Request::url() == url('/home') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('home') }}">
+         @can('View Setting')
+         <li class="nav-item {{ Request::url() == url('/setting') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('setting.index') }}">
               <i class="fe fe-settings"></i> settings
             </a>
          </li>
+         @endcan
           </li>
        
        
@@ -457,5 +460,8 @@
  </div>
 
     <!-- HEADER -->
+
+
+
     
   @include('layouts.footer')

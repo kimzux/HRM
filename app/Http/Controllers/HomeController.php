@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\Project;
+use App\Models\Leave_application;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -26,8 +28,13 @@ class HomeController extends Controller
     public function index()
     {
       
-        $this->data['total_employees'] = Employee::all()->count();
-        return view('home', $this->data);
+        // $this->data['total_employees'] = Employee::all()->count();
+        // return view('home', $this->data);
+        abort_if(Auth::user()->cannot('View Dashboard'), 403, 'Access Denied');
+        $total_employees = Employee::count();
+        $total_leaves = Leave_application::count();
+        $total_projects =Project::count();
+        return view('home', compact('total_employees', 'total_leaves','total_projects'));
     }
    
 }

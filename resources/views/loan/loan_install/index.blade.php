@@ -78,7 +78,7 @@
                                         <h4 class="modal-title" id="exampleModalLabel1">Add Loan</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form role="form" method="post" action="Add_Loan_Installment" id="loanvalueform" enctype="multipart/form-data">
+                                    <form role="form" method="post" action="{{route('loan_installment.store')}}" id="loanvalueform" enctype="multipart/form-data">
                                     <div class="modal-body">
                                              <div class="form-group">
                                                 <label class="control-label">Assign To</label>
@@ -89,25 +89,26 @@
                                                     @endforeach
                                                 </select>
                                             </div>  
-                                            <div class="form-group">
-                                                <label for="message-text" class="control-label">Loan Number</label>
-                                                <input type="text" name="loanno" value="{{$loan_amount->loan_no}}"class="form-control" id="recipient-name1" readonly required>
+                                            
+                                                <input type="hidden" name="loanno" class="form-control" id="recipient-name1" readonly required>
+                                          
+                                                <div class="form-group">
+                                                <label for="message-text" class="control-label">Amount pay</label>
+                                                <input type="number" name="install_amount" class="form-control"  id="recipient-name1" >
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label">Install Amount</label>
-                                                <input type="text" name="amount" class="form-control" value="{{$loan_amount->install_amount }}" id="recipient-name1" readonly>
-                                            </div>
+                                                
                                             <div class="form-group">
                                                 <label for="message-text" class="control-label">Date</label>
-                                                <input type="text" name="appdate" class="form-control mydatetimepickerFull" id="recipient-name1" required>
+                                                <input type="date" name="appdate" class="form-control mydatetimepickerFull" id="recipient-name1" required>
                                             </div>
+                                          
                                             <div class="form-group">
                                                 <label for="message-text" class="control-label">Receiver</label>
                                                 <input type="text" name="receiver" class="form-control" id="recipient-name1" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="message-text" class="control-label"> Install No</label>
-                                                <input type="text" name="installno" class="form-control" id="recipient-name1" readonly required>
+                                                <input type="number" name="installno" class="form-control" id="recipient-name1"  required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="message-text" class="control-label"> Notes</label>
@@ -121,6 +122,8 @@
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
+
+                    <?=csrf_field()?>
                                     </form>
                                 </div>
                             </div>
@@ -135,5 +138,7 @@ $(document).ready(function() {
       });
 });
     </script>
+    
+   
   
 @endsection

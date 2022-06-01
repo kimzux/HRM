@@ -11,6 +11,7 @@ class RoleController extends Controller
 {
     public function index()
     {
+        abort_if(Auth::user()->cannot('View role'), 403, 'Access Denied');
         
         $roles = Role::all();
         return view('user-management.roles.index', compact('roles'));
@@ -19,6 +20,8 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
 
+        abort_if(Auth::user()->cannot('edit role'), 403, 'Access Denied');
+        
         $permissions = Permission::all();
         $role->load('permissions');
         
@@ -30,6 +33,8 @@ class RoleController extends Controller
     public function store(Request $request)
     {
     
+        abort_if(Auth::user()->cannot('add role'), 403, 'Access Denied');
+        
 
         $request->validate([
             'name' => ['required']
@@ -41,7 +46,9 @@ class RoleController extends Controller
     }
     
     public function update(Request $request, Role $role)
+
     {
+        abort_if(Auth::user()->cannot('update role'), 403, 'Access Denied');
         $request->validate([
             'permissions' => ['array']
         ]);
@@ -52,10 +59,11 @@ class RoleController extends Controller
     }
     public function destroy($id)
     {
+        abort_if(Auth::user()->cannot('delete role'), 403, 'Access Denied');
         $role = Role::findOrFail($id);
         $role->delete();
         Alert::success('Success!', 'Successfully deleted');
         return back();
-        // return redirect('/foodie')->with('success', 'Corona Case Data is successfully deleted');
+        
     }
 }

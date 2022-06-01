@@ -11,7 +11,7 @@ class Loan_install extends Model
     protected $table = 'loan';
     public $timestamps = false;
     protected $fillable = [
-		'id','','employee_id','loan_id','date','receiver','install_number','note','amount_pay',
+		'id','employee_id','loan_id','date','receiver','install_number','note','amount_pay',
 	];
    
     public function employee()

@@ -21,6 +21,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\taskController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\FieldController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\AssetListController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -48,7 +49,10 @@ Auth::routes(['register'=>true]);
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'employee_total'])
+Route::get('/forgot-password', function () {
+    return view('auth.reset');
+})->middleware(['guest'])->name('password.request');
+
 
 
 
@@ -66,7 +70,8 @@ Route::prefix('user-management')->group(function(){
      });
     
     });
-
+Route::resource('setting', SettingController::class);
+Route::resource('notice', SettingController::class);
 Route::resource('department', DepartmentController::class);
 Route::resource('designation', DesignationController::class);
 Route::resource('employee', EmployeeController::class);

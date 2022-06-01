@@ -1,5 +1,6 @@
-<?php $this->load->view('backend/header'); ?>
-<?php $this->load->view('backend/sidebar'); ?>
+@extends('layouts.app')
+
+@section('content')
       <div class="page-wrapper">
             <div class="message"></div>
             <div class="row page-titles">
@@ -92,6 +93,5 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /.modal --> 
+                        @endsection    <!-- /.modal --> 
   
-<?php $this->load->view('backend/footer'); ?>

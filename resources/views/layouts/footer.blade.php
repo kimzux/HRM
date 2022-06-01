@@ -13,12 +13,24 @@
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
   <!-- Theme JS -->
   <script src="/assets/js/theme.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  
 
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-</head>
   @stack('scripts')
 
+
+  <div>
+  <footer class="sticky-footer " style="position:fixed;bottom:0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; Thinkmate Company Limited 2022</span>
+            </div>
+          </div>
+        </footer>
+</div>
 </body>
 
 <!-- Mirrored from dashkit.goodthemes.co/dashboard-alt.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 29 Nov 2018 14:12:01 GMT -->

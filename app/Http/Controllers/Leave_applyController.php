@@ -26,8 +26,8 @@ class Leave_applyController extends Controller
         $leave->start_date=request('startdate');
         $leave->end_date=request('enddate');
         $leave->reason=request('reason');
-        $dt = Carbon::parse(request('startdate'));
-        $dt2 = Carbon::parse(request('enddate'));
+        $dt = Carbon::parse($leave->start_date);
+        $dt2 = Carbon::parse($leave->end_date);
         $leave->total_day=$interval = $dt->diffInDays($dt2 );
         $leave->day_remain=$days=($leave->leave_type->day_no)-$interval;
         if($interval>($leave->leave_type->day_no)){
@@ -95,5 +95,8 @@ class Leave_applyController extends Controller
         return redirect()->back(); //Redirect user somewhere
        
      }
+   
+ 
+    
 
 }

@@ -13,7 +13,7 @@ class CreateLoanInstallTable extends Migration {
 			$table->foreignId('loan_id')->constrained('loan');
 			$table->date('date');
 			$table->string('receiver');
-			$table->double('amount_pay', 10, 8);
+			$table->double('amount_pay' , 9,2);
 			$table->double('install_number');
 			$table->text('note');
 		});

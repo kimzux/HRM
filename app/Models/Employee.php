@@ -67,7 +67,7 @@ class Employee extends Model
   }
 public function loan()
 {
-    return $this->hasMany('Loan');
+    return $this->hasMany(Loan::class);
 }
   
 }

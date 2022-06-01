@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function updateRole(Request $request, User $user)
     {
-        abort_if(Auth::user()->cannot('update user'), 403, 'Access Denied');
+        abort_if(Auth::user()->cannot('update roles'), 403, 'Access Denied');
         $request->validate([
             'role' => ['required']
         ]);
@@ -34,7 +34,7 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-        // abort_if(Auth::user()->cannot('Create user'), 403, 'Access Denied');
+        abort_if(Auth::user()->cannot('Create user'), 403, 'Access Denied');
         $validatedData = $request->validate([
             'name' => 'required | string | max:255',
             'email' => 'required | string | email | max:255 | unique:users',
@@ -54,7 +54,7 @@ class UserController extends Controller
     }
     public function destroy($id)
     {
-        // abort_if(Auth::user()->cannot('Deleta User'), 403, 'Access Denied');
+        abort_if(Auth::user()->cannot('Delete User'), 403, 'Access Denied');
         $role = User::findOrFail($id);
         $role->delete();
         Alert::success('Success!', 'Successfully deleted');
@@ -63,7 +63,7 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-    //   abort_if(Auth::user()->cannot('Edit user'), 403, 'Access Denied');
+      abort_if(Auth::user()->cannot('Edit user'), 403, 'Access Denied');
             $user = User::findOrFail($id);
     
             return view('user-management.users.editUser', compact('user'));
@@ -81,6 +81,7 @@ class UserController extends Controller
         //   return redirect('/foodie')->with('success', 'Corona Case is successfully saved');
         public function update(Request $request, $id)
         { 
+            abort_if(Auth::user()->cannot('Update user'), 403, 'Access Denied');
             $validator = Validator::make($request->all(), [
                 'name' => 'required | string | max:255',
                 'email' => 'required|email|unique:users,email,' . $id. ',id',
@@ -100,7 +101,7 @@ class UserController extends Controller
             // $validated = $validator->safe()->except(['name', 'email']);
             User::whereId($id)->update($validated);
             Alert::success('Success!', 'Successfully Updated');
-            return back();
+            return redirect()->route('users.index');  
             // Store the blog post...
         }
     }
