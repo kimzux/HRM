@@ -312,11 +312,13 @@
                 
               </ul>
             </div>
+            @can('View Setting')
             <li class="nav-item {{ Request::url() == url('/notice') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('notice.index') }}">
               <i class="fe fe-file-text"></i>Notice
             </a>
-         </li>
+         </li> @endcan
+
          @can('View Setting')
          <li class="nav-item {{ Request::url() == url('/setting') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('setting.index') }}">

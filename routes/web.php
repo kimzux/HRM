@@ -20,6 +20,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\taskController;
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\FieldController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\AssetListController;
@@ -71,7 +72,7 @@ Route::prefix('user-management')->group(function(){
     
     });
 Route::resource('setting', SettingController::class);
-Route::resource('notice', SettingController::class);
+Route::resource('notice', NoticeController::class);
 Route::resource('department', DepartmentController::class);
 Route::resource('designation', DesignationController::class);
 Route::resource('employee', EmployeeController::class);

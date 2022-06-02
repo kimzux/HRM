@@ -113,16 +113,17 @@
                             
                             <div class="form-group">
                                 <label>Employee</label>
-                                <select class=" form-control custom-select selectedEmployeeID"  tabindex="1" name="first_name" required>
-                                <option value="">Select Here..</option>
-                                            @foreach ($employee as $employees)
-                                             <option value="{{ $employees->id }}"> {{ $employees->first_name }} </option>
-                                                 @endforeach
-                                </select>
+                                <select class="js-example-basic-single"  tabindex="1" name="first_name" style="width:100%"  required>
+                  <option value="">Select Here</option>
+                      @foreach($employee as $employees)
+                          <option value="{{ $employees->id}}">{{ $employees->first_name}}</option>
+                                  @endforeach
+                                        
+                  </select>
                             </div>
                             <div class="form-group">
                                 <label>Leave Type</label>
-                                <select class="form-control custom-select assignleave"  tabindex="1" name="leavename" id="leavetype" required>
+                                <select class="js-example-basic-single"  tabindex="1" name="leavename" id="leavetype"style="width:100%" required>
                                     <option value="">Select Here..</option>
                                             @foreach ($leave_type as $leave)
                                              <option value="{{ $leave->id }}"> {{ $leave->leavename }} </option>
@@ -162,7 +163,14 @@
                 </div>
             </div>
         </div>
-
+        <script>
+    // In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+    $('.js-example-basic-single ').select2({
+              dropdownParent: $("#appmodel")
+      });
+});
+    </script>
         
         <!-- Set leaves approved for ADMIN? -->
        

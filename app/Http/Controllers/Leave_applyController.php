@@ -7,6 +7,7 @@ use App\Models\Employee;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class Leave_applyController extends Controller
 {
@@ -20,6 +21,20 @@ class Leave_applyController extends Controller
     }
     public function store(Request $request)
     {
+
+        $employee_id = $request->first_name;
+        $lastLeave = Leave_application::where('employee_id', $employee_id)->orderBy('created_at', 'desc')->first();
+        return dd($lastLeave);
+
+        // if($employee != NULL) {
+
+
+
+        // }
+
+
+
+
         $leave = new Leave_application();
         $leave->employee_id=request('first_name');
         $leave->leave_id=request('leavename');

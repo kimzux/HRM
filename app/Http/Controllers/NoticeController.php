@@ -11,7 +11,7 @@ class NoticeController extends Controller
     public function index()
     {
         abort_if(Auth::user()->cannot('View Notice'), 403, 'Access Denied');
-        $notice = Notice::all;
+        $notice = Notice::all();
         return view('notice', compact('notice'));
     
     }
@@ -25,15 +25,16 @@ class NoticeController extends Controller
         // ]);
         abort_if(Auth::user()->cannot('Create Notice'), 403, 'Access Denied');
       
-        $file_url = $request->file('file_url')->getClientOriginalName();
+        $file = $request->file('file_url')->getClientOriginalName();
         $file_url= $request->file('file_url')->store('public/files');
+        
  
  
         $notice = new Notice;
-        $save->title= request('title');
-        $save-> date=request('date');
-        $save->file_url = request('file_url');
-        $save->save();
+        $notice->title= request('title');
+        $notice-> date=request('date');
+        $notice->file_url = request('file_url');
+        $notice->save();
         Alert::success('Success!', 'Successfully added');
         return redirect()->route('notice.index');
        

@@ -2,25 +2,26 @@
 
 @section('content')
       <div class="page-wrapper">
-            <div class="message"></div>
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Notice Board</h3>
-                </div>
-                <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Notice Board</li>
-                    </ol>
-                </div>
-            </div>
-        <div class="container-fluid">
+      <div class="header">
+      <div class="container-fluid">
+            <div class="header-body">
+              <div class="row align-items-end">
+                   <div class="col">
+                      <h1 class="header-title">
+                Notice Board
+                       </h1>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+    </div>
+        <div class="container-fluid mt-4">
                 <div class="row m-b-10"> 
                     <div class="col-12">
                         <button type="button" class="btn btn-info"><i class="fa fa-plus"></i><a data-toggle="modal" data-target="#noticemodel" data-whatever="@getbootstrap" class="text-white "><i class="" aria-hidden="true"></i> Add Notice </a></button>
                     </div>
                 </div> 
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col-12">
                         <div class="card card-outline-info">
                             <div class="card-header">
@@ -46,14 +47,14 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                           <?php foreach($notice as $value): ?>
+                                        @foreach($notice as $value)
                                             <tr>
                                                 <td><?php echo $value->id; ?></td>
                                                 <td><?php echo $value->title; ?></td>
-                                                <td><a href="<?php echo base_url(); ?>assets/images/notice/<?php echo $value->file_url; ?>" target="_blank"><?php echo $value->file_url; ?></a></td>
+                                                <td><a href="<?php echo $value->file_url ?>" target="_blank"><?php echo $value->file_url; ?></a></td>
                                                 <td><?php echo $value->date; ?></td>
                                             </tr>
-                                            <?php endforeach; ?>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -69,7 +70,7 @@
                                         <h4 class="modal-title" id="exampleModalLabel1">Notice Board</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form role="form" method="post" action="Published_Notice" id="btnSubmit" enctype="multipart/form-data">
+                                    <form role="form" method="post" action="{{route('notice.store')}}" id="btnSubmit" enctype="multipart/form-data">
                                     <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="message-text" class="control-label">Notice Title</label>
@@ -82,13 +83,14 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="message-text" class="control-label">Published Date</label>
-                                                <input type="date" name="nodate" class="form-control" id="recipient-name1" required>
+                                                <input type="date" name="date" class="form-control" id="recipient-name1" required>
                                             </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
+                                    <?=csrf_field()?>
                                     </form>
                                 </div>
                             </div>
