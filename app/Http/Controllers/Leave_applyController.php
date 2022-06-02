@@ -24,13 +24,19 @@ class Leave_applyController extends Controller
 
         $employee_id = $request->first_name;
         $lastLeave = Leave_application::where('employee_id', $employee_id)->orderBy('created_at', 'desc')->first();
-        return dd($lastLeave);
+        // return dd($lastLeave);
 
-        // if($employee != NULL) {
+        // Check if there is last application
+        if($lastLeave == NULL) {
+          continue;
+        } else if($lastleave->stat)
+      
+        // Check if the last application was approved
+        // If yes process the current application
+
+        // if not return to user with some info
 
 
-
-        // }
 
 
 
