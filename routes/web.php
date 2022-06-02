@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\DisciplinaryController;
 use App\Http\Controllers\Leave_typeController;
@@ -98,6 +99,8 @@ Route::get('/approve/{id}', [App\Http\Controllers\Leave_applyController::class, 
 Route::get('/decline/{id}', [App\Http\Controllers\Leave_applyController::class, 'decline'])->name('leave.decline');
 Route::get('/approved/{id}', [App\Http\Controllers\FieldController::class, 'approved'])->name('field.approved');
 Route::get('/declined/{id}', [App\Http\Controllers\FieldController::class, 'declined'])->name('field.declined');
+
+Route::get('file/{id}/download', [App\Http\Controllers\NoticeController::class, 'download'])->name('file.download');
 // Route::resource('countries.cities', 'CitiesController');
 // Route::post('/education', [App\Http\Controllers\EducationController::class, 'store'])->name('education_tore');
 // Route::get('/education/{id}', [App\Http\Controllers\EducationController::class, 'index'])->name('eduction_index');

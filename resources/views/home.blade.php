@@ -124,4 +124,38 @@
          </div>
      </div>
 </div>
+<div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Notice Board</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive slimScrollDiv" style="height:600px;overflow-y:scroll">
+                                    <table class="table table-hover earning-box ">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>File</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           <?php foreach($notice AS $value): ?>
+                                            <tr class="scrollbar" style="vertical-align:top">
+                                                <td><?php echo $value->title ?></td>
+                                                <td><mark><a href="<?php echo $value->file_url ?>" target="_blank">download</a></mark>
+                                                </td>
+                                                <td style="width:100px"><?php echo $value->date ?></td>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 @endsection

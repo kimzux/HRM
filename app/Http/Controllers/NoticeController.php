@@ -5,6 +5,7 @@ use App\Models\Notice;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NoticeController extends Controller
 {
@@ -26,8 +27,8 @@ class NoticeController extends Controller
         abort_if(Auth::user()->cannot('Create Notice'), 403, 'Access Denied');
       
         $file = $request->file('file_url')->getClientOriginalName();
-        $file_url= $request->file('file_url')->store('public/files');
-        
+        $file_url= $request->file('file_url')->storeAs('public/files', $file);
+     
  
  
         $notice = new Notice;
@@ -40,5 +41,13 @@ class NoticeController extends Controller
        
       
     }
+    public function download($id)
+    {
+        $notice = Notice::where('id', $id)->firstOrFail();
+        $path = Storage::path('public/storage' . $notice->file_url);
+        return Storage::disk('public')->download($path);
+       
+    }
+   
 
 }

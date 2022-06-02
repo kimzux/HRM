@@ -68,57 +68,57 @@ class DatabaseSeeder extends Seeder
             ],
             
             [
-                'name' => ' Create Department',
+                'name' => 'Create Department',
                 'guard_name' => 'web'
             ],
 
             [
-                'name' => ' View Department',
+                'name' => 'View Department',
                 'guard_name' => 'web'
             ],
 
             [
-                'name' => ' Edit Department',
+                'name' => 'Edit Department',
                 'guard_name' => 'web'
             ],
 
             [
-                'name' => ' Update Department',
+                'name' => 'Update Department',
                 'guard_name' => 'web'
             ],
 
             [
-                'name' => ' Delete Department',
+                'name' => 'Delete Department',
                 'guard_name' => 'web'
             ],
 
             [
-                'name' => ' Show Department',
+                'name' => 'Show Department',
                 'guard_name' => 'web'
             ],
             [
-                'name' => ' Create Designation',
+                'name' => 'Create Designation',
                 'guard_name' => 'web'
             ],
             [
-                'name' => ' View Designation',
+                'name' => 'View Designation',
                 'guard_name' => 'web'
             ],
 
             [
-                'name' => ' Edit Designation',
+                'name' => 'Edit Designation',
                 'guard_name' => 'web'
             ],
             [
-                'name' => ' Update Designation',
+                'name' => 'Update Designation',
                 'guard_name' => 'web'
             ],
             [
-                'name' => ' Show Designation',
+                'name' => 'Show Designation',
                 'guard_name' => 'web'
             ],
             [
-                'name' => ' View Setting',
+                'name' => 'View Setting',
                 'guard_name' => 'web'
             ],
             [
@@ -130,7 +130,7 @@ class DatabaseSeeder extends Seeder
                 'guard_name' => 'web'
             ],
             [
-                'name' => ' View Notice',
+                'name' => 'View Notice',
                 'guard_name' => 'web'
             ],
         

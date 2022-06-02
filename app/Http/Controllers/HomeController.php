@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Notice;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Project;
@@ -34,7 +34,10 @@ class HomeController extends Controller
         $total_employees = Employee::count();
         $total_leaves = Leave_application::count();
         $total_projects =Project::count();
-        return view('home', compact('total_employees', 'total_leaves','total_projects'));
+        $notice = Notice::all();
+        return view('home', compact('total_employees', 'total_leaves','total_projects','notice'));
     }
-   
+  
+    
+    
 }

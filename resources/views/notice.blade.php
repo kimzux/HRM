@@ -51,7 +51,7 @@
                                             <tr>
                                                 <td><?php echo $value->id; ?></td>
                                                 <td><?php echo $value->title; ?></td>
-                                                <td><a href="<?php echo $value->file_url ?>" target="_blank"><?php echo $value->file_url; ?></a></td>
+                                                <td><a href="{{ route('file.download', $value->id) }}" target="_blank">download</a></td>
                                                 <td><?php echo $value->date; ?></td>
                                             </tr>
                                             @endforeach
