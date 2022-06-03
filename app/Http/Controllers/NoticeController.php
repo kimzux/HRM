@@ -25,16 +25,16 @@ class NoticeController extends Controller
         
         // ]);
         abort_if(Auth::user()->cannot('Create Notice'), 403, 'Access Denied');
-      
-        $file = $request->file('file_url')->getClientOriginalName();
-        $file_url= $request->file('file_url')->storeAs('public/files', $file);
+        $path=Storage::putFile('notices',$request->file('file_url'));
+       
+        
      
  
  
         $notice = new Notice;
         $notice->title= request('title');
         $notice-> date=request('date');
-        $notice->file_url = request('file_url');
+        $notice->file_url = $path;
         $notice->save();
         Alert::success('Success!', 'Successfully added');
         return redirect()->route('notice.index');
@@ -44,8 +44,8 @@ class NoticeController extends Controller
     public function download($id)
     {
         $notice = Notice::where('id', $id)->firstOrFail();
-        $path = Storage::path('public/storage' . $notice->file_url);
-        return Storage::disk('public')->download($path);
+    
+        return Storage::download(storage_path('app') . DIRECTORY_SEPARATOR .$notice->file_url);
        
     }
    
