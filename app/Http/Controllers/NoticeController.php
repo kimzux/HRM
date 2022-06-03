@@ -27,7 +27,8 @@ class NoticeController extends Controller
         abort_if(Auth::user()->cannot('Create Notice'), 403, 'Access Denied');
       
         $file = $request->file('file_url')->getClientOriginalName();
-        $file_url= $request->file('file_url')->storeAs('public/files', $file);
+        $path = $request->file('file_url')->storeAs('public',  $file);
+        
      
  
  
@@ -44,7 +45,7 @@ class NoticeController extends Controller
     public function download($id)
     {
         $notice = Notice::where('id', $id)->firstOrFail();
-        $path = Storage::path('public/storage' . $notice->file_url);
+        $path = Storage::path('public' . $notice->file_url);
         return Storage::disk('public')->download($path);
        
     }
