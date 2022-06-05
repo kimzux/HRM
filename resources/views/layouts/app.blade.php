@@ -14,8 +14,12 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="{{'home'}}">
-        <img src="/assets/img/logo.svg" class="navbar-brand-img 
-            mx-auto" alt="...">
+        <img src="/assets/img/logo.png" style="
+    height: auto;
+    width: auto;
+    max-height: 80px;
+    max-width: 300px;
+" class="img-responsive" alt="...">
       </a>
 
       <!-- User (xs) -->
@@ -23,12 +27,12 @@
 
         <!-- Dropdown -->
         <div class="dropdown">
-
+ 
           <!-- Toggle -->
           <a href="#!" id="sidebarIcon" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <div class="avatar avatar-sm avatar-online">
-              <img src="/assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
+                <img src="/assets/img/avatars/profiles/avatar.png" alt="..." class="avatar-img rounded-circle">
             </div>
           </a>
       
@@ -36,13 +40,13 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sidebarIcon">
           <a href="#" class="dropdown-item"> {{ Auth::user()->name }}</a>
           <hr class="dropdown-divider">
-            <a href="profile-posts.html" class="dropdown-item">Profile</a>
-            <a href="settings.html" class="dropdown-item">Settings</a>
+          <a class="dropdown-item" href="{{ route('changePasswordGet') }}">Change Password </a>
             <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                               
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -58,15 +62,7 @@
 
         <!-- Form -->
         <form class="mt-4 mb-3 d-md-none">
-          <div class="input-group input-group-rounded input-group-merge">
-            <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search"
-              aria-label="Search">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <span class="fe fe-search"></span>
-              </div>
-            </div>
-          </div>
+          
         </form>
 
         <!-- Navigation -->
@@ -342,16 +338,7 @@
       <div class="container-fluid">
         <!-- Form -->
         <form class="form-inline mr-4 d-none d-md-flex">
-          <div class="input-group input-group-flush input-group-merge" data-toggle="lists" data-lists-values='["name"]'>
-            <!-- Input -->
-            <input type="search" class="form-control form-control-prepended dropdown-toggle search" data-toggle="dropdown"
-              placeholder="Search" aria-label="Search">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <i class="fe fe-search"></i>
-              </div>
-          </div>
-          </div>
+          
         </form>
 
         <!-- User -->
@@ -428,15 +415,14 @@
             <!-- Toggle -->
             <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-              <img src="/assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+              <img src="/assets/img/avatars/profiles/avatar.png" alt="..." class="avatar-img rounded-circle">
             </a>
 
             <!-- Menu -->
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sidebarIcon">
           <a href="#" class="dropdown-item"> {{auth()->user()->name}}</a>
           <hr class="dropdown-divider">
-            <a href="profile-posts.html" class="dropdown-item">Profile</a>
-            <a href="settings.html" class="dropdown-item">Settings</a>
+          <a class="dropdown-item" href="{{ route('changePasswordGet') }}">Change Password </a>
             <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

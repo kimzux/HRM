@@ -123,11 +123,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Leave Type</label>
-                                <select class="js-example-basic-single"  tabindex="1" name="leavename" id="leavetype"style="width:100%" required>
+                                <select class="js-example-basic-single"  tabindex="1" name="leave_type_id" id="leavetype"style="width:100%" required>
                                     <option value="">Select Here..</option>
                                             @foreach ($leave_type as $leave)
-                                             <option value="{{ $leave->id }}"> {{ $leave->leavename }} </option>
-                                                 @endforeach
+                                                <option value="{{ $leave->id }}"> {{ $leave->leavename }} </option>
+                                            @endforeach
                                 </select>
                             </div>
                             

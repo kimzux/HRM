@@ -38,6 +38,12 @@ class HomeController extends Controller
         return view('home', compact('total_employees', 'total_leaves','total_projects','notice'));
     }
   
+    public function download($id)
+    {
+        $notice = Notice::where('id', $id)->firstOrFail();
     
+        return response()->file(storage_path('app') . DIRECTORY_SEPARATOR .$notice->file_url);
+       
+    }
     
 }

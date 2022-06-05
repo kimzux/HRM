@@ -40,7 +40,7 @@ class UserController extends Controller
             'email' => 'required | string | email | max:255 | unique:users',
             'password' => 'required | min:8 ',
         ]);
-
+       
         $users = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -98,12 +98,14 @@ class UserController extends Controller
             
             // Retrieve the validated input...
             $validated = $validator->safe()->only(['name', 'email', 'password']);
+            $validated['password'] = Hash::make($validated['password']);
             // $validated = $validator->safe()->except(['name', 'email']);
             User::whereId($id)->update($validated);
             Alert::success('Success!', 'Successfully Updated');
             return redirect()->route('users.index');  
             // Store the blog post...
         }
+       
     }
     
 

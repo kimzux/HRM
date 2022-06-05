@@ -16,7 +16,7 @@ class CreateLeaveApplicationTable extends Migration {
 			$table->double('total_day');
 			$table->double('day_remain');
 			$table->string('reason');
-			$table->boolean('status')->nullable(); // approved = 1, pending = null, Reject=0
+			$table->boolean('status')->nullable(); // approved = 1, pending = null, Reject= 0
 		
 		});
 	}

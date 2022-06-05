@@ -25,6 +25,7 @@ use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\FieldController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\AssetListController;
+use App\Http\Controllers\Password_ResetController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,7 +50,7 @@ Auth::routes(['register'=>true]);
 
 
 Auth::routes();
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'must-change-password'])->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/forgot-password', function () {
     return view('auth.reset');
@@ -99,8 +100,10 @@ Route::get('/approve/{id}', [App\Http\Controllers\Leave_applyController::class, 
 Route::get('/decline/{id}', [App\Http\Controllers\Leave_applyController::class, 'decline'])->name('leave.decline');
 Route::get('/approved/{id}', [App\Http\Controllers\FieldController::class, 'approved'])->name('field.approved');
 Route::get('/declined/{id}', [App\Http\Controllers\FieldController::class, 'declined'])->name('field.declined');
-
 Route::get('file/{id}/download', [App\Http\Controllers\NoticeController::class, 'download'])->name('file.download');
+Route::get('file/{id}/download', [App\Http\Controllers\HomeController::class, 'download'])->name('file.download');
+Route::get('/changePassword', [App\Http\Controllers\Password_ResetController::class, 'ResetPassword'])->name('changePasswordGet');
+Route::post('/changePassword', [App\Http\Controllers\Password_ResetController::class, 'changePasswordPost'])->name('changePasswordPost');
 // Route::resource('countries.cities', 'CitiesController');
 // Route::post('/education', [App\Http\Controllers\EducationController::class, 'store'])->name('education_tore');
 // Route::get('/education/{id}', [App\Http\Controllers\EducationController::class, 'index'])->name('eduction_index');

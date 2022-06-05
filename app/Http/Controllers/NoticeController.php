@@ -45,7 +45,7 @@ class NoticeController extends Controller
     {
         $notice = Notice::where('id', $id)->firstOrFail();
     
-        return Storage::download(storage_path('app') . DIRECTORY_SEPARATOR .$notice->file_url);
+        return response()->file(storage_path('app') . DIRECTORY_SEPARATOR .$notice->file_url);
        
     }
    
