@@ -26,7 +26,7 @@
 </form>
 </div>
 <div class="uper">
-  <table id="employees_datatable" class="table table-striped">
+<table id="example" class="table table-striped table-bordered m-2" style="width:100%">
     <thead>
         <tr>
           <td>ID</td>
@@ -64,10 +64,18 @@
     </tbody>
   </table>
 <div>
-@endsection
-@push('scripts')
+
+
 <script>
-    $('#employees_datatable').DataTable({});
+    $(document).ready(function() {
+    var table = $('#example').DataTable( {
+        lengthChange: false,
+        buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+    } );
+ 
+    table.buttons().container()
+        .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+} );
 </script>
-@endpush
+@endsection
 

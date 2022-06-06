@@ -7,18 +7,20 @@ use App\Models\Employee;
 use App\Models\Task;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LogisticController extends Controller
 {
     public function index()
     {
-  
+      abort_if(Auth::user()->cannot('view logistic'), 403, 'Access Denied');
       $logistic = Logistic::all();
   
       return view('logistic.index', compact('logistic'));
     }
     public function store(Request $request)
   {
+    abort_if(Auth::user()->cannot('create logistic'), 403, 'Access Denied');
     
       $logistic = new Logistic();
       $logistic->logistic_name= request('logistic_name');
@@ -33,6 +35,7 @@ class LogisticController extends Controller
     }
     public function destroy($id)
     {
+      abort_if(Auth::user()->cannot('delete logistic'), 403, 'Access Denied');
   
       $logistic = Logistic::findOrFail($id);
       $logistic->delete();
@@ -42,14 +45,14 @@ class LogisticController extends Controller
     }
     public function edit($id)
     {
-      
+      abort_if(Auth::user()->cannot('edit logistic'), 403, 'Access Denied');
       $logistic = Logistic::findOrFail($id);
    
       return view('logistic.edit', compact('logistic'));
     }
     public function update(Request $request, $id)
     {
-      
+      abort_if(Auth::user()->cannot('update logistic'), 403, 'Access Denied');
         $logistic = Logistic::findOrFail($id);
         $logistic->logistic_name= request('logistic_name');
         $logistic->description = request('description');

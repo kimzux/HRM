@@ -5,12 +5,14 @@ use App\Models\Employee;
 use App\Models\Disciplinary;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DisciplinaryController extends Controller
 {
     public function index()
     {
         {
+            abort_if(Auth::user()->cannot('view displinary'), 403, 'Access Denied');
     
             $disciplinary= Disciplinary::with('employee')->get();
             $disci = Employee::select('id', 'first_name')->get();
@@ -20,6 +22,7 @@ class DisciplinaryController extends Controller
     }
     public function store(Request $request)
     {
+        abort_if(Auth::user()->cannot('create displinary'), 403, 'Access Denied');
     
         $disc = new Disciplinary();
         $disc->employee_id = request('first_name');
@@ -32,13 +35,14 @@ class DisciplinaryController extends Controller
     }
     public function edit($id)
     {
-      
+        abort_if(Auth::user()->cannot('edit displinary'), 403, 'Access Denied');
         $disciplinary = Disciplinary::findOrFail($id);
         $disci = Employee::select('id', 'first_name')->get();
         return view('disciplinary.edit', ['disciplinary'=> $disciplinary,'disci'=> $disci]);
     }
     public function destroy($id)
   {
+    abort_if(Auth::user()->cannot('delete displinary'), 403, 'Access Denied');
     $disc = Disciplinary::findOrFail($id);
     $disc->delete();
     Alert::success('Success!', 'Successfully deleted');
@@ -49,6 +53,7 @@ class DisciplinaryController extends Controller
   public function update(Request $request, Disciplinary $disciplinary)
 
   {
+    abort_if(Auth::user()->cannot('update displinary'), 403, 'Access Denied');
 
       $request->validate([
 

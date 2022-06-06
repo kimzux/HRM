@@ -10,12 +10,14 @@ use App\Models\Education;
 use App\Models\Experience;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
+  
     public function store(Request $request)
   {
-    
+    abort_if(Auth::user()->cannot('create employee'), 403, 'Access Denied');
       $employee = new Employee();
       $employee->first_name=request('first_name');
       $employee->last_name=request('last_name');
@@ -53,6 +55,7 @@ class EmployeeController extends Controller
     }
     public function index()
   {
+    abort_if(Auth::user()->cannot('view employee'), 403, 'Access Denied');
 
     $employee = Employee::all();
 
@@ -60,6 +63,7 @@ class EmployeeController extends Controller
   }
   public function create()
     {
+      abort_if(Auth::user()->cannot('show employee'), 403, 'Access Denied');
         // abort_if(Auth::user()->cannot('View stock'), 403, 'Access Denied');
         $employees = Department::select('id', 'dep_name')->get();
         $value = Designation::select('id', 'des_name')->get();
@@ -68,6 +72,7 @@ class EmployeeController extends Controller
 
   public function edit($id)
   {
+    abort_if(Auth::user()->cannot('edit employee'), 403, 'Access Denied');
     
     $employee = Employee::findOrFail($id);
     $employees = Department::select('id', 'dep_name')->get();
@@ -76,7 +81,7 @@ class EmployeeController extends Controller
   }
   public function update(Request $request, $id)
   {
-   
+    abort_if(Auth::user()->cannot('update employee'), 403, 'Access Denied');
       $employee= Employee::findOrFail($id);
       $employee->first_name=request('first_name');
       $employee->last_name=request('last_name');
@@ -96,7 +101,7 @@ class EmployeeController extends Controller
       $employee_user->email = request('email');
       $employee_user->name = request('first_name');
       $employee_user->save();
-      
+     
 
       Alert::success('Success!', 'Successfully updated');
       return view('employee.edit');
@@ -104,6 +109,7 @@ class EmployeeController extends Controller
 
   public function destroy($id)
   {
+    abort_if(Auth::user()->cannot('delete employee'), 403, 'Access Denied');
 
     $employee = Employee::findOrFail($id);
     $employee->delete();
@@ -113,6 +119,7 @@ class EmployeeController extends Controller
   }
   public function show($employee_id)
     {
+      abort_if(Auth::user()->cannot('see employee'), 403, 'Access Denied');
         $education = Education::with('employee')->where('employee_id', $employee_id)->get();
         return view('education.index', compact('education','employee_id'));
     

@@ -19,10 +19,9 @@
 
             
     <div class="container-fluid">
-      <div class="row m-b-10"> 
+      <!-- <div class="row m-b-10"> 
             <div class="col-12">
-                        <!-- <button type="button" class="btn btn-primary"><i class="fa fa-bars"></i><a href="{{route('employee.index')}}" class="text-white"><i class="" aria-hidden="true"></i>  Employee List</a></button> -->
-                <ul class="nav nav-tabs">
+                                  <ul class="nav nav-tabs">
                    <li class="nav-item">
                      <a href="#registration" class="nav-link active" data-toggle="tab">Registration</a>
                    </li>
@@ -31,9 +30,9 @@
                     </li>
                
                 </ul>
-                        <!-- <button type="button" class="btn btn-primary"><i class="fa fa-bars"></i><a href="mployee/Disciplinary" class="text-white"><i class="" aria-hidden="true"></i>  Disciplinary List</a></button> -->
+                       
             </div>
-        </div>
+        </div> -->
            
         <div class="row mt-4">
                     <div class="col-12" >
@@ -98,10 +97,10 @@
                                         <label>Date Of Joining </label>
                                         <input type="date" name="joindate" id="example-email2"  class="form-control" placeholder=""> 
                                     </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Date Of Leaving </label>
-                                        <input type="date" name="leavedate" id="example-email2"  class="form-control" placeholder=""> 
-                                    </div>
+                                 
+                                  
+                                        <input hidden="hidden" type="date" name="leavedate" id="example-email2"  class="form-control" placeholder=""> 
+                                    
                                     <div class="form-group col-md-3 m-t-20">
                                         <label>Email </label>
                                         <input type="email" id="example-email2" name="email" class="form-control" placeholder="email@mail.com" minlength="7" required > 
@@ -119,8 +118,8 @@
                                         <input type="text" name="confirm" class="form-control" value="" placeholder="**********"> 
                                     </div>-->
                                     <div class="form-group col-md-3 m-t-20">
-                                        <label>Image </label>
-                                        <input type="file" name="image" class="form-control" value=""> 
+                                        
+                                        <input hidden="hidden" type="file" name="image" class="form-control" value=""> 
                                     </div>
                                     <div class="form-actions col-md-12">
                                         <button type="submit" class="btn btn-info"> <i class="fa fa-check"></i> Save</button>

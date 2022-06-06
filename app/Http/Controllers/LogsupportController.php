@@ -8,13 +8,14 @@ use App\Models\Task;
 use App\Models\Logsupport;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LogsupportController extends Controller
 {
    
     public function index()
     {
-  
+      abort_if(Auth::user()->cannot('view logsupport'), 403, 'Access Denied');
       $logsupport = Logsupport::all();
       $employee = Employee::select('id', 'first_name')->get();
       $project = Project::select('id', 'project_title')->get();
@@ -24,7 +25,7 @@ class LogsupportController extends Controller
     } 
     public function store(Request $request)
     {
-      
+      abort_if(Auth::user()->cannot('create logsupport'), 403, 'Access Denied');
         $logsupport = new Logsupport();
         $logsupport->logistic_id= request('logistic_name');
         $logsupport->employee_id = request('first_name');
@@ -50,6 +51,7 @@ class LogsupportController extends Controller
     }
       public function edit($id)
       {
+        abort_if(Auth::user()->cannot('edit logsupport'), 403, 'Access Denied');
       $logsupport = Logsupport::findOrFail($id);
       $employee = Employee::select('id', 'first_name')->get();
       $project = Project::select('id', 'project_title')->get();
@@ -59,6 +61,7 @@ class LogsupportController extends Controller
     } 
     public function update(Request $request, $id)
     {
+      abort_if(Auth::user()->cannot('update logsupport'), 403, 'Access Denied');
       
         $logsupport = Logsupport::findOrFail($id);
         $logsupport->logistic_id= request('logistic_name');

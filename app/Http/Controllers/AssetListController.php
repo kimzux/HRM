@@ -5,12 +5,14 @@ use App\Models\Asset;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Assetlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AssetListController extends Controller
 {
     public function index()
     {
   
+        abort_if(Auth::user()->cannot('view assetlist'), 403, 'Access Denied');
       $assetlist= Assetlist::with('asset')->get();
       $ass = Asset::select('id', 'category_name')->get();
       return view('asset.asset_list.index',  ['assetlist'=> $assetlist,'ass'=> $ass]);
@@ -18,6 +20,7 @@ class AssetListController extends Controller
     public function store(Request $request)
     {
       
+    abort_if(Auth::user()->cannot('create assetlist'), 403, 'Access Denied');
         $asset_list = new Assetlist();
         $asset_list->asset_name = request('asset_name');
         $asset_list->asset_id = request('catid');
@@ -36,6 +39,7 @@ class AssetListController extends Controller
       public function edit($id)
     {
       
+    abort_if(Auth::user()->cannot('edit assetlist'), 403, 'Access Denied');
         $assetlist= Assetlist::findOrFail($id);
         $asset = Asset::select('id', 'category_name')->get();
         return view('asset.asset_list.edit', ['assetlist'=> $assetlist,'asset'=> $asset]);
@@ -43,6 +47,8 @@ class AssetListController extends Controller
     public function update(Request $request, Assetlist $assetlist)
 
     {
+        
+    abort_if(Auth::user()->cannot('update assetlist'), 403, 'Access Denied');
   
         $request->validate([
   

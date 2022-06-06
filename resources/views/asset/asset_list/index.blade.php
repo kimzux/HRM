@@ -31,7 +31,7 @@
 
                             <div class="card-body">
                                 <div class="table-responsive ">
-                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                    <table id="example" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr><!--
                                                 <th>ID</th>
@@ -191,5 +191,16 @@
 												});
                                             });
                                         });
-</script>                        
+</script>  
+<script>
+    $(document).ready(function() {
+    var table = $('#example').DataTable( {
+        lengthChange: false,
+        buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+    } );
+ 
+    table.buttons().container()
+        .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+} );
+</script>                      
 @endsection       

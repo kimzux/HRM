@@ -6,12 +6,12 @@ use App\Models\Field;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
-
+use Illuminate\Support\Facades\Auth;
 class FieldController extends Controller
 {
     public function index()
   {
-
+    abort_if(Auth::user()->cannot('view field'), 403, 'Access Denied');
     $field = Field::all();
     $employee = Employee::select('id', 'first_name')->get();
     $project = Project::select('id', 'project_title')->get();
@@ -20,6 +20,7 @@ class FieldController extends Controller
   }
   public function store(Request $request)
   {
+    abort_if(Auth::user()->cannot('create field'), 403, 'Access Denied');
       $field = new Field();
       $field->employee_id=request('first_name');
       $field->project_id=request('project_id');
@@ -36,7 +37,9 @@ class FieldController extends Controller
       return back(); 
  
 }
+
 public function approved($id){
+  abort_if(Auth::user()->cannot('approved field'), 403, 'Access Denied');
   $field = Field::findOrFail($id);
   $field->status = 1; //Approved
   $field->save();
@@ -45,6 +48,7 @@ public function approved($id){
 }
 
 public function declined($id){
+  abort_if(Auth::user()->cannot('reject field'), 403, 'Access Denied');
   $field= Field::findOrFail($id);
   $field->status = 0; //Declined
   $field->save();
@@ -54,6 +58,7 @@ public function declined($id){
 }
 public function edit($id)
   {
+    abort_if(Auth::user()->cannot('edit field'), 403, 'Access Denied');
     $field =Field::findOrFail($id);
     $employee = Employee::select('id', 'first_name')->get();
     $project = Project::select('id', 'project_title')->get();
@@ -62,6 +67,7 @@ public function edit($id)
   }
   public function update(Request $request, $id)
 {
+  abort_if(Auth::user()->cannot('update field'), 403, 'Access Denied');
  
     $field= Field::findOrFail($id);
     $field->employee_id=request('first_name');

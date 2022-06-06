@@ -7,12 +7,13 @@ use App\Models\Project;
 use App\Models\Employee;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Loan_installController extends Controller
 {
     public function index()
     {
-  
+      abort_if(Auth::user()->cannot('view loan_install'), 403, 'Access Denied');
       $loan_install = Loan_install::all();
       $employee= Employee::select('id', 'first_name')->get();
     //   $loan_install = Loan_install::where('id',$id)->sum('quantity');
@@ -20,7 +21,7 @@ class Loan_installController extends Controller
     } 
     public function store(Request $request)
     {
-      
+      abort_if(Auth::user()->cannot('create loan_install'), 403, 'Access Denied');
         $loan_install = new Loan_install();
         $loan_install->employee_id= request('first_name');
         $loan_install->loan_id= request('install_amount');

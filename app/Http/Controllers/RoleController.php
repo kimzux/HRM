@@ -55,7 +55,7 @@ class RoleController extends Controller
 
         $role->syncPermissions($request->permissions);
         Alert::success('Success!', 'Successfully updated');
-        return back();
+        return redirect(route('roles.index'));
     }
     public function destroy($id)
     {

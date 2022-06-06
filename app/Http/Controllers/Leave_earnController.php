@@ -5,19 +5,21 @@ use App\Models\Employee;
 use App\Models\Earn_leave;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 
 class Leave_earnController extends Controller
 {
     public function index()
     {
-  
+      abort_if(Auth::user()->cannot('view leave_earn'), 403, 'Access Denied');
       $leave_earn = Earn_leave::all();
       $employee = Employee::select('id', 'first_name')->get();
       return view('leave.earn_leave.index',  ['employee'=> $employee,'leave_earn'=> $leave_earn]);
     }
     public function store(Request $request)
     {
+      abort_if(Auth::user()->cannot('create leave_earn'), 403, 'Access Denied');
         $leave_earn = new Earn_leave();
         $leave_earn->employee_id=request('first_name');
         $leave_earn->start_date=request('start_date');
@@ -32,6 +34,7 @@ class Leave_earnController extends Controller
 }
 public function edit($id)
   {
+    abort_if(Auth::user()->cannot('edit leave_earn'), 403, 'Access Denied');
     
     $leave_earn = Earn_leave::findOrFail($id);
     $employee = Employee::select('id', 'first_name')->get();
@@ -39,7 +42,7 @@ public function edit($id)
   }
   public function update(Request $request, $id)
   {
-   
+    abort_if(Auth::user()->cannot('update leave_earn'), 403, 'Access Denied');
       $leave= Earn_leave::findOrFail($id);
       $leave->employee_id=request('first_name');
       $leave->start_date=request('start_date');
