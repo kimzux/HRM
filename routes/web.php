@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\PayrolController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\DisciplinaryController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\LogsupportController;
 use App\Http\Controllers\Leave_applyController;
 use App\Http\Controllers\Leave_earnController;
 use App\Http\Controllers\LoanController;
+use App\Http\Controllers\DeductionController;
 use App\Http\Controllers\Loan_installController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProjectController;
@@ -73,6 +75,8 @@ Route::prefix('user-management')->group(function(){
      });
     
     });
+Route::resource('deduction', DeductionController::class);
+Route::resource('payrol', PayrolController::class);
 Route::resource('setting', SettingController::class);
 Route::resource('notice', NoticeController::class);
 Route::resource('department', DepartmentController::class);

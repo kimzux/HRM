@@ -294,14 +294,14 @@
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
              
-                  <a href="" class="nav-link">
-                    Department
+                  <a href="{{route('deduction.index')}}" class="nav-link">
+                    Deduction
                   </a>
             
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
-                    Designation
+                  <a href="{{route('payrol.index')}}" class="nav-link">
+                    Payroll List
                   </a>
                
                 </li>
