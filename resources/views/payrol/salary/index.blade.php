@@ -22,7 +22,7 @@
             <div class="container-fluid"> 
                 <div class="row m-b-10"> 
                     <div class="col-12">
-                       <button type="button" class="btn btn-primary"><i class="fa fa-bars"></i><a href="Payroll/Generate_salary" class="text-white"><i class="" aria-hidden="true"></i>  Generate Payroll</a></button>
+                       <button type="button" class="btn btn-primary"><i class="fa fa-bars"></i><a href="{{route('payrol.create')}}" class="text-white"><i class="" aria-hidden="true"></i>  Generate Payroll</a></button>
                     </div>
                 </div> 
                 <div class="row mt-4">

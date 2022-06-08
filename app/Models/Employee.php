@@ -69,6 +69,9 @@ public function loan()
 {
     return $this->hasMany(Loan::class);
 }
-  
+    public function payrol()
+{
+    return $this->hasMany(Payrol::class);
+}
 }
 

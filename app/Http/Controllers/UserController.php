@@ -45,6 +45,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'password_reset'=> $request->password_reset=1,
         ]);
         
         Alert::success('Success!', 'Successfully added');

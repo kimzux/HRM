@@ -15,7 +15,7 @@ class CreatePayrolTable extends Migration {
 			$table->timestamps();
 			$table->string('month', 100);
 			$table->double('basic_salary', 10, 2);
-			$table->double('work_overtime');
+			$table->double('work_overtime', 10,2)->nullabale;
 			$table->double('final_salary', 10, 2);
 			$table->date('pay_date');
 			$table->string('status',100);

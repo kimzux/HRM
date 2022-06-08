@@ -22,6 +22,7 @@ use App\Http\Controllers\Loan_installController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\taskController;
+use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\FieldController;
@@ -77,6 +78,7 @@ Route::prefix('user-management')->group(function(){
     });
 Route::resource('deduction', DeductionController::class);
 Route::resource('payrol', PayrolController::class);
+Route::resource('employee.salary', SalaryController::class);
 Route::resource('setting', SettingController::class);
 Route::resource('notice', NoticeController::class);
 Route::resource('department', DepartmentController::class);
