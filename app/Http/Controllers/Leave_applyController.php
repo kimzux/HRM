@@ -17,7 +17,15 @@ class Leave_applyController extends Controller
   {
     abort_if(Auth::user()->cannot('view leave_application'), 403, 'Access Denied');
 
-    $leave_apply = Leave_application::all();
+    $department = auth()->user()->employee?
+    auth()->user()->employee->department_id:null;
+    
+    $leave_apply = Leave_application::query()
+      ->select('leave_application.*')
+      ->when(!auth()->user()->can('view all department application'), function($query) use($department){
+          $query->join('employee', 'employee.id', '=', 'leave_application.employee_id')
+                ->where('employee.department_id', $department);
+      })->get();
     $employee = Employee::select('id', 'first_name')->get();
     $leave_type = Leave_type::select('id', 'leavename')->get();
     return view('leave.leave_application.index',  ['employee' => $employee, 'leave_apply' => $leave_apply, 'leave_type' => $leave_type]);
