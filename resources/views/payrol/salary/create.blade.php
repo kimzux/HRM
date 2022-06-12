@@ -20,8 +20,9 @@
 	    <div class="card-body">
             <h2 class="card-title" id="">Salary Setup for <mark>{{$employee->first_name}}</mark>
             </h2>
+            <div class="mt-4">
             <form method = "POST" action = "route('employee.salary.store' , $employee_id)" enctype = "multipart/form-data">
-                   <div class="">
+                
                                             
               <div class="form-group row">
                 <label class="control-label text-left col-md-3">Month

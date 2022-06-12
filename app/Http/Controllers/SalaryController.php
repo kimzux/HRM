@@ -9,19 +9,18 @@ use Illuminate\Http\Request;
 
 class SalaryController extends Controller
 {
-    public function index($id)
-    {
-      abort_if(Auth::user()->cannot('create view payrol'), 403, 'Access Denied');
-      $employee = Employee::where('id',$id)->firstOrFail();
-      $deduction=Deduction::select('id', 'name')->get();
-    //   $loan=Loan::where('employee_id',$id)->firstOrFail();
-      return view('payrol.salary.create',compact('employee','deduction'));
-    }
+   
     public function store( $employee_id , Request $request)
+   
     {
+      // Education::create($request->all() + ['employee_id' => $employee_id]);
+      // Alert::success('Success!', 'Successfully added');
+      // return redirect()->route('employeeducation.index',$employee_id);
       abort_if(Auth::user()->cannot('create payrol'), 403, 'Access Denied');
+      
         $payrol = new Payrol();
-        $payrol->employee_id=request('employee_id');;
+        $payrol-> employee_id=$employee_id=request('employee_id');
+        $payrol-> loan_id=$employee_id=request('employee_id');
         $payrol->month=request('month');
         $payrol->basic_salary=request('basic_salary');
         $payrol->work_overtime=request('work_overtime');
@@ -41,12 +40,11 @@ class SalaryController extends Controller
  
    $payrol->deduction_id=request($deduction_id);
    $payrol->save(); 
-   
-  }
-
-        Alert::success('Success!', 'successful Task added');
-        return redirect()->route('payrol.salary.index',$employee_id);     
-        
-}
+        Alert::success('Success!', 'Successfully added');
+        return redirect()->route('payrol.index',$employee_id);
+    
+  
+      }
+    }
 
 }

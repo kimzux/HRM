@@ -2,7 +2,7 @@
 @include('sweetalert::alert')
   <!-- NAVIGATION
     ================================================== -->
-<div>
+
   <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light" id="sidebar">
     <div class="container-fluid">
 
@@ -56,19 +56,17 @@
       <div class="collapse navbar-collapse" id="sidebarCollapse">
 
         <!-- Form -->
-        <form class="mt-4 mb-3 d-md-none">
-          
-        </form>
-
+        
         <!-- Navigation -->
         <ul class="navbar-nav">
-        @can('View Dashboard')
           <li class="nav-item {{ Request::url() == url('/home') ? 'active' : '' }}">
+          @can('View Dashboard')
             <a class="nav-link" href="{{ route('home') }}">
               <i class="fe fe-home"></i> Dashboards
             </a>
+            @endcan
          </li>
-       @endcan
+     
          @canany(['View users','View role'])
        
          <li class="nav-item {{ Request::url() == url('user-management') ? 'active' : '' }}">
@@ -236,11 +234,11 @@
             <div class="collapse" id="sidebarj">
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-             @can('view loan')
+                 @can('view loan')
                   <a href="{{route('loan.index')}}" class="nav-link">
                     Grand Loan
                   </a>
-@endcan
+                @endcan
                 </li>
                 <li class="nav-item">
                   @can('view loan_installment')
@@ -287,7 +285,7 @@
             </div>
           </li>
           <li class="nav-item dropdown ">
-          @canany(['view deduction','view payrolllist'])
+          @canany(['view deduction','view payrol','view benefits'])
             <a class="nav-link" href="#sidebarone" data-toggle="collapse" role="button" aria-expanded="false"
               aria-controls="sidebarone">
               <i class="fe fe-credit-card"></i>Payrol
@@ -298,6 +296,12 @@
              @can('view deduction')
                   <a href="{{route('deduction.index')}}" class="nav-link">
                     Deduction
+                  </a>
+            @endcan
+            <li class="nav-item">
+             @can('view Benefits')
+                  <a href="" class="nav-link">
+                    Benefits
                   </a>
             @endcan
                 </li>
@@ -339,12 +343,7 @@
     ================================================== -->
   <div class="main-content">
     <nav class="navbar navbar-expand-md navbar-light d-none d-md-flex" id="topbar">
-      <div class="container-fluid">
-        <!-- Form -->
-        <form class="form-inline mr-4 d-none d-md-flex">
-          
-        </form>
-
+      <div class="container-fluid d-flex justify-content-end">
         <!-- User -->
         <div class="navbar-user">
 
@@ -357,60 +356,10 @@
                 <i class="fe fe-bell"></i>
               </span>
             </a>
-            <!-- Menu -->
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-card">
-              <div class="card-header">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <!-- Title -->
-                    <h5 class="card-header-title">
-                      Notifications
-                    </h5>
-                  </div>
-                  <div class="col-auto">
-                    <!-- Link -->
-                    <a href="#!" class="small">
-                      View all
-                    </a>
-                  </div>
-                </div> <!-- / .row -->
-              </div> <!-- / .card-header -->
-              <div class="card-body">
-               <!-- List group -->
-                <div class="list-group list-group-flush my--3">
-                  <a class="list-group-item px-0" href="#!">
 
-                    <div class="row">
-                      <div class="col-auto">
 
-                        <!-- Avatar -->
-                        <div class="avatar avatar-sm">
-                          <img src="/assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
-                        </div>
 
-                      </div>
-                      <div class="col ml--2">
-                        <!-- Content -->
-                        <div class="small text-muted">
-                          <strong class="text-body">Dianna Smiley</strong> shared your post with <strong class="text-body">Ab
-                            Hadley</strong>, <strong class="text-body">Adolfo Hess</strong>, and <strong class="text-body">3
-                            others</strong>.
-                        </div>
-
-                      </div>
-                      <div class="col-auto">
-                        <small class="text-muted">
-                          2m
-                        </small>
-                      </div>
-                    </div> <!-- / .row -->
-                  </a>
-              
-                </div>
-
-              </div>
-            </div> <!-- / .dropdown-menu -->
-
+  
           </div>
 
           <!-- Dropdown -->
@@ -424,9 +373,9 @@
 
             <!-- Menu -->
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sidebarIcon">
-          <a href="#" class="dropdown-item"> {{auth()->user()->name}}</a>
-          <hr class="dropdown-divider">
-          <a class="dropdown-item" href="{{ route('changePasswordGet') }}">Change Password </a>
+            <a href="#" class="dropdown-item"> {{auth()->user()->name}}</a>
+            <hr class="dropdown-divider">
+            <a class="dropdown-item" href="{{ route('changePasswordGet') }}">Change Password </a>
             <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -446,10 +395,10 @@
       </div>
     </nav>
 
-    <main class="py-4">
+    <main class="p-4">
             @yield('content')
         </main>
- </div>
+
 
     <!-- HEADER -->
 

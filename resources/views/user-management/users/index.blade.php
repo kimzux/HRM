@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container">
-        <button type="submit" data-toggle="modal" data-target="#addUserModal" class="btn btn-primary m-4">Click here to add User</button>
+        <button type="submit" data-toggle="modal" data-target="#addUserModal" class="btn btn-primary my-4">Click here to add User</button>
     </div>
-    <div class="uper">
+    <div class="container">
         @if (session()->get('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
