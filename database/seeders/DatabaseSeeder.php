@@ -240,6 +240,22 @@ class DatabaseSeeder extends Seeder
                 'guard_name' => 'web'
             ],
             [
+                'name' => 'view leave',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'create leave',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'edit leave',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'update leave',
+                'guard_name' => 'web'
+            ],
+            [
                 'name' => 'delete leave_application',
                 'guard_name' => 'web'
             ],

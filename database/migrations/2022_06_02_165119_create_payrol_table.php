@@ -12,6 +12,7 @@ class CreatePayrolTable extends Migration {
 			$table->foreignId('employee_id')->constrained('employee');
 			$table->foreignId('loan_id')->constrained('loan')->nullable;
 			$table->foreignId('deduction_id')->constrained('deduction')->nullable;
+			$table->foreignId('benefit_id')->constrained('benefit')->nullable;
 			$table->timestamps();
 			$table->string('month', 100);
 			$table->double('basic_salary', 10, 2);

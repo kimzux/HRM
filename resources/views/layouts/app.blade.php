@@ -150,7 +150,7 @@
              @endcan
            </div>
         </li>
-        @canany(['view holiday','view leave_type', 'view leave_application','view leave_earn'])
+        @canany(['view holiday','view leave_type', 'view leave_application','view leave_earn','view leave'])
         <li class="nav-item dropdown ">
             <a class="nav-link" href="#sidebarRu" data-toggle="collapse" role="button" aria-expanded="false"
               aria-controls="sidebarRu">
@@ -175,6 +175,13 @@
                 <li class="nav-item">
                 @can('view leave_application')
                   <a href="{{route('leave_apply.index')}}" class="nav-link">
+                    Leave Application
+                  </a>
+               @endcan
+                </li>
+                <li class="nav-item">
+                @can('view leave')
+                  <a href="{{route('leave.index')}}" class="nav-link">
                     Leave Application
                   </a>
                @endcan
