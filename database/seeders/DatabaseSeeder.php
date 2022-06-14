@@ -244,6 +244,19 @@ class DatabaseSeeder extends Seeder
                 'guard_name' => 'web'
             ],
             [
+                'name' => 'approve leave_application',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'reject leave_application',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'view all department application',
+                'guard_name' => 'web'
+            ],
+            
+            [
                 'name' => 'edit leave_earn',
                 'guard_name' => 'web'
             ],
@@ -252,7 +265,7 @@ class DatabaseSeeder extends Seeder
                 'guard_name' => 'web'
             ],
             [
-                'name' => ' view leave_earn',
+                'name' => 'view leave_earn',
                 'guard_name' => 'web'
             ],
             [

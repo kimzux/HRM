@@ -29,9 +29,10 @@
 
 
   <div>
-  <footer class="sticky-footer " style="position:fixed;bottom:0;
+  <footer class="sticky-footer" style="position:fixed;bottom:0;
     width: 100%;
-    height: 60px;
+    left:0;
+     right:0;
     line-height: 60px">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">

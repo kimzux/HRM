@@ -1,3 +1,6 @@
+
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -24,7 +27,7 @@
                         <div class="form-group form-check col-md-4">
                             <input name="permissions[]" type="checkbox" class="form-check-input"
                                 id="perm-{{ $permission->id }}" value="{{ $permission->name }}"
-                                {{ $role->permissions->contains=== $permission->id ? 'checked' : '' }}>
+                                {{ $role->permissions->contains(fn($item) => $item->id === $permission->id) ? 'checked' : '' }}>
                             <label class="form-check-label" for="perm-{{ $permission->id }}">
                                 {{ $permission->name }}
                             </label>
@@ -41,3 +44,4 @@
         $('#roles_datatable').DataTable({});
     </script>
 @endpush
+
