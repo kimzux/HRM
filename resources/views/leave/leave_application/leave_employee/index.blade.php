@@ -47,7 +47,7 @@
                                         <th>Leave Duration</th>
                                         <th>Day Remain</th>
                                         <th>Leave Status</th>
-                                       <th>Action</th>
+                                       <!-- <th>Action</th> -->
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -60,16 +60,15 @@
                                     <th>Leave Duration</th>
                                     <th>Day Remain</th>
                                     <th>Leave Status</th>
-                                    <th>Action</th>
+                                    <!-- <th>Action</th> -->
                                 </tr>
                                 </tfoot>
                                 <tbody>
                                     
                                 @foreach($leave_apply as $apply)
                                     <tr style="vertical-align:top">
-                                       
-                                        
-                                        <td>{{$apply->employee->em_code}}</td>
+                                    <td><mark>{{$apply->employee->first_name}}</mark></td>
+                                       <td>{{$apply->employee->em_code}}</td>
                                         <td>{{$apply->leave_type->leavename}}</td>
                                         <td>{{$apply->start_date}}</td>
                                         <td>{{$apply->end_date}}</td>
@@ -84,10 +83,13 @@
         <span class="p-2 mb-1 bg-danger text-white">Rejected</span>
                  @endif</td>
                                      
-                                        <td class="row">
-                                         <a href="{{ route('leave_apply.edit', $apply->id)}}" title="Edit" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $apply->id; ?>" >Edit</a>
-                                           
-                                        </td>
+                 <!-- <td class="row">
+                                        @if(is_null($apply->status))
+                                            <a href="{{ route('leave.edit', $apply->id)}}" title="Edit" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $apply->id; ?>" >Edit</a>
+                                            @elseif($apply->status == 1)
+                                            @elseif($apply->status == 0)
+                                        @endif
+                                        </td> -->
                                     </tr>
                                     @endforeach
                                             </tbody>   
@@ -104,18 +106,12 @@
                         <h4 class="modal-title" id="exampleModalLabel1">Leave Application</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
-                    <form method="post" action="{{route('leave_apply.store')}}" id="leaveapply" enctype="multipart/form-data">
+                    <form method="post" action="{{route('leave.store')}}" id="leaveapply" enctype="multipart/form-data">
                         <div class="modal-body">
                             
                             <div class="form-group">
                                 <label>Employee</label>
-                                <select class="js-example-basic-single"  tabindex="1" name="first_name" style="width:100%"  required>
-                  <option value="">Select Here</option>
-                      
-                          <option value="{{ Auth::user()->name }}"></option>
-                                
-                                        
-                  </select>
+                                <input type="text" name="employee_id" class="form-control" value="{{$employee->name}}" id="recipient-name1" readonly>
                             </div>
                             <div class="form-group">
                                 <label>Leave Type</label>

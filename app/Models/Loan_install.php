@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Loan_install extends Model
 {
     use HasFactory;
-    protected $table = 'loan';
+    protected $table = 'loan_install';
     public $timestamps = false;
     protected $fillable = [
 		'id','employee_id','loan_id','date','receiver','install_number','note','amount_pay',
@@ -20,12 +20,7 @@ class Loan_install extends Model
     }
     public function loan()
     {
-        return $this->belongsTo(Loan::class,'loan_id');
+        return $this->belongsTo('App\Models\Loan', 'loan_id', 'id');
     }
-    public function scopeSumQuantity(Builder $query)
-	{
-		return $query->selectRaw("SUM(id) id, loan_id, SUM(install_amount) as total_pay")
-			->groupBy('loan_id');
-	}
-    
+   
 }

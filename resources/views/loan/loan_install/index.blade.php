@@ -21,8 +21,7 @@
                 <div class="row m-b-10"> 
                     <div class="col-12">
                         <button type="button" class="btn btn-info"><i class="fa fa-plus"></i><a data-toggle="modal" data-target="#loanmodel" data-whatever="@getbootstrap" class="text-white"><i class="" aria-hidden="true"></i> Add Loan Installment </a></button>
-                        <button type="button" class="btn btn-primary"><i class="fa fa-bars"></i><a href="{{route('loan.index')}}" class="text-white"><i class="" aria-hidden="true"></i>  Loan List</a></button>
-                    </div>
+                                          </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-12">
@@ -39,7 +38,7 @@
                                                 <th>Employee PIN</th>
                                                 <th>Loan Id</th>
                                                 <th>Loan Number </th>
-                                                <th>Install Amount </th>
+                                                <th>Amount Pay</th>
                                                 <!--<th>Pay Amount</th>-->
                                                 <th>Approve Date </th>
                                                 <th>Receiver </th>
@@ -52,7 +51,7 @@
                                                 <th>Employee PIN</th>
                                                 <th>Loan Id</th>
                                                 <th>Loan Number </th>
-                                                <th>Install Amount </th>
+                                                <th>Amount Pay </th>
                                                 <!--<th>Pay Amount</th>-->
                                                 <th>Approve Date </th>
                                                 <th>Receiver </th>
@@ -78,19 +77,17 @@
                                         <h4 class="modal-title" id="exampleModalLabel1">Add Loan</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form role="form" method="post" action="{{route('loan_installment.store')}}" id="loanvalueform" enctype="multipart/form-data">
+                                    <form role="form" method="post" action="{{route('loan.employee.loan_installment.store', $loan_id, $employee_id)}}" id="loanvalueform" enctype="multipart/form-data">
                                     <div class="modal-body">
                                              <div class="form-group">
-                                                <label class="control-label">Assign To</label>
-                                                <select class="js-example-basic-single" data-placeholder="Choose a Category" tabindex="1" name="first_name" id="assignval" style="width: 100%" required>
-                                                  <option value="">Select here</option>
-                                                   @foreach($employee as $employees)
-                                                    <option value="{{ $employees->id}}">{{ $employees->first_name}}</option>
-                                                    @endforeach
-                                                </select>
+                                               
                                             </div>  
-                                            
-                                                <input type="hidden" name="loanno" class="form-control" id="recipient-name1" readonly required>
+                                            <input hidden="hidden" type="text" name="loan_id" class="form-control form-control-line" value="{{  $loan_id}}" placeholder=" Degree Name" minlength="1" required> 
+			                                
+                                            <input hidden="hidden" type="text" name="employee_id" class="form-control form-control-line" value="{{ $employee_id}}" placeholder=" Degree Name" minlength="1" required> 
+			                                
+                                        
+                                                
                                           
                                                 <div class="form-group">
                                                 <label for="message-text" class="control-label">Amount pay</label>

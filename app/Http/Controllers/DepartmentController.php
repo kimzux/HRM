@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class DepartmentController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
     public function store(Request $request)
   {
     abort_if(Auth::user()->cannot('Create Department'), 403, 'Access Denied');

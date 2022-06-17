@@ -100,6 +100,7 @@ class EmployeeController extends Controller
       $employee_user= User::findOrFail($id);
       $employee_user->email = request('email');
       $employee_user->name = request('first_name');
+      $employee_user->password_reset=1;
       $employee_user->save();
      
 

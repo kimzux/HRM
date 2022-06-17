@@ -59,14 +59,14 @@
         
         <!-- Navigation -->
         <ul class="navbar-nav">
+        @can('View Dashboard')
           <li class="nav-item {{ Request::url() == url('/home') ? 'active' : '' }}">
-          @can('View Dashboard')
             <a class="nav-link" href="{{ route('home') }}">
               <i class="fe fe-home"></i> Dashboards
             </a>
-            @endcan
-         </li>
-     
+           </li>
+         @endcan
+
          @canany(['View users','View role'])
        
          <li class="nav-item {{ Request::url() == url('user-management') ? 'active' : '' }}">
@@ -76,23 +76,20 @@
             </a>
             <div class="collapse " id="sidebarComponent">
               <ul class="nav nav-sm flex-column">
-           
+              @can('View users')
                 <li class="nav-item">
-                @can('View users')
-                  <a href="{{ route('users.index') }}" class="nav-link">
+                 <a href="{{ route('users.index') }}" class="nav-link">
                     Users
                   </a>
-                  @endcan
-                </li>
-               
-                <li class="nav-item">
+                 </li>
+                @endcan
                 @can('View role')
-                  <a href="{{ route('roles.index') }}" class="nav-link">
+                <li class="nav-item">
+              <a href="{{ route('roles.index') }}" class="nav-link">
                     Roles
                   </a>
-                  @endcan
-                </li>
-              
+                 </li>
+                @endcan
                </ul>     
             </div>        
           </li>
@@ -105,20 +102,20 @@
             </a>
             <div class="collapse" id="sidebarAuth">
               <ul class="nav nav-sm flex-column">
+              @can('View Department')
                 <li class="nav-item">
-                @can('View Department')
                   <a href="{{ route('department.index') }}" class="nav-link">
                     Department
                   </a>
-                  @endcan
-                </li>
+               </li>
+               @endcan
+               @can('View Designation')
                 <li class="nav-item">
-                @can('View Designation')
-                  <a href="{{ route('designation.index') }}" class="nav-link">
+                 <a href="{{ route('designation.index') }}" class="nav-link">
                     Designation
                   </a>
-                  @endcan
-                </li>
+               </li>
+                @endcan
               </ul>
             </div>
           </li>
@@ -131,25 +128,24 @@
             </a>
             <div class="collapse " id="sidebarComponents">
               <ul class="nav nav-sm flex-column">
+              @can('view employee')
                 <li class="nav-item">
-                @can('view employee')
                   <a href="{{route('employee.index')}}" class="nav-link">
                     employee
                   </a>
-                  @endcan
                 </li>
+                @endcan
                 @can('view employee')
                 <li class="nav-item">
                   <a href="{{route('disciplinary.index')}}"  class="nav-link">
                     Disciplinary
                   </a>
-                  @endcan                                    
-                </li>
-               
+                 </li>
+                @endcan  
              </ul>
-             @endcan
            </div>
         </li>
+        @endcan
         @canany(['view holiday','view leave_type', 'view leave_application','view leave_earn','view leave'])
         <li class="nav-item dropdown ">
             <a class="nav-link" href="#sidebarRu" data-toggle="collapse" role="button" aria-expanded="false"
@@ -158,46 +154,45 @@
             </a>
             <div class="collapse" id="sidebarRu">
               <ul class="nav nav-sm flex-column">
+              @can('view holiday')
                 <li class="nav-item">
-                @can('view holiday')
                   <a href="{{route('holiday.index')}}" class="nav-link">
                     Holiday
                   </a>
-            @endcan
-                </li>
-                <li class="nav-item">
+               </li>
+                @endcan
                 @can('view leave_type')
-                  <a href="{{route('leave_type.index')}}" class="nav-link">
+                <li class="nav-item">
+                <a href="{{route('leave_type.index')}}" class="nav-link">
                     Leave Type
                   </a>
-               @endcan
-                </li>
+              </li>
+              @endcan
+              @can('view leave_application')
                 <li class="nav-item">
-                @can('view leave_application')
                   <a href="{{route('leave_apply.index')}}" class="nav-link">
                     Leave Application
                   </a>
-               @endcan
                 </li>
+                @endcan
                 <li class="nav-item">
                 @can('view leave')
                   <a href="{{route('leave.index')}}" class="nav-link">
                     Leave Application
                   </a>
-               @endcan
                 </li>
+              @endcan
+              @can('view leave_earn')
                 <li class="nav-item">
-                @can('view leave_earn')
-              <a href="{{route('leave_earn.index')}}" class="nav-link">
+             <a href="{{route('leave_earn.index')}}" class="nav-link">
                 Leave Earn
               </a>
-           @endcan
             </li>
-               
-              </ul>
-              @endcan
-            </div>
+            @endcan
+                </ul>
+              </div>
           </li>
+          @endcan
           @canany(['view project','view task', 'view field'])
           <li class="nav-item dropdown ">
             <a class="nav-link" href="#sidebarkipa" data-toggle="collapse" role="button" aria-expanded="false"
@@ -206,58 +201,46 @@
             </a>
             <div class="collapse" id="sidebarkipa">
               <ul class="nav nav-sm flex-column">
+              @can('view project')
                 <li class="nav-item">
-                @can('view project')
+             
                   <a href="{{route('project.index')}}" class="nav-link">
                     projects
                   </a>
-            @endcan
+       
                 </li>
-                <li class="nav-item">
+                @endcan
                 @can('view task')
+                <li class="nav-item">
+               
                   <a href="{{route('task.index')}}" class="nav-link">
                   Tasks list
                   </a>
-               @endcan
+            
                 </li>
-                <li class="nav-item">
+                @endcan
                 @can('view field')
+                <li class="nav-item">
+               
                   <a href="{{route('field.index')}}" class="nav-link">
                   Field visit
                   </a>
-               @endcan
+           
                 </li>
-              </ul>
-              @endcan
-            </div>
-          </li>
-          @canany(['view loan', 'view loan_installment'])
-          <li class="nav-item dropdown ">
-
-            <a class="nav-link" href="#sidebarj" data-toggle="collapse" role="button" aria-expanded="false"
-              aria-controls="sidebarj">
-              <i class="fe fe-layout"></i>Loan
-            </a>
-            <div class="collapse" id="sidebarj">
-              <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                 @can('view loan')
-                  <a href="{{route('loan.index')}}" class="nav-link">
-                    Grand Loan
-                  </a>
                 @endcan
-                </li>
-                <li class="nav-item">
-                  @can('view loan_installment')
-                  <a href="{{route('loan_installment.index')}}" class="nav-link">
-                    Installment Loan
-                  </a>
-               @endcan
-                </li>
               </ul>
-              @endcan
+             
             </div>
           </li>
+          @endcan
+         @can('view Loan')
+          <li class="nav-item {{ Request::url() == url('/loan') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('loan.index') }}">
+              <i class="fe fe-credit-card"></i> Loans
+            </a>
+           </li>
+         @endcan
+         
           @canany(['view assetlist','view category', 'view logistic'])
           <li class="nav-item dropdown ">
             <a class="nav-link" href="#sidebarch" data-toggle="collapse" role="button" aria-expanded="false"
@@ -266,70 +249,125 @@
             </a>
             <div class="collapse" id="sidebarch">
               <ul class="nav nav-sm flex-column">
+              @can('view category')
                 <li class="nav-item">
-             @can('view category')
+          
                   <a href="{{route('asset.index')}}" class="nav-link">
                     Asset Category
                   </a>
-            @endcan
+         
                 </li>
+                @endcan
+                @can('view assetlist')
                 <li class="nav-item">
-                  @can('view assetlist')
+               
                   <a href="{{route('assetlist.index')}}" class="nav-link">
                     Asset List
                   </a>
-               @endcan
+           
                 </li>
+                @endcan
+                @can('view logistic')
                 <li class="nav-item">
-                  @can('view logistic')
+                  
                   <a href="{{route('logistic.index')}}" class="nav-link">
                     Logistic List
                   </a>
-               @endcan
+        
                 </li>
+                @endcan
               </ul>
-              @endcan
+              
             </div>
           </li>
-          <li class="nav-item dropdown ">
+          @endcan
           @canany(['view deduction','view payrol','view benefits'])
+          <li class="nav-item dropdown ">
+        
             <a class="nav-link" href="#sidebarone" data-toggle="collapse" role="button" aria-expanded="false"
               aria-controls="sidebarone">
               <i class="fe fe-credit-card"></i>Payrol
             </a>
             <div class="collapse" id="sidebarone">
               <ul class="nav nav-sm flex-column">
+              @can('view deduction')
                 <li class="nav-item">
-             @can('view deduction')
+         
                   <a href="{{route('deduction.index')}}" class="nav-link">
                     Deduction
                   </a>
-            @endcan
+                </li>
+                  @endcan
+                  @can('view Benefits')  
             <li class="nav-item">
-             @can('view Benefits')
-                  <a href="" class="nav-link">
+            
+                  <a href="{{route('benefit.index')}}" class="nav-link">
                     Benefits
                   </a>
-            @endcan
+          
                 </li>
+                @endcan
+                @can('view payrol')
                 <li class="nav-item">
-                  @can('view payrol')
+               
                   <a href="{{route('payrol.index')}}" class="nav-link">
                     Payroll List
                   </a>
-               @endcan
+            
                 </li>
-                
+                @endcan
               </ul>
-              @endcan
+            
             </div>
-            @can('View Setting')
+        </li>
+            @endcan
+            @canany(['view deduction','view payrol','view benefits'])
+          <li class="nav-item dropdown ">
+        
+            <a class="nav-link" href="#sidebartwo" data-toggle="collapse" role="button" aria-expanded="false"
+              aria-controls="sidebartwo">
+              <i class="fe fe-credit-card"></i>Performance
+            </a>
+            <div class="collapse" id="sidebartwo">
+              <ul class="nav nav-sm flex-column">
+              @can('view deduction')
+                <li class="nav-item">
+         
+                  <a href="{{route('deduction.index')}}" class="nav-link">
+                    Deduction
+                  </a>
+                </li>
+                  @endcan
+                  @can('view Benefits')  
+            <li class="nav-item">
+            
+                  <a href="{{route('benefit.index')}}" class="nav-link">
+                    Benefits
+                  </a>
+          
+                </li>
+                @endcan
+                @can('view payrol')
+                <li class="nav-item">
+               
+                  <a href="{{route('payrol.index')}}" class="nav-link">
+                    Payroll List
+                  </a>
+          
+                </li>
+                @endcan
+              </ul>
+            
+            </div>
+        </li>
+            @endcan
+            @can('View Notice')
             <li class="nav-item {{ Request::url() == url('/notice') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('notice.index') }}">
               <i class="fe fe-file-text"></i>Notice
             </a>
-         </li> @endcan
-
+         </li> 
+         @endcan
          @can('View Setting')
          <li class="nav-item {{ Request::url() == url('/setting') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('setting.index') }}">

@@ -10,7 +10,7 @@
               <div class="row align-items-end">
                    <div class="col">
                       <h1 class="header-title">
-               Deductions
+               Benefits
                        </h1>
                     </div>
                 </div> 
@@ -24,7 +24,7 @@
     <div class="container-fluid ">
         <div class="row m-b-10">
             <div class="col-12">
-                <button type="button" class="btn btn-info"><i class="fa fa-plus"></i><a data-toggle="modal" data-target="#leavemodel" data-whatever="@getbootstrap" class="text-white"><i class="" aria-hidden="true"></i> Add Deduction</a></button>
+                <button type="button" class="btn btn-info"><i class="fa fa-plus"></i><a data-toggle="modal" data-target="#leavemodel" data-whatever="@getbootstrap" class="text-white"><i class="" aria-hidden="true"></i> Add Benefits</a></button>
             
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="col-12">
                 <div class="card card-outline-info">
                     <div class="card-header">
-                        <h4 class="m-b-0 "> Deductions List  </h4>
+                        <h4 class="m-b-0 "> Benefits List  </h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive ">
@@ -40,9 +40,9 @@
                                 <thead>
                                     <tr>
                                         <th>ID </th>
-                                        <th>employee name</th>
+                                         <th>employee name</th>
                                         <th>name</th>
-                                        <th>Percent</th>
+                                        <th>Amount</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -51,20 +51,21 @@
                                         <th>ID </th>
                                         <th>employee name</th>
                                         <th>name</th>
-                                        <th>percent</th>
+                                        <th>Amount</th>
                                         <th>Action</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                @foreach( $deduction as $deduct)
+                                @foreach( $benefit as $benefits)
                                 <tr>
-                                <td>{{$deduct->id}}</td>
-                                <td>{{$deduct->employee->first_name}}</td>
-                                <td>{{$deduct->name}}</td>
-                                <td>{{$deduct->amount}}</td>
+                                <td>{{$benefits->id }}</td>
+                                <td>{{$benefits->employee->first_name }}</td>
+                                <td>{{$benefits->name }}</td>
+                                <td>{{$benefits->amount}}</td>
+                                               
                                     <td class="row">
-                                    <a href="{{ route('deduction.edit', $deduct->id)}}" class="btn btn-primary">Edit</a>
-                                    <form action="{{ route('deduction.destroy', $deduct->id)}}" method="post">
+                                    <a href="{{ route('benefit.edit', $benefits->id)}}" class="btn btn-primary">Edit</a>
+                                    <form action="{{ route('benefit.destroy', $benefits->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                                     <button class="ml-4 btn btn-danger" type="submit"
@@ -72,7 +73,7 @@
                                         <?=csrf_field()?>
                                    </form>
                                     </td> 
-                                    </td>  
+                                
                                 </tr>
                                 @endforeach
                             </tbody>          
@@ -87,10 +88,10 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content ">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLabel1">deduction</h4>
+                        <h4 class="modal-title" id="exampleModalLabel1">Benefit</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
-                    <form method="post" ction="{{route('deduction.store')}}" id="leaveform" enctype="multipart/form-data">
+                    <form method="post" ction="{{route('benefit.store')}}" id="leaveform" enctype="multipart/form-data">
                         <div class="modal-body">
                         <div class="form-group ">
                                 <label class="control-label">Assign To</label>
@@ -101,14 +102,14 @@
                                                     <option value="{{ $employees->id}}">{{ $employees->first_name}}</option>
                                                     @endforeach
                                 </select>
-                            </div> 
-                            
+                            </div>   
                             <div class="form-group">
-                                <label class="control-label">Deduction Name</label>
+                                <label class="control-label">Benefit Name</label>
                                 <input type="text" name="name" class="form-control" id="recipient-name1" minlength="1" maxlength="35" value="" required>
                             </div>
+                                        
                             <div class="form-group">
-                                <label class="control-label">deduction percentage</label>
+                                <label class="control-label">Amount</label>
                                 <input type="number" name="amount" step="any" class="form-control" id="recipient-name1" value="">
                             </div>
                             <!-- <div class="form-group">
@@ -137,8 +138,7 @@
               dropdownParent: $("#leavemodel")
       });
 });
-</script>
-</script>
+    </script>
      <script>
     $(document).ready(function() {
     var table = $('#example').DataTable( {
@@ -150,5 +150,4 @@
         .appendTo( '#example_wrapper .col-md-6:eq(0)' );
 } );
 </script>
-
     @endsection

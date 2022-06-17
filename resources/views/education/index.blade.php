@@ -61,7 +61,7 @@
                                 <td>{{$educations->result}}</td>
                                 <td>{{$educations->year}}</td>
                                    <td class="jsgrid-align-center ">
-                                    <a href="{{ route('employee.education.edit', [ $educations->employee_id , $educations->id]) }}" class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('employee.education.edit', [ $educations->employee_id , $educations->id] }}" class="btn btn-primary">Edit</a>
                                         <a  hidden="hidden" onclick="confirm('Are you sure want to delet this Value?')" href="#" title="Delete" class="btn btn-sm btn-info waves-effect waves-light edudelet"  data-id=""><i class="fa fa-trash-o"></i></a>
                                     </td>  
                                 </tr>

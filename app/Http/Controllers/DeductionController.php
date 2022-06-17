@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Deduction;
+use App\Models\Employee;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,8 +14,9 @@ class DeductionController extends Controller
   
       abort_if(Auth::user()->cannot('view deduction'), 403, 'Access Denied');
       $deduction = Deduction::all();
+      $employee= Employee::select('id', 'first_name')->get();
   
-      return view('payrol.deduction.index', compact('deduction'));
+      return view('payrol.deduction.index', compact('deduction','employee'));
     }
     public function store(Request $request)
     {
@@ -24,6 +26,7 @@ class DeductionController extends Controller
       // Alert::success('Success!', 'Successfully added');
       // return redirect()->route('employee.education.index',$employee_id);
         $deduction = new Deduction();
+        $deduction->employee_id = request('employee_id');
         $deduction->name = request('name');
         $deduction->amount= request('amount');
         $deduction->save();
@@ -47,7 +50,8 @@ class DeductionController extends Controller
         
     abort_if(Auth::user()->cannot('edit deduction'), 403, 'Access Denied');
         $deduction =Deduction::findOrFail($id);
-        return view('payrol.deduction.edit', compact('deduction'));
+        $employee= Employee::select('id', 'first_name')->get();
+        return view('payrol.deduction.edit', compact('deduction','employee'));
       }
       public function update(Request $request, Deduction $deduction)
 
@@ -56,7 +60,7 @@ class DeductionController extends Controller
     abort_if(Auth::user()->cannot('update deduction'), 403, 'Access Denied');
     
           $request->validate([
-    
+            'employee_id'=> 'required',
               'name' => 'required',
     
               'amount' => 'required',

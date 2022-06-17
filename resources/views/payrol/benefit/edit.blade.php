@@ -7,17 +7,17 @@
               <div class="row align-items-end">
                    <div class="col">
                       <h1 class="header-title">
-                Edit Deduction
+                Edit Benefit
                        </h1>
                     </div>
                 </div> 
             </div> 
         </div>
     </div>
-<div class="tab-pane ml-5" id="deduction" role="tabpanel" style="width:50%">
+<div class="tab-pane ml-5" id="benefit" role="tabpanel" style="width:50%">
      <div class="card">
 	         <div class="card-body">
-			              <form action="{{ route('deduction.update', $deduction->id) }}" method="post" enctype="multipart/form-data" >
+			              <form action="{{ route('benefit.update', $benefit->id) }}" method="post" enctype="multipart/form-data" >
                           @csrf
                         @method('PATCH') 
                         <div class="form-group ">
@@ -31,14 +31,14 @@
                                 </select>
                             </div>   
                           <div class="form-group">
-                          <label> Deduction Name</label>     
+                          <label> Benefit Name</label>     
                          
-                          <input type="text" name="name" value="{{$deduction->name}}" class="form-control form-control-line"  minlength="5" required> 
+                          <input type="text" name="name" value="{{$benefit->name}}" class="form-control form-control-line"  minlength="5" required> 
 			                                    </div>
 	
 			                                 <div class="form-group">
-			                                 <label> Deduction Percentage</label>
-			                                 <input type="number" name="amount" value="{{$deduction->amount}}" step="any" class="form-control form-control-line"  minlength="5" required> 
+			                                 <label>Amount </label>
+			                                 <input type="number" name="amount" value="{{$benefit->amount}}" step="any" class="form-control form-control-line"  minlength="5" required> 
 			                                    </div>
 	
                                         
@@ -52,7 +52,7 @@
     <script>
         $(document).ready(function() {
     $('.js-example-basic-single ').select2({
-              dropdownParent: $("#deduction")
+              dropdownParent: $("#benefit")
       });
 });
 </script>

@@ -60,7 +60,10 @@
                     <th>PIN 
                     </th>
                     <th>Full name
+                    </th> 
+                    <th>Department
                     </th>
+
                     <th>Total salary
                     </th>
                     <th>Action
@@ -73,6 +76,8 @@
                     </th>
                     <th>Full name
                     </th>
+                    <th>Department
+                    </th>
                     <th>Total salary
                     </th>
                     <th>Action
@@ -84,6 +89,7 @@
                                     <tr style="vertical-align:top">
                                     <td>{{$emp_salary->em_code}}</td>
                                     <td><mark>{{$emp_salary->first_name}}</mark></td>
+                                    <td>{{$emp_salary->department->dep_name}}</td>
                                     <td>@foreach($emp_salary->payrol as $total_salary)
                                         {{ $total_salary->basic_salary }}
                                      @endforeach

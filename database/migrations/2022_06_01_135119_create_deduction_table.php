@@ -10,6 +10,8 @@ class CreateDeductionTable extends Migration {
 		Schema::create('deduction', function(Blueprint $table) {
 			$table->id();
 			$table->timestamps();
+			$table->foreignId('employee_id')->constrained('employee');
+			$table->decimal('total_deduction', 5,2);
 			$table->string('name', 200);
 			$table->decimal('amount', 5,2);
 		});

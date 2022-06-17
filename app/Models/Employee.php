@@ -22,7 +22,7 @@ class Employee extends Model
     }
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->hasMany(User::class,'id');
     }
 
     public function education()
@@ -72,6 +72,18 @@ public function loan()
     public function payrol()
 {
     return $this->hasMany(Payrol::class);
+}
+public function department()
+{
+    return $this->belongsTo(Department::class);
+}
+public function deduction()
+{
+    return $this->hasMany(Deduction::class);
+}
+public function benefit()
+{
+    return $this->hasMany(Benefit::class);
 }
 }
 

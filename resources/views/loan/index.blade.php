@@ -72,14 +72,16 @@
                                                 <td>{{$loans->employee->em_code }}</td>
                                                 <td>{{$loans->amount}}</td>
                                                 <td>{{$loans->install_amount }}</td>
-                                                <td></td>
+                                                <td>{{$loans->total_pay }}</td>
                                                 <td>{{$loans->total_due }}</td>
                                                 <td>{{$loans->approve_date}}</td>
                                                 <td>{{$loans->status}}</td>
                                                 <td class="row ">
-                                                <a href="{{ route('loan.edit', $loans->id)}}" class="btn btn-primary">Edit</a>
-                                                    
-            </td>
+                                                <div class="d-flex">
+                                                <a href="{{ route('loan.edit', $loans->id)}}" class="m-2 btn btn-primary">Edit</a>
+                                                <a href="{{ route('loan.show',[ $loans->id,$loans->employee_id])}}" class=" m-2 btn btn-success">add installment</a>
+
+                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -130,10 +132,7 @@
                                
                                 <input type="number"hidden="hidden" name="installment" value=" " class="form-control col-md-8 installment" id="recipient-name1" readonly>
                             
-                            <div class="form-group row">
-                               
-                                <input type="number"hidden="hidden" name="installment" value=" " class="form-control col-md-8 installment" id="recipient-name1" readonly>
-                            </div>
+                            
                             <div class="form-group row">
                                 <label for="message-text" class="control-label col-md-3"> Loan No</label>
                                 <input type="number" name="loanno"  class="form-control col-md-8" id="recipient-name1" required >

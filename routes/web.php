@@ -23,6 +23,7 @@ use App\Http\Controllers\Loan_installController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\taskController;
+use App\Http\Controllers\BenefitController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\NoticeController;
@@ -78,8 +79,8 @@ Route::prefix('user-management')->group(function(){
     
     });
 Route::resource('deduction', DeductionController::class);
+Route::resource('benefit', BenefitController::class);
 Route::resource('payrol', PayrolController::class);
-Route::resource('employee.salary', SalaryController::class);
 Route::resource('setting', SettingController::class);
 Route::resource('notice', NoticeController::class);
 Route::resource('department', DepartmentController::class);
@@ -103,7 +104,7 @@ Route::resource('logistic', LogisticController::class);
 Route::resource('logsupport', LogsupportController::class);
 Route::resource('loan', LoanController::class);
 Route::resource('leave', LeaveViewController::class);
-Route::resource('loan_installment', Loan_installController::class);
+Route::resource('loan.employee.loan_installment', Loan_installController::class);
 Route::get('/approve/{id}', [App\Http\Controllers\Leave_applyController::class, 'approve'])->name('leave.approve');
 Route::get('/decline/{id}', [App\Http\Controllers\Leave_applyController::class, 'decline'])->name('leave.decline');
 Route::get('/approved/{id}', [App\Http\Controllers\FieldController::class, 'approved'])->name('field.approved');

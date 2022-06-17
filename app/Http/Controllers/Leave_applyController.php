@@ -167,7 +167,7 @@ class Leave_applyController extends Controller
       return back();
     }
 
-    $leave->employee_id = $request->first_name;
+    $leave->employee_id =  $employee_id;
     $leave->leave_id = $leave_type->id;
     $leave->start_date = $request->startdate;
     $leave->end_date = $request->enddate;

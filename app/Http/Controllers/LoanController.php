@@ -18,7 +18,7 @@ class LoanController extends Controller
       $loan = Loan::all();
       $employee= Employee::select('id', 'first_name')->get();
     //   $loan_install = Loan_install::where('id',$id)->sum('quantity');
-      return view('loan.index',  ['employee'=> $employee,'loan'=> $loan,'loan_install'=> $loan, ]);
+      return view('loan.index',  ['employee'=> $employee,'loan'=> $loan ]);
     } 
     public function store(Request $request)
   {
@@ -73,6 +73,14 @@ class LoanController extends Controller
       $loan->update();
       Alert::success('Success!', 'Successfully updades');
         return redirect()->route('loan.index');
+
+}
+public function show($loan_id, Loan $employee_id)
+{
+  abort_if(Auth::user()->cannot('view loan_installment'), 403, 'Access Denied');
+    $loan_install = Loan_install::with('loan')->where('loan_id', $loan_id)->get();
+    
+    return view('loan.loan_install.index', compact('loan_install','loan_id','employee_id'));
 
 }
 }

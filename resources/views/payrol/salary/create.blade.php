@@ -21,9 +21,7 @@
             <h2 class="card-title" id="">Salary Setup for <mark>{{$employee->first_name}}</mark>
             </h2>
             <div class="mt-4">
-            <form method = "POST" action = "route('employee.salary.store' , $employee_id)" enctype = "multipart/form-data">
-                
-                                            
+            <form method = "POST" action = "route('payrol.store')" enctype = "multipart/form-data">                          
               <div class="form-group row">
                 <label class="control-label text-left col-md-3">Month
                 </label>
@@ -95,21 +93,36 @@
                 <label class="control-label text-left col-md-5">Deduction
                 </label>
                          <div class="col-md-7" >
-                               <select class="js-example-basic-multiple" data-placeholder="Choose a Category" multiple="multiple" style="width:25%" tabindex="1" name="assignto[]">
+                               <select class="js-example-basic-multiple" data-placeholder="Choose a Category" multiple="multiple" style="width:25%" tabindex="1" name="deduction[]">
                                                 @foreach($deduction as $deduct)
                                                     <option value="{{ $deduct->id}}">{{ $deduct->name}}</option>
                                                     @endforeach
                                                 </select>
+                                                   </div>                                   
+               
+                                                     
+              </div> 
+              <div class="form-group row" id="benefit">
+                <label class="control-label text-left col-md-5">Benefits
+                </label>
+                         <div class="col-md-7" >
+                               <select class="js-example-basic-multiple" data-placeholder="Choose a Category" multiple="multiple" style="width:25%" tabindex="1" name="benefit[]">
+                                                @foreach($benefit as $benefits)
+                                                    <option value="{{ $benefits->id}}">{{ $benefits->name}}</option>
+                                                    @endforeach
+                                                </select>
                                                    </div>
                                                      
-              </div>                                      
-            
+              </div>   
+                                               
+              <input type="hidden" name="employee_id" class="form-control hrate" id="hrate" value='{{$employee->id}}'>
                 <input hidden="hidden" type="text" name="loan_id" class="form-control loan" id="" value="">
+              
                                            
               <div class="form-group row">
                
                 <div class="col-md-7">
-                   <input hidden="hidden" type="text" name="final_salary" class="form-control total_paid" id="" value="" required>
+                   <input hidden="hidden" type="text" name="final_salary" class="form-control total_paid" id="" value="">
                 </div>
               </div>
               <!--<div class="form-group row">
