@@ -193,7 +193,7 @@
               </div>
           </li>
           @endcan
-          @canany(['view project','view task', 'view field'])
+          @canany(['view project','view task', 'view field','view perdeim-employee'])
           <li class="nav-item dropdown ">
             <a class="nav-link" href="#sidebarkipa" data-toggle="collapse" role="button" aria-expanded="false"
               aria-controls="sidebarkipa">
@@ -228,11 +228,30 @@
            
                 </li>
                 @endcan
+                @can('view perdeim-employee')
+                <li class="nav-item">
+               
+                  <a href="{{route('perdeim-employee.index')}}" class="nav-link">
+                Perdeim
+                  </a>
+           
+                </li>
+                @endcan
+             
               </ul>
              
             </div>
           </li>
           @endcan
+          @can('view perdeim')
+          <li class="nav-item {{ Request::url() == url('/perdeim') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('perdeim.index') }}">
+              <i class="fe fe-credit-card"></i> Perdeim
+            </a>
+           </li>
+         @endcan
+         
+
          @can('view Loan')
           <li class="nav-item {{ Request::url() == url('/loan') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('loan.index') }}">
@@ -281,7 +300,7 @@
             </div>
           </li>
           @endcan
-          @canany(['view deduction','view payrol','view benefits'])
+          @canany(['view deduction','view payrol','view benefits','view work-overtime'])
           <li class="nav-item dropdown ">
         
             <a class="nav-link" href="#sidebarone" data-toggle="collapse" role="button" aria-expanded="false"
@@ -303,6 +322,15 @@
             
                   <a href="{{route('benefit.index')}}" class="nav-link">
                     Benefits
+                  </a>
+          
+                </li>
+                @endcan
+                @can('view work-overtime')  
+            <li class="nav-item">
+            
+                  <a href="{{route('work-overtime.index')}}" class="nav-link">
+                    Work Overtime
                   </a>
           
                 </li>

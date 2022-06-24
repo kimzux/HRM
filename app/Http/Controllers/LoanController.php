@@ -78,7 +78,7 @@ class LoanController extends Controller
 public function show($loan_id, Loan $employee_id)
 {
   abort_if(Auth::user()->cannot('view loan_installment'), 403, 'Access Denied');
-    $loan_install = Loan_install::with('loan')->where('loan_id', $loan_id)->get();
+    $loan_install = Loan_install::with('loan')->where('loan_id', $loan_id)->first();
     
     return view('loan.loan_install.index', compact('loan_install','loan_id','employee_id'));
 

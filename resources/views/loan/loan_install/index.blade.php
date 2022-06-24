@@ -27,7 +27,7 @@
                     <div class="col-12">
                         <div class="card card-outline-info">
                             <div class="card-header">
-                                <h4 class="m-b-0 text-white"> Loan Installment                       
+                                <h4 class="m-b-0"> Loan Installment                       
                                 </h4>
                             </div>
                             <div class="card-body">
@@ -77,7 +77,7 @@
                                         <h4 class="modal-title" id="exampleModalLabel1">Add Loan</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form role="form" method="post" action="{{route('loan.employee.loan_installment.store', $loan_id, $employee_id)}}" id="loanvalueform" enctype="multipart/form-data">
+                                    <form role="form" method="post" action="{{route('loan.loan_installment.store', $loan_id, $employee_id)}}" id="loanvalueform" enctype="multipart/form-data">
                                     <div class="modal-body">
                                              <div class="form-group">
                                                

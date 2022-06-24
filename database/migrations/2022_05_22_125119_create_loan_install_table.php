@@ -9,7 +9,6 @@ class CreateLoanInstallTable extends Migration {
 	{
 		Schema::create('loan_install', function(Blueprint $table) {
 			$table->id();
-			$table->foreignId('employee_id')->constrained('employee');
 			$table->foreignId('loan_id')->constrained('loan');
 			$table->date('date');
 			$table->string('receiver');

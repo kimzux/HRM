@@ -19,12 +19,13 @@ class Loan_installController extends Controller
       $loan_install = Loan_install::with('loan')->where('loan_id', $loan_id)->get();
       return view('loan.loan_install.index', compact('loan_install','loan_id'));
     } 
-    public function store( $loan_id,  $employee_id , Request $request)
+    public function store( $loan_id, Loan  $employee_id , Request $request)
     {
       abort_if(Auth::user()->cannot('create loan_install'), 403, 'Access Denied');
+  
         $loan_install = new Loan_install();
-        $loan_install->loan_id=$loan_id=request('loan_id');
-        $loan_install->employee_id=request('employee_id');
+        $loan_install->loan_id= $request->input('loan_id');
+        $loan_install->employee_id= $request->input('employee_id');
         $loan_install->date= request('appdate');
         $loan_install->receiver = request('receiver');
         $loan_install->amount_pay = request('install_amount');
@@ -34,7 +35,7 @@ class Loan_installController extends Controller
           Alert::success('Success!', 'Successfully added');
           return back();
       
-  
+       
       }
     
 }

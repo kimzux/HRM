@@ -472,7 +472,58 @@ class DatabaseSeeder extends Seeder
                 'name' => 'update assetlist',
                 'guard_name' => 'web'
             ],
+            [
+                'name' => 'view perdeim-employee',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'create perdeim-employee',
+                'guard_name' => 'web'
+            ],
+
+            [
+                'name' => 'view perdeim',
+                'guard_name' => 'web'
+            ],
+            [
+            'name' => 'create perdeim',
+            'guard_name' => 'web'
+            ],
+            [
+                'name' => 'view all department perdeim',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'approve perdeim',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'reject perdeim',
+                'guard_name' => 'web'
+            ],
+           
+            [
+                'name' => 'view perdeimretires',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'create perdeimretires',
+                'guard_name' => 'web'
+            ],
             
+            [
+                'name' => 'approve perdeim-retire',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'reject perdeim-retire',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'download perdeim-retire',
+                'guard_name' => 'web'
+            ],
+
         ]);
     }
 
