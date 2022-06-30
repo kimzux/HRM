@@ -39,7 +39,7 @@
                             <table id="example" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>ID </th>
+                                        
                                          <th>employee name</th>
                                         <th>reason</th>
                                         <th>Amount</th>
@@ -49,7 +49,7 @@
                                 </thead>
                                 <tfoot>
                                 <tr>
-                                        <th>ID </th>
+                                        
                                         <th>employee name</th>
                                         <th>reason</th>
                                         <th>Amount</th>
@@ -60,7 +60,7 @@
                                 <tbody>
                                 @foreach( $perdeim as $perdeims)
                                 <tr>
-                                <td>{{$perdeims->id }}</td>
+                                
                                 <td>{{$perdeims->employee->first_name }}</td>
                                 <td>{{$perdeims->reason }}</td>
                                 <td>{{$perdeims->amount}}</td>
@@ -79,7 +79,7 @@
                                             <a href="{{route('perdeim.decline', $perdeims->id)}}" title="Edit" hidden="hidden" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $perdeims->id; ?>" data-value="Rejected" >Reject</a><br>
                                             <a href="{{ route('perdeim.edit', $perdeims->id)}}" title="Edit" hidden="hidden" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $perdeims->id; ?>" >Edit</a>
                                             @elseif($perdeims->status == 1)
-                                            <a href="{{ route('perdeim.show', $perdeims->id)}}" title="Edit"  class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $perdeims->id; ?>" >Retirement</a>
+                                            <a href="{{ route('perdeim-employee.show', $perdeims->id)}}" title="retire"  class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $perdeims->id; ?>" >Retirement</a>
                                             @elseif($perdeims->status == 0)
                                         @endif
                                         </td>

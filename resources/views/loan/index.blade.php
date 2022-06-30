@@ -79,7 +79,7 @@
                                                 <td class="row ">
                                                 <div class="d-flex">
                                                 <a href="{{ route('loan.edit', $loans->id)}}" class="m-2 btn btn-primary">Edit</a>
-                                                <a href="{{ route('loan.show',[ $loans->id, $loans->employee_id])}}" class=" m-2 btn btn-success">add installment</a>
+                                                <a href="{{ route('loan.show',$loans->id)}}" class=" m-2 btn btn-success">add installment</a>
 
                                                  </td>
                                             </tr>

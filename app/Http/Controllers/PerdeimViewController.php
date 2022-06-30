@@ -103,10 +103,10 @@ else{
   }
   public function show($perdeim_id)
   {
-    abort_if(Auth::user()->cannot('view perdeimretires'), 403, 'Access Denied');
+    abort_if(Auth::user()->cannot('View perdeim-retires-view'), 403, 'Access Denied');
   
       $perdeim = PerdeimRetire::with('perdeim')->where('perdeim_id', $perdeim_id)->get();
-      return view('perdeim.perdeimretire.index', compact('perdeim','perdeim_id'));
+      return view('perdeimemployee.retire.index', compact('perdeim','perdeim_id'));
   
   }
 }

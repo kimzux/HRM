@@ -7,8 +7,8 @@
   }
 </style>
 <div class="page-wrapper">
-         <div class="header">
-      <div class="container-fluid">
+     <div class="header">
+      <div class="container">
         <div class="header-body">
           <div class="row align-items-end">
             <div class="col">
@@ -22,11 +22,11 @@
     </div>
 <div class="container">
 <form style="display: inline" action="{{route('employee.create')}}" method="get">
-  <button type="submit" class="btn btn-primary">Click here to add employee</button>
+  <button type="submit" class="btn btn-primary my-4">Click here to add employee</button>
 </form>
 </div>
-<div class="uper">
-<table id="example" class="table table-striped table-bordered m-2" style="width:100%">
+<div class="container">
+<table id="example" class="table table-striped table-bordered p-2" style="width:100%">
     <thead>
         <tr>
           <td>ID</td>

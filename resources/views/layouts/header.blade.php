@@ -43,7 +43,8 @@
 
 
 
-  <title>HRM</title>
+  <title>Ark-Unified Human Resource Management System</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/logo1.png">
 </head>
 
 <body>

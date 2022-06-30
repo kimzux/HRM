@@ -349,46 +349,13 @@
             </div>
         </li>
             @endcan
-            @canany(['view deduction','view payrol','view benefits'])
-          <li class="nav-item dropdown ">
-        
-            <a class="nav-link" href="#sidebartwo" data-toggle="collapse" role="button" aria-expanded="false"
-              aria-controls="sidebartwo">
-              <i class="fe fe-credit-card"></i>Performance
+            @can('View Performance')
+            <li class="nav-item {{ Request::url() == url('/performance') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('performance.index') }}">
+              <i class="fe fe-file-text"></i>Performance
             </a>
-            <div class="collapse" id="sidebartwo">
-              <ul class="nav nav-sm flex-column">
-              @can('view deduction')
-                <li class="nav-item">
-         
-                  <a href="{{route('deduction.index')}}" class="nav-link">
-                    Deduction
-                  </a>
-                </li>
-                  @endcan
-                  @can('view Benefits')  
-            <li class="nav-item">
-            
-                  <a href="{{route('benefit.index')}}" class="nav-link">
-                    Benefits
-                  </a>
-          
-                </li>
-                @endcan
-                @can('view payrol')
-                <li class="nav-item">
-               
-                  <a href="{{route('payrol.index')}}" class="nav-link">
-                    Payroll List
-                  </a>
-          
-                </li>
-                @endcan
-              </ul>
-            
-            </div>
-        </li>
-            @endcan
+         </li> 
+         @endcan
             @can('View Notice')
             <li class="nav-item {{ Request::url() == url('/notice') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('notice.index') }}">
@@ -420,20 +387,7 @@
         <!-- User -->
         <div class="navbar-user">
 
-          <!-- Dropdown -->
-          <div class="dropdown mr-4 d-none d-md-flex">
-
-            <!-- Toggle -->
-            <a href="#" class="text-muted" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="icon active">
-                <i class="fe fe-bell"></i>
-              </span>
-            </a>
-
-
-
-  
-          </div>
+         
 
           <!-- Dropdown -->
           <div class="dropdown">

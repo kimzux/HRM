@@ -85,5 +85,9 @@ public function benefit()
 {
     return $this->hasMany(Benefit::class);
 }
+public function performance()
+{
+    return $this->hasMany(Performance::class);
+}
 }
 

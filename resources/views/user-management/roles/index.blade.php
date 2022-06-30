@@ -2,17 +2,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mb-4" >
-        <button type="submit" data-toggle="modal" data-target="#addRoleModal" class="btn btn-primary">Click here to add role</button>
+    <div class="container" >
+        <button type="submit" data-toggle="modal" data-target="#addRoleModal" class="btn btn-primary my-4">Click here to add role</button>
     </div>
-    <div class="uper">
+    <div class="container">
         @if (session()->get('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
             </div>
             <br />
         @endif
-        <table id="roles_datatable" class="table table-striped">
+        <table id="roles_datatable" class="table table-striped p-2">
             <thead>
                 <tr>
                     <td>ID</td>

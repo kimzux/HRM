@@ -35,8 +35,8 @@
                                     <table id="loan123" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>Employee PIN</th>
-                                                <th>Loan Id</th>
+                                              
+                                               
                                                 <th>Loan Number </th>
                                                 <th>Amount Pay</th>
                                                 <!--<th>Pay Amount</th>-->
@@ -48,8 +48,8 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Employee PIN</th>
-                                                <th>Loan Id</th>
+                                                
+                                              
                                                 <th>Loan Number </th>
                                                 <th>Amount Pay </th>
                                                 <!--<th>Pay Amount</th>-->
@@ -60,7 +60,21 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                           
+                                        @foreach($loan_install as $loans)
+                                               
+                                               <td>{{$loans->loan->loan_no }}</td>
+                                               <td>{{$loans->amount_pay}}</td>
+                                               <td>{{$loans->date }}</td>
+                                               <td>{{$loans->receiver }}</td>
+                                               <td>{{$loans->install_number }}</td>
+                                               <td class="row ">
+                                               <div class="d-flex">
+                                               <a href="{{ route('loan.loan_installment.edit', [ $loans->loan_id , $loans->id])}}" class="m-2 btn btn-primary">Edit</a>
+                                               <!-- <a href="{{ route('loan.show',$loans->id)}}" class=" m-2 btn btn-success">add installment</a> -->
+
+                                                </td>
+                                           </tr>
+                                       @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -77,16 +91,14 @@
                                         <h4 class="modal-title" id="exampleModalLabel1">Add Loan</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form role="form" method="post" action="{{route('loan.loan_installment.store', $loan_id, $employee_id)}}" id="loanvalueform" enctype="multipart/form-data">
+                                    <form role="form" method="post" action="{{route('loan.loan_installment.store', $loan_id)}}" id="loanvalueform" enctype="multipart/form-data">
                                     <div class="modal-body">
                                              <div class="form-group">
                                                
                                             </div>  
                                             <input hidden="hidden" type="text" name="loan_id" class="form-control form-control-line" value="{{  $loan_id}}" placeholder=" Degree Name" minlength="1" required> 
 			                                
-                                            <input hidden="hidden" type="text" name="employee_id" class="form-control form-control-line" value="{{ $employee_id}}" placeholder=" Degree Name" minlength="1" required> 
-			                                
-                                        
+                                            
                                                 
                                           
                                                 <div class="form-group">

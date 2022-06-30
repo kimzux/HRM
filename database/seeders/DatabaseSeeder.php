@@ -523,6 +523,15 @@ class DatabaseSeeder extends Seeder
                 'name' => 'download perdeim-retire',
                 'guard_name' => 'web'
             ],
+            [
+                'name' => 'View perdeim-retires-view',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'create perdeim-retires-view',
+                'guard_name' => 'web'
+            ],
+        
 
         ]);
     }

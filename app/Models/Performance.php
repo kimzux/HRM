@@ -5,21 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PerdeimRetire extends Model
+class Performance extends Model
 {
     use HasFactory;
-    protected $table = 'perdeimretires';
+    protected $table = 'performance';
    
     protected $fillable = [
-		     'perdeim_id','amount_used', 'status','file_url','file_title'  
+		     'employee_id','goals','expectation', 'start_date'  ,'end_date', 'timeline'
 	];
 
-  public function Perdeim()
-  {
-      return $this->belongsTo(Perdeim::class);
-  }
+ 
   public function employee()
   {
       return $this->belongsTo(Employee::class);
   }
+  public function rate()
+{
+    return $this->hasMany(Rate::class);
+}
 }
