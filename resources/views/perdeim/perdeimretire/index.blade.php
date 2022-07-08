@@ -74,8 +74,8 @@
                                      
                                         <td class="row">
                                         @if(is_null($perdeims->status))
-                                            <a href="{{route('perdeim.perdeimretire.approve',[ $perdeims->perdeim_id , $perdeims->id])}}" title="Edit" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $perdeims->id; ?>">Approve</a>
-                                            <a href="{{route('perdeim.perdeimretire.decline',[ $perdeims->perdeim_id , $perdeims->id])}}" title="Edit" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $perdeims->id; ?>" data-value="Rejected" >Reject</a><br>
+                                            <a href="{{route('perdeim.perdeimretire.approve',[ $perdeims->perdeim_id , $perdeims->id])}}" title="approve" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $perdeims->id; ?>">Approve</a>
+                                            <a href="{{route('perdeim.perdeimretire.decline',[ $perdeims->perdeim_id , $perdeims->id])}}" title="reject" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $perdeims->id; ?>" data-value="Rejected" >Reject</a><br>
                                             <a href="{{ route('perdeim.perdeimretire.edit',[ $perdeims->perdeim_id , $perdeims->id])}}" title="Edit" hidden="hidden" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $perdeims->id; ?>" >Edit</a>
                                             @elseif($perdeims->status == 1)
                                             @elseif($perdeims->status == 0)

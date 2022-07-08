@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Perdeim;
 use App\Models\PerdeimRetire;
 use App\Models\Employee;
+use App\Notifications\PerdeimApplicationApproved;
+use App\Notifications\PerdeimApplicationRejected;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -115,6 +117,7 @@ else{
     $perdeim = Perdeim::findOrFail($id);
     $perdeim->status = 1; //Approved
     $perdeim->save();
+    $perdeim->employee->notify(new PerdeimApplicationApproved($perdeim));
     Alert::success('Approved!', 'application successful approved');
     return redirect()->back(); //Redirect user somewhere
   }
@@ -125,6 +128,7 @@ else{
     $perdeim = Perdeim::findOrFail($id);
     $perdeim ->status = 0; //Declined
     $perdeim->save();
+    $perdeim->employee->notify(new PerdeimApplicationRejected($perdeim));
     Alert::info('Rejected!', 'application successful rejected');
     return redirect()->back(); //Redirect user somewhere
 

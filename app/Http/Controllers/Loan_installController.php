@@ -25,14 +25,18 @@ class Loan_installController extends Controller
   
         $loan_install = new Loan_install();
         $loan_install->loan_id= $request->input('loan_id');
-        $loan_install->date= $request->input('appdate');
         $loan_install->receiver = $request->input('receiver');
         $loan_install->amount_pay = $request->input('install_amount');
-        $loan_install->install_number= $request->input('installno');
         $loan_install->note=$request->input('notes');
+        $loan_install->loan->total_due -= $loan_install->amount_pay;
+        $loan_install->loan->total_pay += $loan_install->amount_pay;
+        $loan_install->loan->save();
         $loan_install->save();
+      
+   
+        
           Alert::success('Success!', 'Successfully added');
-          return back();
+          return redirect()->back();
       
        
       }

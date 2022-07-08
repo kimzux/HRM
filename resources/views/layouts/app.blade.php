@@ -62,10 +62,15 @@
         @can('View Dashboard')
           <li class="nav-item {{ Request::url() == url('/home') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('home') }}">
-              <i class="fe fe-home"></i> Dashboards
+              <i class="fe fe-home"></i> Dashboard
             </a>
            </li>
          @endcan
+         <li class="nav-item {{ Request::url() == url('/dashboard') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('dashboard') }}">
+              <i class="fe fe-home"></i> Dashboard
+            </a>
+           </li>
 
          @canany(['View users','View role'])
        
@@ -255,6 +260,13 @@
          @can('view Loan')
           <li class="nav-item {{ Request::url() == url('/loan') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('loan.index') }}">
+              <i class="fe fe-credit-card"></i> Loans
+            </a>
+           </li>
+         @endcan
+         @can('view Loan')
+          <li class="nav-item {{ Request::url() == url('/loan-apply') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('loan-apply.index') }}">
               <i class="fe fe-credit-card"></i> Loans
             </a>
            </li>

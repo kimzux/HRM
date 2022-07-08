@@ -36,10 +36,7 @@
 			                                 <label> Amount</label>
 			                                 <input type="number" name="amount" value="{{$loan->amount}}" class="form-control form-control-line"   required> 
 			                                    </div>
-                                                <div class="form-group">
-			                                 <label> Approve Date</label>
-			                                 <input type="date" name="appdate" value="{{$loan->approve_date}}" class="form-control form-control-line"   required> 
-			                                    </div>
+                                                
                                                 <div class="form-group">
 			                                 <label>Period</label>
 			                                 <input type="number" name="install" value="{{$loan->period}}" class="form-control form-control-line"   required> 
@@ -48,19 +45,8 @@
                                
                                <input type="number"hidden="hidden" name="installment" value=" " class="form-control col-md-8 installment" id="recipient-name1" readonly>
                
-                           <div class="form-group">
-			                                 <label> loan No</label>
-			                                 <input type="number" name="loanno" value="{{$loan->loan_no}}" class="form-control form-control-line"  required> 
-			                                    </div>
-                                                <div class="form-group">
-                          <label> Status</label>     
-                          <select name="status" class="form-control custom-select" required>
-                                            <option>Select here</option>
-                                            <option value="Granted" {{ $loan->status=== 'Granted' ? 'Selected' : '' }}>Granted</option>
-                                            <option value="Deny" {{ $loan->status=== 'Deny' ? 'Selected' : '' }}>Deny</option>
-                                            <option value="Done" {{ $loan->status=== 'Done' ? 'Selected' : '' }}>Done</option>
-                                        </select>
-                                      </div>
+                           
+                         
                                       <div class="form-group">
 			                                 <label>Loan Details</label>
                                              <textarea class="form-control col-md-8" name="details" value="{{$loan->loan_detail}}" id="message-text1"></textarea>

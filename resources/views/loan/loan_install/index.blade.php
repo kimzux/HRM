@@ -40,9 +40,8 @@
                                                 <th>Loan Number </th>
                                                 <th>Amount Pay</th>
                                                 <!--<th>Pay Amount</th>-->
-                                                <th>Approve Date </th>
+                                             
                                                 <th>Receiver </th>
-                                                <th>Install No </th>
                                                 <th>Action </th>
                                             </tr>
                                         </thead>
@@ -53,20 +52,18 @@
                                                 <th>Loan Number </th>
                                                 <th>Amount Pay </th>
                                                 <!--<th>Pay Amount</th>-->
-                                                <th>Approve Date </th>
+                                           
                                                 <th>Receiver </th>
-                                                <th>Install No </th>
                                                 <th>Action </th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                         @foreach($loan_install as $loans)
                                                
-                                               <td>{{$loans->loan->loan_no }}</td>
+                                               <td>{{$loans->loan->id }}</td>
                                                <td>{{$loans->amount_pay}}</td>
-                                               <td>{{$loans->date }}</td>
+                                         
                                                <td>{{$loans->receiver }}</td>
-                                               <td>{{$loans->install_number }}</td>
                                                <td class="row ">
                                                <div class="d-flex">
                                                <a href="{{ route('loan.loan_installment.edit', [ $loans->loan_id , $loans->id])}}" class="m-2 btn btn-primary">Edit</a>
@@ -106,19 +103,13 @@
                                                 <input type="number" name="install_amount" class="form-control"  id="recipient-name1" >
                                             </div>
                                                 
-                                            <div class="form-group">
-                                                <label for="message-text" class="control-label">Date</label>
-                                                <input type="date" name="appdate" class="form-control mydatetimepickerFull" id="recipient-name1" required>
-                                            </div>
+                                           
                                           
                                             <div class="form-group">
                                                 <label for="message-text" class="control-label">Receiver</label>
                                                 <input type="text" name="receiver" class="form-control" id="recipient-name1" required>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="message-text" class="control-label"> Install No</label>
-                                                <input type="number" name="installno" class="form-control" id="recipient-name1"  required>
-                                            </div>
+                                            
                                             <div class="form-group">
                                                 <label for="message-text" class="control-label"> Notes</label>
                                                 <textarea class="form-control" name="notes" id="message-text1"></textarea>

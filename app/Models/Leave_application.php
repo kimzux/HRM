@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
+
 class Leave_application extends Model 
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
     protected $table = 'leave_application';
     // public $timestamps = false;
     protected $fillable = [

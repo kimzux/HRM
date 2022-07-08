@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Notifications\LeaveApproved;
+use App\Notifications\LeaveRejected;
 use App\Models\Leave_type;
 use App\Models\Leave_application;
 use App\Models\Employee;
@@ -223,6 +224,7 @@ class Leave_applyController extends Controller
     $leave = Leave_application::findOrFail($id);
     $leave->status = 1; //Approved
     $leave->save();
+    $leave->employee->notify(new LeaveApproved($leave));
     Alert::success('Approved!', 'application successful approved');
     return redirect()->back(); //Redirect user somewhere
   }
@@ -233,6 +235,7 @@ class Leave_applyController extends Controller
     $leave = Leave_application::findOrFail($id);
     $leave->status = 0; //Declined
     $leave->save();
+    $leave->employee->notify(new LeaveRejected($leave));
     Alert::info('Rejected!', 'application successful rejected');
     return redirect()->back(); //Redirect user somewhere
 

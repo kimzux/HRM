@@ -85,8 +85,8 @@
                                      
                                         <td class="row">
                                         @if(is_null($apply->status))
-                                            <a href="{{route('leave.approve', $apply->id)}}" title="Edit" class=" m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $apply->id; ?>">Approve</a>
-                                            <a href="{{route('leave.decline', $apply->id)}}" title="Edit" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $apply->id; ?>" data-value="Rejected" >Reject</a><br>
+                                            <a href="{{route('leave.approve', $apply->id)}}" title="approve" class=" m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $apply->id; ?>">Approve</a>
+                                            <a href="{{route('leave.decline', $apply->id)}}" title="reject" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $apply->id; ?>" data-value="Rejected" >Reject</a><br>
                                             <a href="{{ route('leave_apply.edit', $apply->id)}}" title="Edit" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $apply->id; ?>" >Edit</a>
                                             @elseif($apply->status == 1)
                                             @elseif($apply->status == 0)

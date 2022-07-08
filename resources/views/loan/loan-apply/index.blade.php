@@ -45,7 +45,7 @@
                                             <th>Total Pay </th>
                                             <th>Total Due </th>
                                             <th>Status </th>
-                                            <th>Action </th>
+                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -59,7 +59,7 @@
                                             <th>Total Pay </th>
                                             <th>Total Due </th>
                                             <th>Status </th>
-                                            <th>Action </th>
+                                        
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -81,15 +81,7 @@
         <span class="p-2 mb-1 bg-danger text-white">Rejected</span>
                  @endif</td>
                                      
-                                        <td class="row">
-                                        @if(is_null($loans->status))
-                                            <a href="{{route('loan.approve', $loans->id)}}" title="approve" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $loans->id; ?>">Approve</a>
-                                            <a href="{{route('loan.decline', $loans->id)}}" title="reject" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $loans->id; ?>" data-value="Rejected" >Reject</a><br>
-                                             @elseif($loans->status == 1)
-                                             <a href="{{ route('loan.show', $loans->id)}}" title="installment"  class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $loans->id; ?>" >installment</a>
-                                          @elseif($loans->status == 0)
-                                        @endif
-                                        </td>
+                                       
                                     </tr>
                                     @endforeach
                                             </tbody>   
@@ -108,18 +100,16 @@
                         <h4 class="modal-title" id="exampleModalLabel1">Loan</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
-                    <form role="form" method="post" action="{{route('loan.store')}}" id="btnSubmit" enctype="multipart/form-data">
+                    <form role="form" method="post" action="{{route('loan-apply.store')}}" id="btnSubmit" enctype="multipart/form-data">
                     <div class="modal-body">
-                             <div class="form-group row">
-                                <label class="control-label col-md-2">Assign To</label>
+                    
+                            
                                 
-                                  <select class="js-example-basic-single" data-placeholder="Choose a Category" tabindex="1" name="first_name" id="assignval" style="width: 100%" required>
-                                                  <option value="">Select here</option>
-                                                   @foreach($employee as $employees)
-                                                    <option value="{{ $employees->id}}">{{ $employees->first_name}}</option>
-                                                    @endforeach
-                                </select>
+                                <div class="form-group">
+                                <label>Employee</label>
+                                <input type="text" name="employee_id" class="form-control" value="{{$employee->name}}" id="recipient-name1" readonly>
                             </div>
+                            
                             <div class="form-group row">
                                 <label for="message-text" class="control-label col-md-3">Amount</label>
                                 <input type="number" name="amount" value="" class="form-control col-md-8 amount" id="recipient-name1" required>
@@ -168,13 +158,7 @@
                       
 
   
-<script>
-$(document).ready(function() {
-    $('.js-example-basic-single ').select2({
-              dropdownParent: $("#loanmodel")
-      });
-});
-    </script>
+
      <script>
     $(document).ready(function() {
     var table = $('#example').DataTable( {

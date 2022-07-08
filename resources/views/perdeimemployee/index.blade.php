@@ -75,8 +75,8 @@
                  <td class="row">
                 
                                         @if(is_null($perdeims->status))
-                                            <a href="{{route('perdeim.approve', $perdeims->id)}}" title="Edit" hidden="hidden" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $perdeims->id; ?>">Approve</a>
-                                            <a href="{{route('perdeim.decline', $perdeims->id)}}" title="Edit" hidden="hidden" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $perdeims->id; ?>" data-value="Rejected" >Reject</a><br>
+                                            <a href="{{route('perdeim.approve', $perdeims->id)}}" title="approve" hidden="hidden" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $perdeims->id; ?>">Approve</a>
+                                            <a href="{{route('perdeim.decline', $perdeims->id)}}" title="reject" hidden="hidden" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $perdeims->id; ?>" data-value="Rejected" >Reject</a><br>
                                             <a href="{{ route('perdeim.edit', $perdeims->id)}}" title="Edit" hidden="hidden" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $perdeims->id; ?>" >Edit</a>
                                             @elseif($perdeims->status == 1)
                                             <a href="{{ route('perdeim-employee.show', $perdeims->id)}}" title="retire"  class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $perdeims->id; ?>" >Retirement</a>
