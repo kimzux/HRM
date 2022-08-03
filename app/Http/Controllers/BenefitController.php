@@ -15,9 +15,8 @@ class BenefitController extends Controller
   
       abort_if(Auth::user()->cannot('view benefits'), 403, 'Access Denied');
       $benefit =Benefit::all();
-      $employee= Employee::select('id', 'first_name')->get();
   
-      return view('payrol.benefit.index', compact('benefit','employee'));
+      return view('payrol.benefit.index', compact('benefit'));
     }
     public function store(Request $request)
     {
@@ -26,11 +25,10 @@ class BenefitController extends Controller
       // Education::create($request->all() + ['employee_id' => $employee_id]);
       // Alert::success('Success!', 'Successfully added');
       // return redirect()->route('employee.education.index',$employee_id);
-        $deduction = new Benefit();
-        $deduction->employee_id = request('employee_id');
-        $deduction->name = request('name');
-        $deduction->amount= request('amount');
-        $deduction->save();
+        $benefit = new Benefit();
+        $benefit->name = request('name');
+        $benefit->description= request('description');
+        $benefit->save();
         Alert::success('Success!', 'Successfully added');
         return back();
   
@@ -50,8 +48,7 @@ class BenefitController extends Controller
         
     abort_if(Auth::user()->cannot('edit benefits'), 403, 'Access Denied');
         $benefit = Benefit::findOrFail($id);
-        $employee= Employee::select('id', 'first_name')->get();
-        return view('payrol.benefit.edit', compact('benefit','employee'));
+        return view('payrol.benefit.edit', compact('benefit'));
       }
       public function update(Request $request, Benefit $benefit)
 
@@ -61,10 +58,10 @@ class BenefitController extends Controller
     
           $request->validate([
     
-            'employee_id' => 'required',
+          
               'name' => 'required',
     
-              'amount' => 'required',
+              'description' => 'required',
     
           ]);
       

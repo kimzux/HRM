@@ -10,7 +10,7 @@
               <div class="row align-items-end">
                    <div class="col">
                       <h1 class="header-title">
-            Payrol
+            Payroll
                        </h1>
                     </div>
                 </div> 
@@ -21,8 +21,11 @@
     </div>
             <div class="container-fluid"> 
                 <div class="row m-b-10"> 
-                    <div class="col-12">
-                       <button type="button" class="btn btn-primary"><i class="fa fa-bars"></i><a href="{{route('payrol.create')}}" class="text-white"><i class="" aria-hidden="true"></i>  Generate Payroll</a></button>
+                    <div class="col-12 text-right">
+                    <button type="button" class="btn btn-info"><i class="fe fe-plus"></i><a data-toggle="modal" data-target="#leavemodel" data-whatever="@getbootstrap" class="text-white"><i class="" aria-hidden="true"></i> Generate Payroll</a></button>
+                       <!-- <button type="button" class="btn btn-primary"><i class="fe fe-printer"></i><a href="{{route('payrol.create')}}" class="text-white"><i class="" aria-hidden="true"></i>  Generate Payroll</a></button>-->
+                       <button type="button" class="btn btn-info"><i class="fe fe-printer"></i><a href="{{route('payrol.create')}}" class="text-white"><i class="" aria-hidden="true"></i>  Generate Payslip</a></button> 
+                  
                     </div>
                 </div> 
                 <div class="row mt-4">
@@ -38,15 +41,8 @@
                                     <table id="example123" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                              
-                                                <th>Employee </th>
-                                                <th>Month </th>
-                                                <th>Salary </th>
-                                                <th>Loan </th>
-                                                <th>Total hours </th>
-                                                <th>Deduction</th>
-                                                <th>Total Paid</th>
-                                                <th>Pay Date</th>
+                                                <th>Id</th>
+                                                <th>Month</th>
                                                 <th>Status</th>
                                                 <th class="jsgrid-align-center">Action</th>
                                             </tr>
@@ -54,15 +50,8 @@
                                         <tfoot>
                                             <tr>
                                                
-                                                <th>Employee </th>
-                                                <th>Month </th>
-                                                <th>Salary </th>
-                                                <th>Loan </th>
-                                                <th>Total hours </th>
-                                                <!--<th>Earning</th>-->
-                                                <th>Deduction</th>
-                                                <th>Total Paid</th>
-                                                <th>Pay Date</th>
+                                                <th>Id</th>
+                                                <th>Month</th>
                                                 <th>Status</th>
                                                 <th class="jsgrid-align-center">Action</th>
                                             </tr>
@@ -78,5 +67,34 @@
                     </div>
                 </div>
                         
-
+                <div class="modal fade" id="leavemodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel1">Generate Payroll</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <form method="post" ction="{{route('payrol.store')}}" id="leaveform" enctype="multipart/form-data">
+                        <div class="modal-body">
+                        
+                            <!-- <div class="form-group">
+                                <label class="control-label">month</label>
+                                <input type="month" name="month" class="form-control" id="recipient-name1" value="">
+                            </div> -->
+                            <div class="form-group">
+                                <label class="control-label">month</label>
+                                <input type="month" name="month" class="form-control" id="recipient-name1" value="">
+                            </div>
+                           
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="id" value="" class="form-control" id="recipient-name1">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        <?=csrf_field()?> 
+                    </form>
+                </div>
+            </div>
+        </div>
 @endsection

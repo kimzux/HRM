@@ -41,15 +41,25 @@
                                     <tr>
                                         <th>ID </th>
                                         <th>employee name</th>
+                                        <th>month</th>
+                                        <th>total hours</th>
+                                        <th>type of overtime</th>
                                         <th>Amount</th>
+                                        <th>Proof</th>
+                                        <th>status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                 <tr>
-                                        <th>ID </th>
+                                <th>ID </th>
                                         <th>employee name</th>
+                                        <th>month</th>
+                                        <th>total hours</th>
+                                        <th>type of overtime</th>
                                         <th>Amount</th>
+                                        <th>Proof</th>
+                                        <th>status</th>
                                         <th>Action</th>
                                 </tr>
                                 </tfoot>
@@ -58,20 +68,37 @@
                                 <tr>
                                 <td>{{$work->id}}</td>
                                 <td>{{$work->employee->first_name}}</td>
+                                <td>{{$work->month}}</td>
+                                <td>{{$work->total_hours}}</td>
+                                <td>@if($work->type==1.5)
+                                        Rate A
+                                        @elseif($work->type==2)
+                                        Rate B
+                                        @endif
                                 <td>{{$work->amount}}</td>
-                                    <td class="row">
-                                    <a href="{{ route('work-overtime.edit', $work->id)}}" class="btn btn-primary">Edit</a>
-                                    <form action="{{ route('work-overtime.destroy', $work->id)}}" method="post">
-                  @csrf
-                  @method('DELETE')
-                                    <button class="ml-4 btn btn-danger" type="submit"
-                                        onclick="return confirm('Are you sure  you want to delete?')">Delete</button>
-                                        <?=csrf_field()?>
-                                   </form>
-                                    </td> 
-                                    </td>  
-                                </tr>
-                                @endforeach
+                                <td><a href="{{ route('file.download', $work->id) }}" target="_blank">download</a></td>
+
+                                <td>
+                                            @if(is_null($work->status))
+        <span class="p-2 mb-1 bg-primary text-white">Pending</span>
+                    @elseif($work->status == 1)
+        <span class="p-2 mb-1 bg-success text-white">Approved</span>
+        @elseif($loans->status == 0)
+        <span class="p-2 mb-1 bg-danger text-white">Rejected</span>
+                 @endif</td>
+                                     
+                                        <td class="row">
+                                        <a href="{{route('work-overtime.edit', $work->id)}}" title="edit" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $work->id; ?>">Edit</a>
+                                          
+                                        @if(is_null($work->status))
+                                            <a href="{{route('work-overtime.approve', $work->id)}}" title="approve" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $work->id; ?>">Approve</a>
+                                            <a href="{{route('work-overtime.decline', $work->id)}}" title="reject" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $work->id; ?>" data-value="Rejected" >Reject</a><br>
+                                             @elseif($work->status == 1)
+                                               @elseif($work->status == 0)
+                                        @endif
+                                        </td>
+                                    </tr>
+                                    @endforeach
                             </tbody>          
                                 
                             </table>
@@ -99,10 +126,30 @@
                                                     @endforeach
                                 </select>
                             </div> 
-                            
+                            <!-- <div class="form-group">
+                                <label class="control-label">month</label>
+                                <input type="month" name="month" class="form-control" id="recipient-name1" value="">
+                            </div> -->
                             <div class="form-group">
-                                <label class="control-label">Amount</label>
-                                <input type="number" name="amount" class="form-control" id="recipient-name1" value="">
+                                <label class="control-label">Total Hours</label>
+                                <input type="number" name="hours" class="form-control" id="recipient-name1" value="">
+                            </div>
+                            <div class="form-group">
+                                                <label for="message-text" class="control-label">Proof</label>
+                                                <input type="file" name="file_url" class="form-control" id="recipient-name1" required>
+                                            </div>
+                            <div class="form-group row">
+                                    <label class="control-label text-left col-md-5">Overtime Type</label><br>
+                                    <div class="col-md-7">
+                                    <input name="status" type="radio" id="radio_1" data-value="Rate A" class="duration" value="1.5" checked="checked">
+                                    <label for="radio_1">Rate A</label>
+                                    <input name="status" type="radio" id="radio_2" data-value="Rate B" class="type" value="2">
+                                    <label for="radio_2">Rate B</label>
+                                    </div>
+                                </div>    
+                            <div class="form-group">
+                                
+                                <input type="hidden" name="amount" class="form-control" id="recipient-name1" value="">
                             </div>
                             <!-- <div class="form-group">
                                 <label class="control-label">status</label>

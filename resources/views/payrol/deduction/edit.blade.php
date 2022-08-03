@@ -20,25 +20,16 @@
 			              <form action="{{ route('deduction.update', $deduction->id) }}" method="post" enctype="multipart/form-data" >
                           @csrf
                         @method('PATCH') 
-                        <div class="form-group ">
-                                <label class="control-label">Assign To</label>
-                                
-                                  <select class="js-example-basic-single" data-placeholder="Choose a Category" tabindex="1" name="employee_id" id="assignval" style="width: 100%" required>
-                                                  <option value="">Select here</option>
-                                                   @foreach($employee as $employees)
-                                                    <option value="{{ $employees->id}}">{{ $employees->first_name}}</option>
-                                                    @endforeach
-                                </select>
-                            </div>   
+                        
                           <div class="form-group">
                           <label> Deduction Name</label>     
                          
-                          <input type="text" name="name" value="{{$deduction->name}}" class="form-control form-control-line"  minlength="5" required> 
+                          <input type="text" name="name" value="{{$deduction->name}}" class="form-control form-control-line"   required> 
 			                                    </div>
 	
 			                                 <div class="form-group">
-			                                 <label> Deduction Percentage</label>
-			                                 <input type="number" name="amount" value="{{$deduction->amount}}" step="any" class="form-control form-control-line"  minlength="5" required> 
+			                                 <label> Deduction Description</label>
+			                                 <input type="text" name="description" value="{{$deduction->description}}" class="form-control form-control-line"  required> 
 			                                    </div>
 	
                                         

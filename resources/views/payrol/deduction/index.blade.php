@@ -25,7 +25,8 @@
         <div class="row m-b-10">
             <div class="col-12">
                 <button type="button" class="btn btn-info"><i class="fa fa-plus"></i><a data-toggle="modal" data-target="#leavemodel" data-whatever="@getbootstrap" class="text-white"><i class="" aria-hidden="true"></i> Add Deduction</a></button>
-            
+                <button type="button" class="btn btn-info"><i class="fa fa-plus"></i><a href="{{ route('employee-deduction.index')}}" class="text-white"><i class="" aria-hidden="true"></i> Assign Employee</a></button>
+           
             </div>
         </div>
         <div class="row mt-4">
@@ -40,18 +41,17 @@
                                 <thead>
                                     <tr>
                                         <th>ID </th>
-                                        <th>employee name</th>
+                                        
                                         <th>name</th>
-                                        <th>Percent</th>
+                                        <th>description</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                 <tr>
                                         <th>ID </th>
-                                        <th>employee name</th>
                                         <th>name</th>
-                                        <th>percent</th>
+                                        <th>description</th>
                                         <th>Action</th>
                                 </tr>
                                 </tfoot>
@@ -59,9 +59,8 @@
                                 @foreach( $deduction as $deduct)
                                 <tr>
                                 <td>{{$deduct->id}}</td>
-                                <td>{{$deduct->employee->first_name}}</td>
                                 <td>{{$deduct->name}}</td>
-                                <td>{{$deduct->amount}}</td>
+                                <td>{{$deduct->description}}</td>
                                     <td class="row">
                                     <a href="{{ route('deduction.edit', $deduct->id)}}" class="btn btn-primary">Edit</a>
                                     <form action="{{ route('deduction.destroy', $deduct->id)}}" method="post">
@@ -92,24 +91,14 @@
                     </div>
                     <form method="post" ction="{{route('deduction.store')}}" id="leaveform" enctype="multipart/form-data">
                         <div class="modal-body">
-                        <div class="form-group ">
-                                <label class="control-label">Assign To</label>
-                                
-                                  <select class="js-example-basic-single" data-placeholder="Choose a Category" tabindex="1" name="employee_id" id="assignval" style="width: 100%" required>
-                                                  <option value="">Select here</option>
-                                                   @foreach($employee as $employees)
-                                                    <option value="{{ $employees->id}}">{{ $employees->first_name}}</option>
-                                                    @endforeach
-                                </select>
-                            </div> 
-                            
+                        
                             <div class="form-group">
                                 <label class="control-label">Deduction Name</label>
                                 <input type="text" name="name" class="form-control" id="recipient-name1" minlength="1" maxlength="35" value="" required>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">deduction percentage</label>
-                                <input type="number" name="amount" step="any" class="form-control" id="recipient-name1" value="">
+                                <label class="control-label">description</label>
+                                <input type="text" name="description"  class="form-control" id="recipient-name1" value="">
                             </div>
                             <!-- <div class="form-group">
                                 <label class="control-label">status</label>

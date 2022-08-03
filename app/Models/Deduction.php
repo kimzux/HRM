@@ -11,16 +11,16 @@ class Deduction extends Model
     protected $table = 'deduction';
    
     protected $fillable = [
-		     'employee_id','name','amount',   
+		     'name','description',   
 	];
 
-  public function Payrol()
+  public function Payroll()
   {
-      return $this->belongsTo('Payrol');
+      return $this->belongsTo('Payroll');
   }
-  public function employee()
+  public function employeededuction()
   {
-      return $this->belongsTo(Employee::class);
+      return $this->hasMany(EmployeeDeduction::class);
   }
 
 }

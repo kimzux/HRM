@@ -24,7 +24,7 @@
                     <div class="col-12">
                         <button type="button" class="btn btn-info"><i class="fe fe-plus"></i><a data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" class="text-white"><i class="" aria-hidden="true"></i> Add Project </a></button>
                         <button type="button" class="btn btn-primary"><i class="fe fe-bars"></i><a href="{{route('task.index')}}" class="text-white"><i class="" aria-hidden="true"></i>  Task List</a></button>
-                        <button type="button" class="btn btn-primary"><i class="fe fe-bars"></i><a href="" class="text-white"><i class="" aria-hidden="true"></i>  Field Visit</a></button>
+                        <button type="button" class="btn btn-primary"><i class="fe fe-bars"></i><a href="{{route('field.index')}}" class="text-white"><i class="" aria-hidden="true"></i>  Field Visit</a></button>
                       
                     </div>
                 </div>

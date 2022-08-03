@@ -71,25 +71,39 @@ public function loan()
 {
     return $this->hasMany(Loan::class);
 }
-    public function payrol()
+public function salary()
 {
-    return $this->hasMany(Payrol::class);
+    return $this->hasOne(Salary::class);
 }
+public function workOvertime()
+{
+    return $this->hasMany(WorkOverTime::class);
+}
+  
 public function department()
 {
     return $this->belongsTo(Department::class);
 }
 public function deduction()
 {
-    return $this->hasMany(Deduction::class);
+    return $this->hasMany(EmployeeDeduction::class);
 }
 public function benefit()
 {
-    return $this->hasMany(Benefit::class);
+    return $this->hasMany(EmployeeBenefit::class);
+
 }
 public function performance()
 {
     return $this->hasMany(Performance::class);
+}
+public function book()
+{
+    return $this->hasMany('Book');
+}
+public function payslip()
+{
+    return $this->hasMany('Payslip');
 }
 }
 

@@ -11,15 +11,19 @@ class Benefit extends Model
     protected $table = 'benefit';
    
     protected $fillable = [
-		'employee_id','name','amount',   
+		'name','description',   
 	];
 
-  public function Payrol()
+  public function Payroll()
   {
-      return $this->belongsTo('Payrol');
+      return $this->belongsTo('Payroll');
   }
   public function employee()
     {
         return $this->belongsTo(Employee::class);
+    }
+    public function employeebenefit()
+    {
+        return $this->hasMany(EmployeeBenefit::class);
     }
 }

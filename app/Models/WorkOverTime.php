@@ -14,9 +14,9 @@ class WorkOverTime extends Model
 		     'employee_id','amount',   
 	];
 
-  public function payrol()
+  public function payroll()
   {
-      return $this->belongsTo(Payrol::class);
+      return $this->belongsTo(Payroll::class);
   }
   public function employee()
   {

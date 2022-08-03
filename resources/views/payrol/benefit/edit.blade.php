@@ -20,25 +20,16 @@
 			              <form action="{{ route('benefit.update', $benefit->id) }}" method="post" enctype="multipart/form-data" >
                           @csrf
                         @method('PATCH') 
-                        <div class="form-group ">
-                                <label class="control-label">Assign To</label>
-                                
-                                  <select class="js-example-basic-single" data-placeholder="Choose a Category" tabindex="1" name="employee_id" id="assignval" style="width: 100%" required>
-                                                  <option value="">Select here</option>
-                                                   @foreach($employee as $employees)
-                                                    <option value="{{ $employees->id}}">{{ $employees->first_name}}</option>
-                                                    @endforeach
-                                </select>
-                            </div>   
+                        
                           <div class="form-group">
                           <label> Benefit Name</label>     
                          
-                          <input type="text" name="name" value="{{$benefit->name}}" class="form-control form-control-line"  minlength="5" required> 
+                          <input type="text" name="name" value="{{$benefit->name}}" class="form-control form-control-line"  required> 
 			                                    </div>
 	
 			                                 <div class="form-group">
-			                                 <label>Amount </label>
-			                                 <input type="number" name="amount" value="{{$benefit->amount}}" step="any" class="form-control form-control-line"  minlength="5" required> 
+			                                 <label>Description</label>
+			                                 <input type="text" name="description" value="{{$benefit->description}}"  class="form-control form-control-line" required> 
 			                                    </div>
 	
                                         

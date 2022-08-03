@@ -10,7 +10,7 @@ class LoanViewController extends Controller
 {
     public function index()
     {
-      abort_if(Auth::user()->cannot('view employee-loan'), 403, 'Access Denied');
+      abort_if(Auth::user()->cannot('view loan-apply'), 403, 'Access Denied');
      
       $employee = auth()->user();
   
@@ -26,7 +26,7 @@ class LoanViewController extends Controller
 public function store(Request $request)
 {
     
-  abort_if(Auth::user()->cannot('create leave'), 403, 'Access Denied');
+  abort_if(Auth::user()->cannot('create loan-apply'), 403, 'Access Denied');
   $loan = new Loan;
   $employee_id = auth()->user()->employee_id;
 

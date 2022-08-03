@@ -95,7 +95,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Disciplinary Action</label>
                                                             <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="disciplinary_action" value="">
-                                                                <option value="Verbel Warning">Verbel Warning</option>
+                                                                <option value="Verbel Warning">Verbal Warning</option>
                                                                 <option value="Writing Warning">Writing Warning</option>
                                                                 <option value="Demotion">Demotion</option>
                                                                 <option value="Suspension">Suspension</option>

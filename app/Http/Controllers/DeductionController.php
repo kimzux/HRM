@@ -14,9 +14,9 @@ class DeductionController extends Controller
   
       abort_if(Auth::user()->cannot('view deduction'), 403, 'Access Denied');
       $deduction = Deduction::all();
-      $employee= Employee::select('id', 'first_name')->get();
+    
   
-      return view('payrol.deduction.index', compact('deduction','employee'));
+      return view('payrol.deduction.index', compact('deduction'));
     }
     public function store(Request $request)
     {
@@ -26,9 +26,8 @@ class DeductionController extends Controller
       // Alert::success('Success!', 'Successfully added');
       // return redirect()->route('employee.education.index',$employee_id);
         $deduction = new Deduction();
-        $deduction->employee_id = request('employee_id');
         $deduction->name = request('name');
-        $deduction->amount= request('amount');
+        $deduction->description= request('description');
         $deduction->save();
         Alert::success('Success!', 'Successfully added');
         return back();
@@ -50,25 +49,15 @@ class DeductionController extends Controller
         
     abort_if(Auth::user()->cannot('edit deduction'), 403, 'Access Denied');
         $deduction =Deduction::findOrFail($id);
-        $employee= Employee::select('id', 'first_name')->get();
-        return view('payrol.deduction.edit', compact('deduction','employee'));
-      }
-      public function update(Request $request, Deduction $deduction)
-
-      {
-        
-    abort_if(Auth::user()->cannot('update deduction'), 403, 'Access Denied');
-    
-          $request->validate([
-            'employee_id'=> 'required',
-              'name' => 'required',
-    
-              'amount' => 'required',
-    
-          ]);
       
-    
-          $deduction->update($request->all());
+        return view('payrol.deduction.edit', compact('deduction'));
+      }
+      public function update(Request $request, $id)
+      {
+        abort_if(Auth::user()->cannot('update deduction'), 403, 'Access Denied');
+          $deduction= Deduction::findOrFail($id);
+          $deduction->name=request('name');
+          $deduction->description=request('description');
           Alert::success('Success!', 'Successfully updated');
           return redirect()->route('deduction.index');
          

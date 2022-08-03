@@ -264,7 +264,7 @@
             </a>
            </li>
          @endcan
-         @can('view Loan')
+         @can('view Loan-apply')
           <li class="nav-item {{ Request::url() == url('/loan-apply') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('loan-apply.index') }}">
               <i class="fe fe-credit-card"></i> Loans
@@ -312,7 +312,7 @@
             </div>
           </li>
           @endcan
-          @canany(['view deduction','view payrol','view benefits','view work-overtime'])
+          @canany(['view deduction','view payrol','view benefits','view work-overtime','view salary'])
           <li class="nav-item dropdown ">
         
             <a class="nav-link" href="#sidebarone" data-toggle="collapse" role="button" aria-expanded="false"
@@ -334,6 +334,16 @@
             
                   <a href="{{route('benefit.index')}}" class="nav-link">
                     Benefits
+                  </a>
+          
+                </li>
+                @endcan
+               
+                @can('view salary')  
+            <li class="nav-item">
+            
+                  <a href="{{route('salary.index')}}" class="nav-link">
+                 Salary
                   </a>
           
                 </li>
@@ -365,6 +375,20 @@
             <li class="nav-item {{ Request::url() == url('/performance') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('performance.index') }}">
               <i class="fe fe-file-text"></i>Performance
+            </a>
+         </li> 
+         @endcan
+         @can('View Room')
+            <li class="nav-item {{ Request::url() == url('/room') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('room.index') }}">
+              <i class="fe fe-file-text"></i>Room
+            </a>
+         </li> 
+         @endcan
+         @can('View Room')
+            <li class="nav-item {{ Request::url() == url('/room') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('view-room.index') }}">
+              <i class="fe fe-file-text"></i>Room
             </a>
          </li> 
          @endcan
