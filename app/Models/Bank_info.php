@@ -19,7 +19,7 @@ class Bank_info extends Model
 
     public function employee()
     {
-        return $this->belongsTo('App\Models\Employee', 'employee_id', 'id');
+        return $this->belongsTo(Employee::class);
     }
 
 }

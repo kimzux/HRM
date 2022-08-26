@@ -33,7 +33,7 @@ class Employee extends Model
     }
     public function bank_info()
     {
-        return $this->hasOne('Bank_info');
+        return $this->hasOne(Bank_info::class,'employee_id');
     }
     public function employee_file()
     {
@@ -104,6 +104,14 @@ public function book()
 public function payslip()
 {
     return $this->hasMany('Payslip');
+}
+public function overtime()
+  {
+    return $this->hasMany(WorkOverTime::class);
+}
+public function designation()
+{
+    return $this->belongsTo(Designation::class);
 }
 }
 

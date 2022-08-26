@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Payroll;
 use App\Models\Employee;
 use App\Models\Loan;
-use App\Models\Benefit;
+use App\Models\Payslip;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use \PDF;
 use App\Models\Deduction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,9 +18,9 @@ class PayrolController extends Controller
   public function index()
   {
     abort_if(Auth::user()->cannot('view payrol'), 403, 'Access Denied');
-    $salary = Payroll::all();
+    $payroll = Payroll::all();
 
-    return view('payrol.salary.index', compact('salary'));
+    return view('payrol.salary.index', compact('payroll'));
   }
   public function create()
   {
@@ -26,18 +28,14 @@ class PayrolController extends Controller
 
     $salary = Employee::with('payrol', 'department')->get();
 
-
     return view('payrol.salary.show', compact('salary'));
   }
   public function show($id)
   {
     abort_if(Auth::user()->cannot('create view payrol'), 403, 'Access Denied');
-    $employee = Employee::where('id', $id)->firstOrFail();
-    $deduction = Deduction::select('id', 'name')->get();
-    // $payroll = Timelog::select('employee_id',DB::raw('SUM(deductions) as total_deductions'))->with('employee')->groupBy('employee_id')->get();
-    $benefit = Benefit::select('id', 'name')->get();
-    $loan = Loan::where('employee_id', $id)->get();
-    return view('payrol.salary.create', compact('employee', 'deduction', 'benefit', 'loan'));
+    $payroll = Payroll::where('id', $id)->firstOrFail();
+    $payslip = Payslip::with('employee')->where('payroll_id', $id)->get();
+    return view('payrol.salary.create', compact('payroll', 'payslip' ));
   }
   public function store(Request $request)
 
@@ -76,7 +74,7 @@ class PayrolController extends Controller
       // Create payslip deductions from employee deductions
       $employee->deduction->each(function ($deduction) use ($payslip) {
         $payslip->deductions()->create([
-          'name' => $deduction->deduction->name,
+          'deduction_name' => $deduction->deduction->name,
           'amount' => ($deduction->amount * $payslip->salary) / 100,
         ]);
       });
@@ -84,7 +82,7 @@ class PayrolController extends Controller
       // Create payslip deductions from employee loans
       $employee->loan->each(function ($loan) use ($payslip) {
         $payslip->deductions()->create([
-          'name' => $loan->loan_detail,
+          'deduction_name' => $loan->loan_detail,
           'amount' => $loan->install_amount > $loan->amount_due ? $loan->amount_due : $loan->install_amount
         ]);
 
@@ -96,15 +94,15 @@ class PayrolController extends Controller
       // Create payslip benefits from employee benefits
       $employee->benefit->each(function ($EmpBenefit) use ($payslip) {
         $payslip->benefits()->create([
-          'name' => $EmpBenefit->benefit->name,
+          'benefit_name' => $EmpBenefit->benefit->name,
           'amount' => $EmpBenefit->amount,
         ]);
       });
 
       // Create payslip benefits from employee overtime
-      $employee->overtimes->each(function ($overtime) use ($payslip) {
+      $employee->overtime->each(function ($overtime) use ($payslip) {
         $payslip->benefits()->create([
-          'name' => "Overtime $overtime->type",
+          'benefit_name' => "Overtime $overtime->type",
           'amount' => $overtime->amount,
         ]);
       });
@@ -118,5 +116,24 @@ class PayrolController extends Controller
 
 
     return redirect()->route('payrol.index');
+  }
+  public function view_payslip($id)
+  {   
+      abort_if(Auth::user()->cannot('payslip'), 403, 'Access Denied');
+      $payslip = Payslip::findOrFail($id);
+    
+      // $pdf = PDF::loadView('payrol.payslip.index', compact('payslip'));
+
+    
+      return view('payrol.payslip.index', compact('payslip'));
+  }
+  public function generate_payslip($id)
+  {   
+      abort_if(Auth::user()->cannot('payslip'), 403, 'Access Denied');
+      $payslip = Payslip::findOrFail($id);
+    
+      $pdf = PDF::loadView('payrol.payslip.slip', compact('payslip'));
+      return $pdf->stream('payslip.pdf');
+
   }
 }

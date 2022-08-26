@@ -14,9 +14,9 @@ class Salary extends Model
 		     'employee_id','basic_salary',   
 	];
 
-  public function payroll()
+  public function payslips()
   {
-      return $this->belongsTo(Payroll::class);
+      return $this->belongsTo(Payslip::class);
   }
   public function employee()
   {

@@ -137,6 +137,8 @@ Route::resource('room', RoomController::class);
 Route::resource('book', BookController::class);
 Route::resource('view-room', ViewRoomController::class);
 Route::resource('book-room', EmployeeBookController::class);
+Route::get('download-payslip/{id}',[App\Http\Controllers\PayrolController::class, 'generate_payslip'])->name('download.payslip');
+Route::get('view-payslip/{id}',[App\Http\Controllers\PayrolController::class, 'view_payslip'])->name('payrol.payslip');
 Route::get('/book.occupied/{id}', [App\Http\Controllers\BookController::class, 'occupied'])->name('book.occupy');
 Route::get('/book.cancelled/{id}', [App\Http\Controllers\BookController::class, 'cancelled'])->name('book.cancel');
 Route::get('/leave.approve/{id}', [App\Http\Controllers\Leave_applyController::class, 'approve'])->name('leave.approve');
@@ -158,6 +160,9 @@ Route::get('/work-overtime.decline/{id}', [App\Http\Controllers\WorkOverTimeCont
 });
 Route::get('/changePassword', [App\Http\Controllers\Password_ResetController::class, 'ResetPassword'])->name('changePasswordGet');
 Route::post('/changePassword', [App\Http\Controllers\Password_ResetController::class, 'changePasswordPost'])->name('changePasswordPost');
+Route::get('/payment', function () {
+    return view('payrol.payslip.index');
+});
 // Route::resource('countries.cities', 'CitiesController');
 // Route::post('/education', [App\Http\Controllers\EducationController::class, 'store'])->name('education_tore');
 // Route::get('/education/{id}', [App\Http\Controllers\EducationController::class, 'index'])->name('eduction_index');

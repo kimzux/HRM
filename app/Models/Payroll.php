@@ -22,7 +22,7 @@ class Payroll extends Model
 
     public function payslips()
     {
-        return $this->hasMany(Payslip::class, 'payslip_id');
+        return $this->hasMany(Payslip::class, 'payroll_id');
     }
     
 public function workovertime()

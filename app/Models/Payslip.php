@@ -20,8 +20,20 @@ public function payroll()
 {
     return $this->belongsTo('App\Models\Payroll', 'payroll_id', 'id');
 }
+public function salary()
+{
+    return $this->hasOne('App\Models\Salary', 'payslip_id');
+}
 
-
+public function benefits()
+{
+    return $this->hasMany(Benefit_Payslip::class,'payslip_id');
+}
+public function deductions()
+{
+  
+    return $this->hasMany(Deduction_Payslip::class,'payslip_id');
+}
 
 
 

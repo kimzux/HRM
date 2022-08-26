@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Benefit_Payslip extends Model
 {
     use HasFactory;
+    protected $table = 'benefit_payslip';
     protected $fillable = [
-        'employee_id','room_id','reservation_date','time_in','time_out',   
+        'payslip_id','amount','benefit_name',   
 ];
 
-public function employee()
+public function payslip()
 {
-   return $this->belongsTo(Employee::class);
+   return $this->belongsTo(Payslip::class);
 }
 public function room()
 {

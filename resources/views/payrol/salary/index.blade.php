@@ -24,8 +24,8 @@
                     <div class="col-12 text-right">
                     <button type="button" class="btn btn-info"><i class="fe fe-plus"></i><a data-toggle="modal" data-target="#leavemodel" data-whatever="@getbootstrap" class="text-white"><i class="" aria-hidden="true"></i> Generate Payroll</a></button>
                        <!-- <button type="button" class="btn btn-primary"><i class="fe fe-printer"></i><a href="{{route('payrol.create')}}" class="text-white"><i class="" aria-hidden="true"></i>  Generate Payroll</a></button>-->
-                       <button type="button" class="btn btn-info"><i class="fe fe-printer"></i><a href="{{route('payrol.create')}}" class="text-white"><i class="" aria-hidden="true"></i>  Generate Payslip</a></button> 
-                  
+                       <!-- <button type="button" class="btn btn-info"><i class="fe fe-printer"></i><a href="{{route('payrol.create')}}" class="text-white"><i class="" aria-hidden="true"></i>  Generate Payslip</a></button> 
+                   -->
                     </div>
                 </div> 
                 <div class="row mt-4">
@@ -58,7 +58,27 @@
                                         </tfoot>
                                         <tbody>
 
-                                         
+                                        @foreach( $payroll as $payrolls)
+                                <tr>
+                                <td>{{$payrolls->id}}</td>
+                                <td>{{$payrolls->month}}</td>
+                                <td>
+                                        @if($payrolls->status==0)
+                                        <span class="p-2 mb-1 bg-primary text-white">New</span>
+                                        @elseif($payrolls->status==1)
+        <span class="p-2 mb-1 bg-success text-white">computed</span>
+                                     @endif
+                                    </td>
+                                    <td>
+                            
+                                           <a href="{{ route('payrol.show', $payrolls->id)}}" title="compute" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $payrolls->id; ?>" >View Payslips</a>
+                                        </td>
+                                   
+                                </tr>
+                                @endforeach
+                            </tbody>          
+                                
+                            </table>
                                         </tbody>
                                     </table>
                                 </div>
