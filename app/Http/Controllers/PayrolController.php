@@ -108,7 +108,7 @@ class PayrolController extends Controller
       });
 
       # update totals
-      $total_deduction = $payslip->deductions()->sum('amount');
+      $total_deduction = $payslip->deductions()->sum(DB::raw('COALESCE(amount, 0)'));
       $total_allowance = $payslip->benefits()->sum('amount');
 
       $payslip->update(['deduction_amount' => $total_deduction, 'allowance_amount' => $total_allowance, 'net_pay' => ($total_allowance + $payslip->salary) - $total_deduction]);

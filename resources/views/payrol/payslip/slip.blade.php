@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <table class="mt-4 table table-bordered">
+                <table  class="mt-4  display nowrap table table-hover table-striped table-bordered">
                     <thead class="bg-dark text-white">
                         <tr>
                             <th scope="col">Earnings</th>
@@ -58,59 +58,45 @@
                         <tr>
                             <th scope="row">Basic Salary</th>
                             <td>{{$payslip->employee->salary->basic_salary}}</td>
+                            <th>
                             @foreach ($payslip->deductions as $deduction)
-                            <td>PF</td>
-                            <td>10</td>
+                              <p>{{$deduction->deduction_name}}</p>
                             @endforeach
+                            </th>
+
+                            <td>
+                            @foreach ($payslip->deductions as $deduction)
+                            <p> {{$deduction->amount}}</p>
+                            @endforeach
+                            </td>
+
                         </tr>
                         
                         <tr>
+                            <th>
                             @foreach ($payslip->benefits as $benefit)
-                            <th scope="row">$benefit->benefit_name</th>
-                            <td>$benefit->amount</td>
-                          
+                              <p>{{$benefit->benefit_name}}</p>
                             @endforeach
+                            </th>
+
+                            <td>
+                            @foreach ($payslip->benefits as $benefit)
+                            <p> {{$benefit->amount}}</p>
+                            @endforeach
+                            </td>
                             
                         </tr>
-                        <!-- <tr>
-                            <th scope="row">Leave Encashment</th>
-                            <td>0.00</td>
-                            <td colspan="2"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Holiday Wages</th>
-                            <td>500.00</td>
-                            <td colspan="2"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Special Allowance</th>
-                            <td>100.00</td>
-                            <td colspan="2"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Bonus</th>
-                            <td>1400.00</td>
-                            <td colspan="2"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Individual Incentive</th>
-                            <td>2400.00</td>
-                            <td colspan="2"></td>
-                        </tr> -->
                         <tr class="border-top">
                             <th scope="row">Total Earning</th>
-                            <td>25970.00</td>
+                            <td>{{$payslip->allowance_amount}}</td>
                             <td>Total Deductions</td>
-                            <td>2442.00</td>
+                            <td>{{$payslip->deduction_amount}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="row">
                 <div class="col-md-4"> <br> <span class="fw-bold">Net Pay : {{$payslip->net_pay}}</span> </div>
-                <!-- <div class="border col-md-8">
-                    <div class="d-flex flex-column"> <span>In Words</span> <span>Twenty Five thousand nine hundred seventy only</span> </div>
-                </div> -->
             </div>
             <div class="d-flex justify-content-end">
                 <div class="d-flex flex-column mt-2"> <span class="fw-bolder">For {{$payslip->employee->first_name}}</span> <span class="mt-4">Authorised Signatory</span> </div>

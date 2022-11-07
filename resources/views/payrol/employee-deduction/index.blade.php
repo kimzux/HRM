@@ -123,16 +123,7 @@
                             <div class="form-group">
                                 <label class="control-label">amount</label>
                                 <input type="number" name="amount" step="any" class="form-control" id="recipient-name1" value="">
-                            </div>
-                            <!-- <div class="form-group">
-                                <label class="control-label">status</label>
-                                <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="status" required>
-                                    <option value="">Select Here</option>
-                                    <option value="1">Active</option>
-                                    <option value="0">InActive</option>
-                                </select>
-                            </div> -->
-                            
+                            </div> 
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" name="id" value="" class="form-control" id="recipient-name1">
