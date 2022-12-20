@@ -74,8 +74,12 @@
                                              @endforeach
                                                 </td>
 <!--                                                <td class="jsgrid-align-center ">
-                                                    <a href="#" title="Edit" class="btn btn-sm btn-info waves-effect waves-light taskmodal" data-id="<?php #echo $value->id ?>"><i class="fa fa-pencil-square-o"></i></a>
-                                                    <a onclick="alert('Are you sure want to delet this Value?')" href="#" title="Delete" class="btn btn-sm btn-info waves-effect waves-light TasksDelet" data-id="<?php #echo $value->id ?>"><i class="fa fa-trash-o"></i></a>
+                                                    <a href="#" title="Edit" class="btn btn-sm btn-info waves-effect waves-light taskmodal" data-id="<?php
+#echo $value->id
+?>"><i class="fa fa-pencil-square-o"></i></a>
+                                                    <a onclick="alert('Are you sure want to delet this Value?')" href="#" title="Delete" class="btn btn-sm btn-info waves-effect waves-light TasksDelet" data-id="<?php
+#echo $value->id
+?>"><i class="fa fa-trash-o"></i></a>
                                                 </td>-->
                                             </tr>
                                             @endforeach
@@ -146,6 +150,7 @@
                                                 <textarea class="form-control col-md-8" name="details" id="message-text1" minlength="10" maxlength="1400"></textarea>
                                             </div> 
                              <div class="form-group row">
+                                <div class="d-flex">
                                   <label for="inputStatus" class="control-label col-md-3">Status:</label>
                                 
                                   <div class="form-check form-check-inline">
@@ -160,11 +165,12 @@
                                    <input class="form-check-input" type="radio" name="status" id="inlineRadio3" value="Cancel">
                                    <label class="form-check-label" for="inlineRadio2"> {{ (old('status') == 'canncel') ? 'checked' : '' }} Cancel</label>
                                       </div>
-
+                                </div>
                                   
                                 </div>         
                                 <div class="form-group row">
-                                  <label for="inputStatus" class="control-label col-md-3">Type:</label>
+                                <div class="d-flex">
+                                  <label for="inputStatus" class="control-label col-md-3 mr-2">Type:</label>
                                 
                                   <div class="form-check form-check-inline">
                                   <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="complete">
@@ -173,7 +179,8 @@
                                   <div class="form-check form-check-inline">
                                    <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="running">
                                    <label class="form-check-label" for="inlineRadio2"> {{ (old('status') == 'field') ? 'checked' : '' }} Field</label>
-                                                   </div>
+                                 </div>
+                                </div>
                                   
                                 </div>                                    
                                                         
@@ -183,7 +190,7 @@
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
-                                    <?=csrf_field()?>
+                                    <?= csrf_field() ?>
                                     </form>
                                 </div>
                             </div>

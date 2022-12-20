@@ -104,7 +104,7 @@
                                 <tr>
                                 <td>{{$holi->name}}</td>
                                 <td>{{$holi->date}}</td>
-                                    <td class="row">
+                                    <td class="d-flex">
                                     <a href="{{ route('holiday.edit', $holi->id)}}" class="btn btn-primary">Edit</a>
                                     <form action="{{ route('holiday.destroy', $holi->id)}}" method="post">
                   @csrf

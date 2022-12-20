@@ -61,7 +61,7 @@
                                 <td>{{$benefits->name }}</td>
                                 <td>{{$benefits->description}}</td>
                                                
-                                    <td class="row">
+                                    <td class="d-flex">
                                     <a href="{{ route('benefit.edit', $benefits->id)}}" class="btn btn-primary">Edit</a>
                                     <form action="{{ route('benefit.destroy', $benefits->id)}}" method="post">
                   @csrf

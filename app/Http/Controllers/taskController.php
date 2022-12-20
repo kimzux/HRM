@@ -15,12 +15,9 @@ class taskController extends Controller
     public function index()
     {
       abort_if(Auth::user()->cannot('view task'), 403, 'Access Denied');
-    
       $task= Task::with('project','employee','employee_task.employee')->get();
       $employee = Employee::select('id', 'first_name')->get();
       $project = Project::select('id', 'project_title','project_startdate','project_enddate')->get();
-   
-      // $patient = Patient::with('reports.analyzes')->find(1);
       return view('task.index',  ['employee'=> $employee,'task'=> $task, 'project'=>$project]);
     }
 
@@ -39,12 +36,7 @@ class taskController extends Controller
         $dt1 = Carbon::parse($task->task_startdate);
         $dt2 = Carbon::parse($task->task_enddate);
         $task->save();
-
-
-
         $assignto = [];
-
-  //insert using foreach loop
    foreach($request->assignto as   $employee_id) {
    $Collaborator = new Employee_Task();
    $Collaborator->task_id=$task->id;
@@ -56,6 +48,6 @@ class taskController extends Controller
         Alert::success('Success!', 'successful Task added');
         return back();       
         
-}
+  }
 
 }

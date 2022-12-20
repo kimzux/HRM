@@ -81,7 +81,7 @@
         <span class="p-2 mb-1 bg-danger text-white">Rejected</span>
                  @endif</td>
                                      
-                                        <td class="row">
+                                        <td class="d-flex">
                                         @if(is_null($loans->status))
                                             <a href="{{route('loan.approve', $loans->id)}}" title="approve" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $loans->id; ?>">Approve</a>
                                             <a href="{{route('loan.decline', $loans->id)}}" title="reject" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $loans->id; ?>" data-value="Rejected" >Reject</a><br>

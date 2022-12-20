@@ -2,23 +2,26 @@
 
 namespace App\Notifications;
 
+use App\Models\Disciplinary;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class PerdeimApplicationRejected extends Notification
+class DisciplinaryNotification extends Notification
 {
     use Queueable;
-
+    
+    protected $disciplinary;
+    
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Disciplinary $disciplinary)
     {
-        //
+        $this->disciplinary = $disciplinary;
     }
 
     /**
@@ -41,9 +44,9 @@ class PerdeimApplicationRejected extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-       
-        ->line('Your request have been rejected')
-        ->action('Kindly login to view', url('/'));
+                    ->line('You have new disciplinary records')
+                    ->line($this->disciplinary->title)
+                    ->action('Kindly Login To View', url('/'));
     }
 
     /**

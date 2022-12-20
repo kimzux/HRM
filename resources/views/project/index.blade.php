@@ -63,7 +63,7 @@
                                                 <td>{{$projects->project_status}}</td>
                                                 <td>{{$projects->project_startdate}}</td>
                                                 <td>{{$projects->project_enddate}}</td>
-                                                <td class="row ">
+                                                <td class="d-flex">
                                                 <a href="{{ route('project.edit', $projects->id)}}" class="btn btn-primary">Edit</a>
                                     <form action="{{ route('project.destroy', $projects->id)}}" method="post">
                   @csrf

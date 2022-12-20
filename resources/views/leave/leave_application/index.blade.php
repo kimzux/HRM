@@ -83,7 +83,7 @@
         <span class="p-2 mb-1 bg-danger text-white">Rejected</span>
                  @endif</td>
                                      
-                                        <td class="row">
+                                        <td class="d-flex">
                                         @if(is_null($apply->status))
                                             <a href="{{route('leave.approve', $apply->id)}}" title="approve" class=" m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $apply->id; ?>">Approve</a>
                                             <a href="{{route('leave.decline', $apply->id)}}" title="reject" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $apply->id; ?>" data-value="Rejected" >Reject</a><br>

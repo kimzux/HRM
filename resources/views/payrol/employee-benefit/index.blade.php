@@ -65,7 +65,7 @@
                                 <td>{{$benefit->benefit->name}}</td>
                                 <td>{{$benefit->effective_date}}</td>
                                 <td>{{$benefit->amount}}</td>
-                                    <td class="row">
+                                    <td class="d-flex">
                            
                                     <form action="{{ route('employee-benefit.destroy', $benefit->id)}}" method="post">
                   @csrf

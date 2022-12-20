@@ -59,7 +59,7 @@
                                 <td>{{$leave->id}}</td>
                                 <td>{{$leave->leavename}}</td>
                                 <td>{{$leave->day_no}}</td>
-                                    <td class="row">
+                                    <td class="d-flex">
                                     <a href="{{ route('leave_type.edit', $leave->id)}}" class="btn btn-primary">Edit</a>
                                     <form action="{{ route('leave_type.destroy', $leave->id)}}" method="post">
                   @csrf

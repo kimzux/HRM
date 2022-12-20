@@ -59,7 +59,9 @@ class PayrolController extends Controller
         $query->where('month', $payroll->month)->where('status', 1);
       },
       'salary'
-    ])->get();
+    ])
+    ->whereHas('salary')
+    ->get();
 
     $employees->each(function ($employee) use ($payroll) {
       # payslip

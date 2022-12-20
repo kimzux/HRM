@@ -65,7 +65,7 @@
                                                 <td>{{$logistics->logistic_sup }}</td>
                                                 <td>{{$logistics->quantity }}</td>
                                                 <td>{{$logistics->entry_date }}</td>
-                                                <td class="row ">
+                                                <td class="d-flex ">
                                                 <a href="{{ route('logistic.edit', $logistics->id)}}" class="btn btn-primary">Edit</a>
                                                     <form action="{{ route('logistic.destroy', $logistics->id)}}" method="post">
                   @csrf

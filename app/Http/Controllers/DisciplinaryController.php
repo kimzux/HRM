@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\Disciplinary;
+use App\Notifications\DisciplinaryNotification;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,7 @@ class DisciplinaryController extends Controller
         $disc->details= request('details');
         $disc->save();
         Alert::success('Success!', 'Successfully added');
+        Employee::find($request->first_name)->first()->notify(new DisciplinaryNotification($disc));
         return back();
     }
     public function edit($id)

@@ -70,7 +70,7 @@
                                                 <td>{{$logis->startdate}}</td>
                                                 <td>{{$logis->enddate }}</td>
                                                 <td>{{$logis->remain_quantity}}</td>
-                                                <td class="row ">
+                                                <td class="d-flex">
                                                 <a href="{{ route('logsupport.edit', $logis->id)}}" class="btn btn-primary">Edit</a>
                                                    
             </td>

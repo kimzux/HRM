@@ -46,6 +46,8 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ViewRoomController;
 use App\Http\Controllers\EmployeeBookController;
+use App\Http\Controllers\ManagerAloneController;
+use App\Http\Controllers\PerformanceView;
 use App\Http\Controllers\Password_ResetController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -133,6 +135,7 @@ Route::resource('perdeim.perdeimretire', PerdeimretireController::class);
 Route::resource('perdeim-employee.perdeimretire-view', PerdeimRetireViewController::class);
 Route::resource('employee-deduction', EmployeeDeductionController::class);
 Route::resource('employee-benefit', EmployeeBenefitController::class);
+Route::resource('employee-performance', PerformanceView::class);
 Route::resource('room', RoomController::class);
 Route::resource('book', BookController::class);
 Route::resource('view-room', ViewRoomController::class);
@@ -149,7 +152,7 @@ Route::get('/perdeim.perdeimretire.approve/{id}', [App\Http\Controllers\Perdeimr
 Route::get('/perdeim.perdeimretire.decline/{id}', [App\Http\Controllers\PerdeimretireController::class, 'declined'])->name('perdeim.perdeimretire.decline');
 Route::get('/field.approved/{id}', [App\Http\Controllers\FieldController::class, 'approved'])->name('field.approved');
 Route::get('/field.declined/{id}', [App\Http\Controllers\FieldController::class, 'declined'])->name('field.declined');
-Route::get('file/{id}/download', [App\Http\Controllers\NoticeController::class, 'download'])->name('file.download');
+Route::get('notice/{id}/download', [App\Http\Controllers\NoticeController::class, 'download'])->name('notice.download');
 Route::get('file/{id}/download', [App\Http\Controllers\HomeController::class, 'download'])->name('file.download');
 Route::get('file/{id}/download', [App\Http\Controllers\PerdeimretireController::class, 'download'])->name('file.download');
 Route::get('/loan.approve/{id}', [App\Http\Controllers\LoanController::class, 'approve'])->name('loan.approve');
@@ -158,14 +161,14 @@ Route::get('file.proof/{id}/download', [App\Http\Controllers\WorkOverTimeControl
 Route::get('/work-overtime.approve/{id}', [App\Http\Controllers\WorkOverTimeController::class, 'approve'])->name('work-overtime.approve');
 Route::get('/work-overtime.decline/{id}', [App\Http\Controllers\WorkOverTimeController::class, 'decline'])->name('work-overtime.decline');
 });
-Route::get('/changePassword', [App\Http\Controllers\Password_ResetController::class, 'ResetPassword'])->name('changePasswordGet');
-Route::post('/changePassword', [App\Http\Controllers\Password_ResetController::class, 'changePasswordPost'])->name('changePasswordPost');
+
 Route::get('/payment', function () {
     return view('payrol.payslip.index');
 });
-// Route::resource('countries.cities', 'CitiesController');
-// Route::post('/education', [App\Http\Controllers\EducationController::class, 'store'])->name('education_tore');
-// Route::get('/education/{id}', [App\Http\Controllers\EducationController::class, 'index'])->name('eduction_index');
 
-    // Route::get('user-management/roles', [App\Http\Controllers\RoleController::class, 'index'])->name('roles.index');
-    // Route::get('users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+
+
+Route::resource('manager-dashboard', ManagerAloneController::class);
+Route::get('/changePassword', [App\Http\Controllers\Password_ResetController::class, 'ResetPassword'])->name('changePasswordGet');
+Route::post('/changePassword', [App\Http\Controllers\Password_ResetController::class, 'changePasswordPost'])->name('changePasswordPost');
+

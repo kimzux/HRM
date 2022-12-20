@@ -12,28 +12,25 @@ class SettingController extends Controller
     {
         abort_if(Auth::user()->cannot('View Setting'), 403, 'Access Denied');
         $settings = Setting::first();
-
         return view('setting.index', compact('settings'));
-    
     }
 
     public function store(Request $request)
     {
-      abort_if(Auth::user()->cannot('Create Setting'), 403, 'Access Denied');
-      
+        abort_if(Auth::user()->cannot('Create Setting'), 403, 'Access Denied');
         $setting = new Setting();
         $setting->description = request('description');
-        $setting->email_system= request('email');
-        $setting->phone_number= request('phone');
+        $setting->email_system = request('email');
+        $setting->phone_number = request('phone');
         $setting->link = request('link');
         $setting->save();
         Alert::success('Success!', 'Successfully added');
         return redirect()->route('setting.index');
-  
-      }
-      public function show(Setting $set)
-      {
+    }
+
+    public function show(Setting $set)
+    {
         abort_if(Auth::user()->cannot('Show Setting'), 403, 'Access Denied');
         return view('setting.create', compact('set'));
-      } 
+    }
 }

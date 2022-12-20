@@ -57,7 +57,7 @@
                                 <td>{{$disciplinarys->title}}</td>
                                 <td>{{$disciplinarys->details}}</td>
                                 <td><button class="btn btn-sm btn-success">{{$disciplinarys->disciplinary_action}}</button></td>
-                                    <td class="row">
+                                    <td class="d-flex">
                                     <a href="{{ route('disciplinary.edit', $disciplinarys->id)}}" class="btn btn-primary ml-4">Edit</a>
                                     <form action="{{ route('disciplinary.destroy', $disciplinarys->id)}}" method="post">
                   @csrf

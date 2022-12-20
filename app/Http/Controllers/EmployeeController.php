@@ -37,7 +37,7 @@ class EmployeeController extends Controller
         $employee_user->email = request('email');
         $employee_user->employee_id = $employee->id;
         $employee_user->password_reset = 1;
-        $employee_user->name = request('first_name');
+        $employee_user->name = request('first_name').' '.request('last_name');
         $employee_user->password = Hash::make(request('email'));
         $employee_user->save();
 

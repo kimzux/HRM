@@ -102,18 +102,8 @@
                             
                             <div class="form-group">
                                 <label class="control-label">Basic Salary</label>
-                                <input type="text" name="salary" class="form-control" id="recipient-name1" minlength="1" maxlength="35" value="" required>
+                                <input type="number" name="salary" class="form-control" id="recipient-name1" minlength="1" maxlength="35" value="" required>
                             </div>
-                            
-                            <!-- <div class="form-group">
-                                <label class="control-label">status</label>
-                                <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" name="status" required>
-                                    <option value="">Select Here</option>
-                                    <option value="1">Active</option>
-                                    <option value="0">InActive</option>
-                                </select>
-                            </div> -->
-                            
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" name="id" value="" class="form-control" id="recipient-name1">

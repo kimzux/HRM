@@ -65,7 +65,7 @@
                                 <td>{{$deduct->deduction->name}}</td>
                                 <td>{{$deduct->effective_date}}</td>
                                 <td>{{$deduct->amount}}</td>
-                                    <td class="row">
+                                    <td class="d-flex">
                            
                                     <form action="{{ route('employee-deduction.destroy', $deduct->id)}}" method="post">
                   @csrf

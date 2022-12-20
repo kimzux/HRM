@@ -30,7 +30,6 @@
     <!-- CARDS -->
     <div class="container-fluid">
       <div class="row">
-        
         <div class="col-12 col-lg-6 col-xl">
 
           <!-- Card -->
@@ -40,13 +39,45 @@
                 <div class="col">
 
                   <!-- Title -->
-                  <a href="{{route('leave.index')}}" ><h4 class="card-title text-uppercase text-black mb-2">
+                  <a href="{{route('employee.index')}}" ><h4 class="card-title text-uppercase text-black mb-2">
+                    Total Employees
+                  </h4>
+                  
+                  <!-- Heading -->
+                  <span class="h2 mb-0">
+                  <?= $total_employees?? '' ?>
+                  </span>
+
+                  </a>
+                </div>
+                <div class="col-auto">
+
+                  <!-- Icon -->
+                  <span class="h2 fe fe-users text-muted mb-0"></span>
+
+                </div>
+              </div> <!-- / .row -->
+
+            </div>
+          </div>
+
+        </div>
+        <div class="col-12 col-lg-6 col-xl">
+
+          <!-- Card -->
+          <div class="card">
+            <div class="card-body">
+              <div class="row align-items-center">
+                <div class="col">
+
+                  <!-- Title -->
+                  <a href="{{route('leave_apply.index')}}" ><h4 class="card-title text-uppercase text-black mb-2">
                     Total Leaves
                   </h4>
 
                   <!-- Heading -->
                   <span class="h2 mb-0">
-                  <?= $leaves?? '' ?>
+                  <?= $total_leaves?? '' ?>
                   </span>
                   </a>
                 </div>
@@ -62,35 +93,7 @@
           </div>
 
         </div>
-        <div class="col-12 col-lg-6 col-xl">
- <!-- Card -->
-          <div class="card">
-            <div class="card-body">
-              <div class="row align-items-center">
-                <div class="col">
-                <a href="{{route('perdeim.index')}}" ><h4 class="card-title text-uppercase text-black mb-2">
-                    Total Perdeim
-                  </h4>
-
-                  <!-- Heading -->
-                  <span class="h2 mb-0">
-                  <?= $perdeim?? '' ?>
-                  </span>
-                  </a>
-                </div>
-                <div class="col-auto">
-
-                  <!-- Icon -->
-                  <span class="h2 fe fe-briefcase text-muted mb-0"></span>
-
-                </div>
-              </div> <!-- / .row -->
-
-            </div>
-                  
-
-            </div>
-         </div>
+      
      </div>
 </div>
 <div class="container-fluid">
@@ -113,7 +116,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           <?php foreach($notice as $value): ?>
+                                           <?php foreach($notice AS $value): ?>
                                             <tr class="scrollbar" style="vertical-align:top">
                                                 <td><?php echo $value->title ?></td>
                                                 <td><mark><a href="{{ route('file.download', $value->id) }}" target="_blank">download</a></mark>

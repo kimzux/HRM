@@ -41,7 +41,7 @@
         @foreach($employee as $employees)
         <tr>
             <td>{{$employees->id}}</td>
-            <td>{{$employees->first_name}}</td>
+            <td>{{$employees->full_name}}</td>
             <td>{{$employees->em_code}}</td>
             <td>{{$employees->email}}</td>
             <td>{{$employees->em_phone}}</td>

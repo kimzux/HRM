@@ -528,6 +528,26 @@ class DatabaseSeeder extends Seeder
                 'name' => 'create perdeim-retires-view',
                 'guard_name' => 'web',
             ],
+            [
+                'name' => 'manager dashboard',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'delete notice',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'edit notice',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'update notice',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'view employee performance',
+                'guard_name' => 'web',
+            ],
         ]);
         $this->call(AdminUserSeeder::class);
     }

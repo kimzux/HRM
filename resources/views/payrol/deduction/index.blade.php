@@ -61,7 +61,7 @@
                                 <td>{{$deduct->id}}</td>
                                 <td>{{$deduct->name}}</td>
                                 <td>{{$deduct->description}}</td>
-                                    <td class="row">
+                                    <td class="d-flex">
                                     <a href="{{ route('deduction.edit', $deduct->id)}}" class="btn btn-primary">Edit</a>
                                     <form action="{{ route('deduction.destroy', $deduct->id)}}" method="post">
                   @csrf

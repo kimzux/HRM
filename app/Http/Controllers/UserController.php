@@ -70,17 +70,6 @@ class UserController extends Controller
     
             return view('user-management.users.editUser', compact('user'));
     }
-    // public function update(Request $request, $id)
-    // {
-    //     $validatedData = $request->validate([
-    //         'name' => 'required | string | max:255',
-    //         'email' => 'required | string | email | max:255 | unique:users',
-    //         'password' => 'required | min:8 ',
-    //     ]);
-    //     User::whereId($id)->update($validatedData);
-    //     Alert::success('Success!', 'Successfully Updated');
-    //     return back();
-        //   return redirect('/foodie')->with('success', 'Corona Case is successfully saved');
         public function update(Request $request, $id)
         { 
             abort_if(Auth::user()->cannot('Update user'), 403, 'Access Denied');

@@ -94,12 +94,7 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Employee</label>
-                                    <select class="js-example-basic-single" tabindex="1" name="first_name" style="width:100%" required>
-                                        <option value="">Select Here</option>
-                                        @foreach($employee as $employees)
-                                        <option value="{{ $employees->id}}">{{ $employees->first_name}}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" name="first_name" class="form-control" id="recipient-name1" value="{{ $employee->name}}" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" id="hourlyFix">Goals</label>
