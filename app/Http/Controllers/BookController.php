@@ -30,10 +30,13 @@ class BookController extends Controller
       
           $booked = Book::where('reservation_date', $request->reserve_date)
           ->where('time_in', '<=', $request->time_in)
-          ->where('time_out', '>=', $request->time_in)
-          ->where('status', '!=', 0)
+          ->where('time_out', '>', $request->time_in)
+          ->where('room_id', $request->room_no)
+          ->where(function($q){
+            $q->whereNull('status')->orWhere('status', '1');  
+          })
           ->count();
-      
+
           //reject if there is pending leave application
           if ($booked) {
             Alert::warning('warning!', 'You can\'t book because the room has been booked at this time!');

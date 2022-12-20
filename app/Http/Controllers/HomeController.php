@@ -32,7 +32,7 @@ class HomeController extends Controller
         // abort_if(Auth::user()->cannot('View Dashboard'), 403, 'Access Denied');
 
         if (
-         auth()->user()->cannot('View Dashboard')
+         auth()->user()->cannot('View Dashboard', 'manager dashboard')
         ) 
         {
             return view('dashboard');
