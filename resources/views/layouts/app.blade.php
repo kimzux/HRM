@@ -262,7 +262,7 @@
           </a>
         </li>
         @endcan
-        @can('view Loan-apply')
+        @can('view Loan apply')
         <li class="nav-item {{ Request::url() == url('/loan-apply') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('loan-apply.index') }}">
             <i class="fe fe-credit-card"></i> Loans

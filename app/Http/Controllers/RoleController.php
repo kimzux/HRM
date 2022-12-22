@@ -12,58 +12,45 @@ class RoleController extends Controller
     public function index()
     {
         abort_if(Auth::user()->cannot('View role'), 403, 'Access Denied');
-        
         $roles = Role::all();
         return view('user-management.roles.index', compact('roles'));
     }
 
     public function edit(Role $role)
     {
-
-        abort_if(Auth::user()->cannot('edit role'), 403, 'Access Denied');
-        
+        abort_if(Auth::user()->cannot('edit role'), 403, 'Access Denied'); 
         $permissions = Permission::all();
-        $role->load('permissions');
-        
+        $role->load('permissions'); 
         return view('user-management.roles.edit', compact('role', 'permissions'));
     }
 
-
-
     public function store(Request $request)
     {
-    
-        abort_if(Auth::user()->cannot('add role'), 403, 'Access Denied');
-        
-
-        $request->validate([
+       abort_if(Auth::user()->cannot('add role'), 403, 'Access Denied');
+       $request->validate([
             'name' => ['required']
         ]);
-
-        Role::create(['name' => $request->name]);
-
-        return back();
+       Role::create(['name' => $request->name]);
+       return back();
     }
     
     public function update(Request $request, Role $role)
-
     {
         abort_if(Auth::user()->cannot('update role'), 403, 'Access Denied');
         $request->validate([
             'permissions' => ['array']
         ]);
-
         $role->syncPermissions($request->permissions);
         Alert::success('Success!', 'Successfully updated');
         return redirect(route('roles.index'));
     }
+
     public function destroy($id)
     {
         abort_if(Auth::user()->cannot('delete role'), 403, 'Access Denied');
         $role = Role::findOrFail($id);
         $role->delete();
         Alert::success('Success!', 'Successfully deleted');
-        return back();
-        
+        return back();    
     }
 }

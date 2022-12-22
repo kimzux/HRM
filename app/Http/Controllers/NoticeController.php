@@ -65,7 +65,7 @@ class NoticeController extends Controller
         Alert::success('Success!', 'Successfully updates');
         return redirect()->route('notice.index');
   
-      }
+    }
   
 
 }

@@ -14,7 +14,7 @@ class PerdeimRetireViewController extends Controller
 {
     public function store(Request $request)
     {
-      abort_if(Auth::user()->cannot('create perdeim-retires-view'), 403, 'Access Denied');
+        abort_if(Auth::user()->cannot('create perdeim-retires-view'), 403, 'Access Denied');
         $perdeimretire = new PerdeimRetire();
         $perdeimretire->perdeim_id= request('perdeim_id');
         $perdeimretire->amount_used= request('amount_used');

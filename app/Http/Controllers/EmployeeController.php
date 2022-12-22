@@ -47,15 +47,12 @@ class EmployeeController extends Controller
     public function index()
     {
         abort_if(Auth::user()->cannot('view employee'), 403, 'Access Denied');
-
         $employee = Employee::all();
-
         return view('employee.index', compact('employee'));
     }
     public function create()
     {
         abort_if(Auth::user()->cannot('show employee'), 403, 'Access Denied');
-        // abort_if(Auth::user()->cannot('View stock'), 403, 'Access Denied');
         $employees = Department::select('id', 'dep_name')->get();
         $value = Designation::select('id', 'des_name')->get();
         return view('employee.create', [
@@ -67,17 +64,12 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         abort_if(Auth::user()->cannot('edit employee'), 403, 'Access Denied');
-
         $employee = Employee::findOrFail($id);
         $employees = Department::select('id', 'dep_name')->get();
         $value = Designation::select('id', 'des_name')->get();
-        return view('employee.edit', [
-            'employee' => $employee,
-            'employees' => $employees,
-            'value' => $value,
-            $id,
-        ]);
+        return view('employee.edit', ['employee' => $employee,'employees' => $employees,'value' => $value,$id,]);
     }
+
     public function update(Request $request, $id)
     {
         abort_if(Auth::user()->cannot('update employee'), 403, 'Access Denied');
@@ -104,7 +96,6 @@ class EmployeeController extends Controller
         $employee_user->name = request('first_name');
         $employee_user->password_reset = 1;
         $employee_user->save();
-
         Alert::success('Success!', 'Successfully updated');
         return redirect(route('employee.index'));
     }
@@ -112,19 +103,16 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         abort_if(Auth::user()->cannot('delete employee'), 403, 'Access Denied');
-
         $employee = Employee::findOrFail($id);
         $employee->delete();
         Alert::success('Success!', 'Successfully deleted');
         return back();
-        // return redirect('/foodie')->with('success', 'Corona Case Data is successfully deleted');
     }
+
     public function show($employee_id)
     {
         abort_if(Auth::user()->cannot('see employee'), 403, 'Access Denied');
-        $education = Education::with('employee')
-            ->where('employee_id', $employee_id)
-            ->get();
+        $education = Education::with('employee')->where('employee_id', $employee_id)->get();
         return view('education.index', compact('education', 'employee_id'));
     }
 }

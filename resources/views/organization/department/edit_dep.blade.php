@@ -66,7 +66,7 @@
                                             <tr>
                                                 <td>{{$dep->dep_name}}</td>
                                                 <td class="jsgrid-align-center ">
-                                                   <div class="row">
+                                                   <div class="d-flex">
                                                 <a href="{{ route('department.edit', $dep->id)}}" class="ml-2 btn btn-primary">Edit</a>
                                                <form action="{{ route('department.destroy', $dep->id )}}" method="post">
                                                   @csrf

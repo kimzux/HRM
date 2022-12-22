@@ -23,35 +23,34 @@ class LogsupportController extends Controller
       $logistic= Logistic::select('id', 'logistic_name')->get();
       return view('logistic.logsupport.index',  ['employee'=> $employee,'task'=> $task, 'project'=>$project,'logistic'=> $logistic,'logsupport'=> $logsupport, ]);
     } 
+
     public function store(Request $request)
     {
       abort_if(Auth::user()->cannot('create logsupport'), 403, 'Access Denied');
-        $logsupport = new Logsupport();
-        $logsupport->logistic_id= request('logistic_name');
-        $logsupport->employee_id = request('first_name');
-        $logsupport->project_id = request('project_title');
-        $logsupport->task_id = request('task_title');
-        $logsupport->quantity =$quantity=request('qty');
-        $logsupport->startdate = request('startdate');
-        $logsupport->enddate= request('enddate');
-        $logsupport->remark= request('remark');
-        $logsupport->remain_quantity=$qty=($logsupport->logistic->quantity)-$quantity;
+      $logsupport = new Logsupport();
+      $logsupport->logistic_id= request('logistic_name');
+      $logsupport->employee_id = request('first_name');
+      $logsupport->project_id = request('project_title');
+      $logsupport->task_id = request('task_title');
+      $logsupport->quantity =$quantity=request('qty');
+      $logsupport->startdate = request('startdate');
+      $logsupport->enddate= request('enddate');
+      $logsupport->remark= request('remark');
+      $logsupport->remain_quantity=$qty=($logsupport->logistic->quantity)-$quantity;
         if($quantity>($logsupport->logistic->quantity)){
             Alert::Warning('warning!', 'its exceed the total logistic number');
             return back();
           }
-    
            else{
-        $logsupport->save();
-        Alert::success('Success!', 'application successful added');
-        return back();
-       
-      
+      $logsupport->save();
+      Alert::success('Success!', 'application successful added');
+      return back(); 
       }
     }
-      public function edit($id)
-      {
-        abort_if(Auth::user()->cannot('edit logsupport'), 403, 'Access Denied');
+
+   public function edit($id)
+   {
+      abort_if(Auth::user()->cannot('edit logsupport'), 403, 'Access Denied');
       $logsupport = Logsupport::findOrFail($id);
       $employee = Employee::select('id', 'first_name')->get();
       $project = Project::select('id', 'project_title')->get();
@@ -59,36 +58,28 @@ class LogsupportController extends Controller
       $logistic= Logistic::select('id', 'logistic_name')->get();
       return view('logistic.logsupport.edit',  ['employee'=> $employee,'task'=> $task, 'project'=>$project,'logistic'=> $logistic,'logsupport'=> $logsupport, ]);
     } 
+
     public function update(Request $request, $id)
     {
       abort_if(Auth::user()->cannot('update logsupport'), 403, 'Access Denied');
-      
-        $logsupport = Logsupport::findOrFail($id);
-        $logsupport->logistic_id= request('logistic_name');
-        $logsupport->employee_id = request('first_name');
-        $logsupport->project_id = request('project_title');
-        $logsupport->task_id = request('task_title');
-        $logsupport->quantity =$quantity=request('quantity');
-        $logsupport->startdate = request('startdate');
-        $logsupport->enddate= request('enddate');
-        $logsupport->remark= request('remark');
-        $logsupport->remain_quantity=$qty=($logsupport->logistic->quantity)-$quantity;
-        if($quantity>($logsupport->logistic->quantity)){
+      $logsupport = Logsupport::findOrFail($id);
+      $logsupport->logistic_id= request('logistic_name');
+      $logsupport->employee_id = request('first_name');
+      $logsupport->project_id = request('project_title');
+      $logsupport->task_id = request('task_title');
+      $logsupport->quantity =$quantity=request('quantity');
+      $logsupport->startdate = request('startdate');
+      $logsupport->enddate= request('enddate');
+      $logsupport->remark= request('remark');
+      $logsupport->remain_quantity=$qty=($logsupport->logistic->quantity)-$quantity;
+      if($quantity>($logsupport->logistic->quantity)){
             Alert::Warning('warning!', 'its exceed the total logistic number');
             return back();
           }
-    
            else{
-        $logsupport->update();
-        Alert::success('Success!', 'Successfully updades');
-        return redirect()->route('logsupport.index');
-      
-      }
-        
-  
-      }
-  
-     
-
-
+      $logsupport->update();
+      Alert::success('Success!', 'Successfully updades');
+      return redirect()->route('logsupport.index');
+      }     
+    }
 }

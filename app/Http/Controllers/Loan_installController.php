@@ -11,18 +11,9 @@ use Illuminate\Support\Facades\Auth;
 
 class Loan_installController extends Controller
 {
-    // public function index($loan_id)
-    // {
-    //   abort_if(Auth::user()->cannot('view loan_install'), 403, 'Access Denied');
-     
-      
-    //   $loan_install = Loan_install::with('loan')->where('loan_id', $loan_id)->get();
-    //   return view('loan.loan_install.index', compact('loan_install','loan_id'));
-    // } 
     public function store( Request $request)
     {
       abort_if(Auth::user()->cannot('create loan_install'), 403, 'Access Denied');
-  
         $loan_install = new Loan_install();
         $loan_install->loan_id= $request->input('loan_id');
         $loan_install->receiver = $request->input('receiver');
@@ -32,12 +23,8 @@ class Loan_installController extends Controller
         $loan_install->loan->total_pay += $loan_install->amount_pay;
         $loan_install->loan->save();
         $loan_install->save();
-      
-   
-        
-          Alert::success('Success!', 'Successfully added');
-          return redirect()->back();
-      
+        Alert::success('Success!', 'Successfully added');
+        return redirect()->back();
        
       }
     

@@ -41,13 +41,11 @@ class LogisticController extends Controller
       $logistic->delete();
       Alert::success('Success!', 'Successfully deleted');
       return back();
-      // return redirect('/foodie')->with('success', 'Corona Case Data is successfully deleted');
     }
     public function edit($id)
     {
       abort_if(Auth::user()->cannot('edit logistic'), 403, 'Access Denied');
       $logistic = Logistic::findOrFail($id);
-   
       return view('logistic.edit', compact('logistic'));
     }
     public function update(Request $request, $id)

@@ -548,6 +548,22 @@ class DatabaseSeeder extends Seeder
                 'name' => 'view employee performance',
                 'guard_name' => 'web',
             ],
+            [
+                'name' => 'view loan apply',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'create loan apply',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'approve loan',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'reject loan',
+                'guard_name' => 'web',
+            ],
         ]);
         $this->call(AdminUserSeeder::class);
     }

@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="form-group col-md-3 m-t-20">
                                         <label>NID</label>
-                                        <input type="text" name="em_nid" class="form-control" value="" placeholder="" minlength="10" required> 
+                                        <input type="text" name="em_nid" class="form-control" value="" placeholder=""  required> 
                                     </div>
                                     <div class="form-group col-md-3 m-t-20">
                                         <label>Contact Number </label>

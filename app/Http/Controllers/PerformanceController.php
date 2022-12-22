@@ -83,31 +83,22 @@ class PerformanceController extends Controller
       $dt2 = Carbon::parse($perform->end_date);
       $total_days = $dt1->diffInDays($dt2);
       $perform->timeline= $total_days;
-      $perform->update();
-
-     
-     
-     
-
+      $perform->update();  
       Alert::success('Success!', 'Successfully updated');
       return redirect()->route('performance.index');
   }
   public function show($performance_id)
-{
-  abort_if(Auth::user()->cannot('view Rate'), 403, 'Access Denied');
+  {
+      abort_if(Auth::user()->cannot('view Rate'), 403, 'Access Denied');
+      $rate = Rate::with('performance')->where('performance_id', $performance_id)->get();
+      return view('performance.rate.index', compact('rate','performance_id'));
+  }
 
-    $rate = Rate::with('performance')->where('performance_id', $performance_id)->get();
-   
-    return view('performance.rate.index', compact('rate','performance_id'));
-
-}
-public function RateAverage($performance_id)
-{
-  abort_if(Auth::user()->cannot('view Rateaverage'), 403, 'Access Denied');
-
-    $rate = Rate::where('performance_id', $performance_id)->avg('rate');
-    return view('performance.rate.create', compact('rate','performance_id'));
-
-}
+  public function RateAverage($performance_id)
+  {
+     abort_if(Auth::user()->cannot('view Rateaverage'), 403, 'Access Denied');
+     $rate = Rate::where('performance_id', $performance_id)->avg('rate');
+     return view('performance.rate.create', compact('rate','performance_id'));
+  }
         
 }

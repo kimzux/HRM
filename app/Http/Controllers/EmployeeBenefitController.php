@@ -20,21 +20,19 @@ class EmployeeBenefitController extends Controller
       $benefits= benefit::select('id', 'name')->get();
       return view('payrol.employee-benefit.index', ['employee'=> $employee,'benefit_employee'=> $benefit_employee, 'benefits'=>$benefits]);
     }
+
     public function store(Request $request)
     {
       
-    abort_if(Auth::user()->cannot('create deduction'), 403, 'Access Denied');
-      // Education::create($request->all() + ['employee_id' => $employee_id]);
-      // Alert::success('Success!', 'Successfully added');
-      // return redirect()->route('employee.education.index',$employee_id);
-        $benefit = new EmployeeBenefit();
-        $benefit->employee_id = request('employee_id');
-        $benefit->benefit_id = request('benefit_id');
-        $benefit->effective_date = request('effective_date');
-        $benefit->amount= request('amount');
-        $benefit->save();
-        Alert::success('Success!', 'Successfully added');
-        return back();
+      abort_if(Auth::user()->cannot('create deduction'), 403, 'Access Denied');
+      $benefit = new EmployeeBenefit();
+      $benefit->employee_id = request('employee_id');
+      $benefit->benefit_id = request('benefit_id');
+      $benefit->effective_date = request('effective_date');
+      $benefit->amount= request('amount');
+      $benefit->save();
+      Alert::success('Success!', 'Successfully added');
+      return back();
   
-      }
+    }
 }

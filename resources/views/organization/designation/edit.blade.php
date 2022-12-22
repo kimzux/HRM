@@ -66,7 +66,7 @@
                                             <tr>
                                                 <td>{{$des->des_name}}</td>
                                                 <td class="jsgrid-align-center ">
-                                                   <div class="row">
+                                                   <div class="d-flex">
                                                 <a href="{{ route('designation.edit', $des->id)}}" class="ml-2 btn btn-primary">Edit</a>
                                                <form action="{{ route('designation.destroy', $des->id )}}" method="post">
                                                   @csrf

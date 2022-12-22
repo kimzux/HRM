@@ -35,7 +35,7 @@
                             <div> <span class="fw-bolder">Designation</span> <small class="ms-3">{{$payslip->employee->designation->des_name}}</small> </div>
                         </div>
                         <div class="col-md-6">
-                            <div> <span class="fw-bolder">Ac No.</span> <small class="ms-3">{{$payslip->employee->bank_info->account_number}}</small> </div>
+                            <div> <span class="fw-bolder">Ac No. </span> <small class="ms-3">{{$payslip->employee->bank_info->account_number}}</small> </div>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                     <tbody>
                         <tr>
                             <th scope="row">Basic Salary</th>
-                            <td>{{$payslip->employee->salary->basic_salary}}</td>
+                            <td>{{$payslip->salary}}</td>
                             <th>
                             @foreach ($payslip->deductions as $deduction)
                               <p>{{$deduction->deduction_name}}</p>
@@ -82,7 +82,7 @@
                         </tr>
                         <tr class="border-top">
                             <th scope="row">Total Earning</th>
-                            <td>{{$payslip->allowance_amount}}</td>
+                            <td>{{$payslip->allowance_amount + $payslip->salary}}</td>
                             <td>Total Deductions</td>
                             <td>{{$payslip->deduction_amount}}</td>
                         </tr>

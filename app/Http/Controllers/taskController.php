@@ -24,30 +24,26 @@ class taskController extends Controller
     public function store(Request $request)
     {
       abort_if(Auth::user()->cannot('create task'), 403, 'Access Denied');
-        $task = new Task();
-        $task->employee_id=request('first_name');
-        $task->project_id=request('projectid');
-        $task->task_title=request('title');
-        $task->task_startdate=request('startdate');
-        $task->task_enddate=request('enddate');
-        $task->task_details=request('details');
-        $task->task_status=request('status');
-        $task->task_type=request('type');
-        $dt1 = Carbon::parse($task->task_startdate);
-        $dt2 = Carbon::parse($task->task_enddate);
-        $task->save();
-        $assignto = [];
-   foreach($request->assignto as   $employee_id) {
-   $Collaborator = new Employee_Task();
-   $Collaborator->task_id=$task->id;
-   $Collaborator->employee_id=$employee_id;
-   $Collaborator->save(); 
-   
-  }
-
-        Alert::success('Success!', 'successful Task added');
-        return back();       
-        
-  }
+      $task = new Task();
+      $task->employee_id=request('first_name');
+      $task->project_id=request('projectid');
+      $task->task_title=request('title');
+      $task->task_startdate=request('startdate');
+      $task->task_enddate=request('enddate');
+      $task->task_details=request('details');
+      $task->task_status=request('status');
+      $task->task_type=request('type');
+      $dt1 = Carbon::parse($task->task_startdate);
+      $dt2 = Carbon::parse($task->task_enddate);
+      $task->save();
+      $assignto = [];
+      foreach($request->assignto as   $employee_id) {
+      $Collaborator = new Employee_Task();
+      $Collaborator->task_id=$task->id;
+      $Collaborator->employee_id=$employee_id;
+      $Collaborator->save(); }
+      Alert::success('Success!', 'successful Task added');
+      return back();       
+    }
 
 }

@@ -15,23 +15,18 @@ class WorkOverTimeController extends Controller
 {
   public function index()
   {
-
     abort_if(Auth::user()->cannot('view work-overtime'), 403, 'Access Denied');
     $work_overtime = WorkOverTime::all();
     $employee = Employee::select('id', 'first_name')->get();
-
     return view('payrol.work-overtime.index', compact('work_overtime', 'employee'));
   }
+
   public function store(Request $request)
   {
-
     abort_if(Auth::user()->cannot('create work-overtime'), 403, 'Access Denied');
-    // Education::create($request->all() + ['employee_id' => $employee_id]);
-    // Alert::success('Success!', 'Successfully added');
-    // return redirect()->route('employee.education.index',$employee_id);\
     $month = now()->startOfMonth()->subMonth()->format('Y-m');
     $request->validate([
-      'employee_id' => [
+        'employee_id' => [
         'required',
         Rule::exists(Employee::class, 'id'),
         Rule::unique(WorkOverTime::class, 'employee_id')
@@ -41,7 +36,6 @@ class WorkOverTimeController extends Controller
             $q->whereNull('status')->orWhere('status', 1);
           })
       ],
-    
       'status' => ['required', Rule::in(1.5, 2)],
       'hours' => ['required', 'integer']
     ]);
@@ -62,30 +56,26 @@ class WorkOverTimeController extends Controller
 
   public function destroy($id)
   {
-
     abort_if(Auth::user()->cannot('delete work-overtime'), 403, 'Access Denied');
     $work_overtime = WorkOverTime::findOrFail($id);
     $work_overtime->delete();
     Alert::success('Success!', 'Successfully deleted');
     return back();
-    // return redirect('/foodie')->with('success', 'Corona Case Data is successfully deleted');
   }
+
   public function edit($id)
   {
-
     abort_if(Auth::user()->cannot('edit work-overtime'), 403, 'Access Denied');
     $work_overtime = WorkOverTime::findOrFail($id);
     $employee = Employee::select('id', 'first_name')->get();
     return view('payrol.work-overtime.edit', compact('work_overtime', 'employee'));
   }
+
   public function update(Request $request, $id)
-
   {
-
-    abort_if(Auth::user()->cannot('update work-overtime'), 403, 'Access Denied');
-
-    $month = now()->startOfMonth()->subMonth()->format('Y-m');
-    $request->validate([
+   abort_if(Auth::user()->cannot('update work-overtime'), 403, 'Access Denied');
+   $month = now()->startOfMonth()->subMonth()->format('Y-m');
+   $request->validate([
       'employee_id' => [
         'required',
         Rule::exists(Employee::class, 'id'),
@@ -100,8 +90,6 @@ class WorkOverTimeController extends Controller
       'status' => ['required', Rule::in(1.5, 2)],
       'hours' => ['required', 'integer']
     ]);
-  
-
     $work_overtime =WorkOverTime::findOrFail($id);;
     $employee_id = $work_overtime->employee_id = request('employee_id');
     $work_overtime->month = now()->startOfMonth()->subMonth()->format('Y-m');
@@ -114,14 +102,13 @@ class WorkOverTimeController extends Controller
     Alert::success('Success!', 'Successfully updated');
     return redirect()->route('work-overtime.index');
   }
+
   public function approve($id)
   {
     abort_if(Auth::user()->cannot('approve work-overtime'), 403, 'Access Denied');
     $work_overtime = WorkOverTime::findOrFail($id);
     $work_overtime->status = 1; //Approved
     $work_overtime->save();
-
-
     Alert::success('Approved!', 'Your Work-Overtime have been approved');
     return redirect()->back(); //Redirect user somewhere
   }
@@ -134,15 +121,13 @@ class WorkOverTimeController extends Controller
     $work_overtime->save();
     Alert::info('Rejected!', 'Your work-overtime have been rejected');
     return redirect()->back(); //Redirect user somewhere
-
-
   }
+
   public function download($id)
-    {
-      abort_if(Auth::user()->cannot('download work-overtime'), 403, 'Access Denied');
-      $work_overtime= WorkOverTime::where('id', $id)->firstOrFail();
-    
-        return response()->file(storage_path('app') . DIRECTORY_SEPARATOR . $work_overtime->file_url);
-       
-    }
+  {
+    abort_if(Auth::user()->cannot('download work-overtime'), 403, 'Access Denied');
+    $work_overtime= WorkOverTime::where('id', $id)->firstOrFail();
+    return response()->file(storage_path('app') . DIRECTORY_SEPARATOR . $work_overtime->file_url);  
+  }
+  
 }

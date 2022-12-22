@@ -23,10 +23,7 @@ class EmployeeDeductionController extends Controller
     public function store(Request $request)
     {
       
-    abort_if(Auth::user()->cannot('create deduction'), 403, 'Access Denied');
-      // Education::create($request->all() + ['employee_id' => $employee_id]);
-      // Alert::success('Success!', 'Successfully added');
-      // return redirect()->route('employee.education.index',$employee_id);
+        abort_if(Auth::user()->cannot('create deduction'), 403, 'Access Denied');
         $deduction = new EmployeeDeduction();
         $deduction->employee_id = request('employee_id');
         $deduction->deduction_id = request('deduction_id');
@@ -51,7 +48,7 @@ class EmployeeDeductionController extends Controller
       public function edit($id)
       {
         
-    abort_if(Auth::user()->cannot('edit deduction'), 403, 'Access Denied');
+        abort_if(Auth::user()->cannot('edit deduction'), 403, 'Access Denied');
         $deduction =Deduction::findOrFail($id);
         $employee= Employee::select('id', 'first_name')->get();
         return view('payrol.deduction.edit', compact('deduction','employee'));
@@ -60,7 +57,7 @@ class EmployeeDeductionController extends Controller
 
       {
         
-    abort_if(Auth::user()->cannot('update deduction'), 403, 'Access Denied');
+        abort_if(Auth::user()->cannot('update deduction'), 403, 'Access Denied');
     
           $request->validate([
             'employee_id'=> 'required',

@@ -27,17 +27,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $this->data['total_employees'] = Employee::all()->count();
-        // return view('home', $this->data);
-        // abort_if(Auth::user()->cannot('View Dashboard'), 403, 'Access Denied');
-
-        if (
-         auth()->user()->cannot('View Dashboard', 'manager dashboard')
-        ) 
-        {
-            return view('dashboard');
-        }
-
         $total_employees = Employee::count();
         $total_leaves = Leave_application::count();
         $total_projects = Project::count();
@@ -53,9 +42,7 @@ class HomeController extends Controller
     public function download($id)
     {
         $notice = Notice::where('id', $id)->firstOrFail();
-
         return response()->file(
-            storage_path('app') . DIRECTORY_SEPARATOR . $notice->file_url
-        );
+         storage_path('app') . DIRECTORY_SEPARATOR . $notice->file_url);
     }
 }

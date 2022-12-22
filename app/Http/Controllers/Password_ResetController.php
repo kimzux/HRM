@@ -12,14 +12,13 @@ class Password_ResetController extends Controller
 {
   public function ResetPassword()
  {
+  return view('auth.change-password');
+ }
 
-return view('auth.change-password');
-  }
-
-  public function changePasswordPost(Request $request) {
-      
-    $validatedData = $request->validate([
-        'current-password' => 'required',
+ public function changePasswordPost(Request $request) 
+ {
+   $validatedData = $request->validate([
+    'current-password' => 'required',
     'password'=> ['required', 'string', 'min:8', 'confirmed']
     ]);
 
@@ -40,9 +39,8 @@ return view('auth.change-password');
     $user->password = Hash::make($request->get('password'));
     $user->password_reset = 0;
     $user->save();
-
     return redirect()->back()->with("success","Password successfully changed!");
-}
+ }
 
 }
 

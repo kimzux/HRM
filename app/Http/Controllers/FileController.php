@@ -14,21 +14,11 @@ class FileController extends Controller
         $file = Employee_file::with('employee')->where('employee_id', $employee_id)->get();
         return view('document.index', compact('file','employee_id'));
     
-    }
-    
- 
+    } 
     public function store($employee_id ,Request $request)
     {
-        
-        // $validatedData = $request->validate([
-        //  'file' => 'required|csv,txt,xlx,xls,pdf|max:2048',
-        
-        // ]);
-      
         $file_url = $request->file('file_url')->getClientOriginalName();
         $file_url= $request->file('file_url')->store('public/files');
- 
- 
         $save = new Employee_file;
         $save->file_title= request('file_title');
         $save-> employee_id=$employee_id=request('employee_id');
@@ -36,8 +26,6 @@ class FileController extends Controller
         $save->save();
         Alert::success('Success!', 'Successfully added');
         return redirect()->route('employee.document.index',$employee_id);
-       
-      
     }
 
 }

@@ -16,15 +16,13 @@ class LoanController extends Controller
     public function index()
     {
       abort_if(Auth::user()->cannot('view loan'), 403, 'Access Denied');
-  
       $loan = Loan::all();
       $employee= Employee::select('id', 'first_name')->get();
-    //   $loan_install = Loan_install::where('id',$id)->sum('quantity');
       return view('loan.index',  ['employee'=> $employee,'loan'=> $loan ]);
     } 
     public function store(Request $request)
-  {
-    abort_if(Auth::user()->cannot('create loan'), 403, 'Access Denied');
+    {
+      abort_if(Auth::user()->cannot('create loan'), 403, 'Access Denied');
       $loan = new Loan();
       $employee_id = $request->first_name;
       $pendingLoanApplication = Loan::where('employee_id', $employee_id)
@@ -32,13 +30,11 @@ class LoanController extends Controller
       ->orderBy('created_at', 'desc')->first();
       $totalPayLoanApplication = Loan::where('employee_id', $employee_id)
       ->where('amount','total_pay') ->first();
-  
-    //reject if there is pending leave application
-    if ($pendingLoanApplication) {
+      if ($pendingLoanApplication) {
       Alert::warning('warning!', 'You can\'t apply until the previous application is processed!');
       return back();
     }
-    if( $totalPayLoanApplication){
+      if( $totalPayLoanApplication){
       Alert::warning('warning!', 'You can\'t apply until you finishpay the previously loan');
       return back();
     }
@@ -57,14 +53,14 @@ class LoanController extends Controller
       $loan->save();
       Alert::success('Success!', 'Successfully added');
       return redirect()->route('loan.index');
-
     }
+
     public function edit($id)
-  {
-    abort_if(Auth::user()->cannot('edit loan'), 403, 'Access Denied');
-    $loan =Loan::findOrFail($id);
-    $employee= Employee::select('id', 'first_name')->get();
-    return view('loan.edit',  ['employee'=> $employee,'loan'=> $loan, ]);
+    {
+      abort_if(Auth::user()->cannot('edit loan'), 403, 'Access Denied');
+      $loan =Loan::findOrFail($id);
+      $employee= Employee::select('id', 'first_name')->get();
+      return view('loan.edit',  ['employee'=> $employee,'loan'=> $loan, ]);
     } 
     public function update(Request $request, $id)
     {
@@ -84,16 +80,14 @@ class LoanController extends Controller
       }
       $loan->update();
       Alert::success('Success!', 'Successfully updades');
-        return redirect()->route('loan.index');
-
+      return redirect()->route('loan.index');
 }
+
 public function show($loan_id, Loan $employee_id)
 {
-  abort_if(Auth::user()->cannot('view loan_installment'), 403, 'Access Denied');
+    abort_if(Auth::user()->cannot('view loan_installment'), 403, 'Access Denied');
     $loan_install = Loan_install::with('loan')->where('loan_id', $loan_id)->get();
-    
     return view('loan.loan_install.index', compact('loan_install','loan_id'));
-
 }
 
 public function approve($id)
@@ -102,7 +96,6 @@ public function approve($id)
     $loan = Loan::findOrFail($id);
     $loan->status = 1; //Approved
     $loan->save();
-  
     $loan->employee->notify(new LoanApplicationApproved($loan));
     Alert::success('Approved!', 'Your loan have been approved');
     return redirect()->back(); //Redirect user somewhere
@@ -117,6 +110,5 @@ public function approve($id)
     $loan->employee->notify(new   LoanApplicationRejected($loan));
     Alert::info('Rejected!', 'Your loan have been rejected');
     return redirect()->back(); //Redirect user somewhere
-
   }
 }

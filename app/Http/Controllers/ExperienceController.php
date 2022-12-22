@@ -16,9 +16,6 @@ class ExperienceController extends Controller
     }
     public function store($employee_id , Request $request)
     {
-      // Education::create($request->all() + ['employee_id' => $employee_id]);
-      // Alert::success('Success!', 'Successfully added');
-      // return redirect()->route('employee.education.index',$employee_id);
         $experience = new Experience();
         $experience-> employee_id=$employee_id=request('employee_id');
         $experience->exp_company = request('company_name');
@@ -36,9 +33,9 @@ class ExperienceController extends Controller
           return view('experience.edit', compact('employee_id', 'experience'));
       }
       public function update($employee_id, Request $request, Experience $experience)
-    {
+      {
         $experience->update($request->all());
         Alert::success('Success!', 'Successfully updated');
         return redirect()->route('employee.experience.index', $employee_id);
-    }
+     }
 }

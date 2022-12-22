@@ -12,7 +12,7 @@ class RateController extends Controller
 {
     public function store(Request $request)
     {
-      abort_if(Auth::user()->cannot('create rate'), 403, 'Access Denied');
+        abort_if(Auth::user()->cannot('create rate'), 403, 'Access Denied');
         $rate = new Rate();
         $rate->performance_id= request('performance_id');
         $rate->name= request('name');

@@ -29,9 +29,9 @@
 <table id="example" class="table table-striped table-bordered p-2" style="width:100%">
     <thead>
         <tr>
-          <td>ID</td>
           <td>Employee Name</td>
-          <td>PIN</td>
+          <td>Department</td>
+          <td>Designation</td>
           <td>Email</td>
           <td>Contact</td>
           <td>Action</td>
@@ -40,9 +40,9 @@
     <tbody>
         @foreach($employee as $employees)
         <tr>
-            <td>{{$employees->id}}</td>
             <td>{{$employees->full_name}}</td>
-            <td>{{$employees->em_code}}</td>
+            <td>{{$employees->department->dep_name}}</td>
+            <td>{{$employees->designation->des_name}}</td>
             <td>{{$employees->email}}</td>
             <td>{{$employees->em_phone}}</td>
             <div class="d-flex">

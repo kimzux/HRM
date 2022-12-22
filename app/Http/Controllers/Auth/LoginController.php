@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -26,9 +27,22 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
     protected $maxAttempts = 3; // default is 5
     protected $decayMinutes = 2; // default is 1
+
+    public function redirectTo()
+    {
+        if (auth()->user()->can('View Dashboard')) {
+            return route('dashboard');
+        }
+
+        if (auth()->user()->can('manager dashboard')) {
+            return route('manager-dashboard.index');
+        }
+
+        return RouteServiceProvider::HOME;
+    }
 
     /**
      * Create a new controller instance.

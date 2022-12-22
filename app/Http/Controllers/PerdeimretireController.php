@@ -32,9 +32,7 @@ class PerdeimretireController extends Controller
         $perdeim = PerdeimRetire::findOrFail($id);
         $perdeim->status = 1; //Approved
         $perdeim->perdeim->retire_status = 1; //Approved
-        
         $perdeim->push();
-        
         Alert::success('Approved!', 'application successful approved');
         return redirect()->back(); //Redirect user somewhere
       }
@@ -50,11 +48,10 @@ class PerdeimretireController extends Controller
     
       }
       public function download($id)
-    {
-      abort_if(Auth::user()->cannot('download perdeim-retire'), 403, 'Access Denied');
+      {
+        abort_if(Auth::user()->cannot('download perdeim-retire'), 403, 'Access Denied');
         $perdeims = PerdeimRetire::where('id', $id)->firstOrFail();
-    
         return response()->file(storage_path('app') . DIRECTORY_SEPARATOR .$perdeims->file_url);
        
-    }
+      }
 }
