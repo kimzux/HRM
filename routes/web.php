@@ -154,10 +154,10 @@ Route::get('/field.approved/{id}', [App\Http\Controllers\FieldController::class,
 Route::get('/field.declined/{id}', [App\Http\Controllers\FieldController::class, 'declined'])->name('field.declined');
 Route::get('notice/{id}/download', [App\Http\Controllers\NoticeController::class, 'download'])->name('notice.download');
 Route::get('file/{id}/download', [App\Http\Controllers\HomeController::class, 'download'])->name('file.download');
-Route::get('file/{id}/download', [App\Http\Controllers\PerdeimretireController::class, 'download'])->name('file.download');
+Route::get('file/{id}/download', [App\Http\Controllers\PerdeimretireController::class, 'download'])->name('retire.download');
 Route::get('/loan.approve/{id}', [App\Http\Controllers\LoanController::class, 'approve'])->name('loan.approve');
 Route::get('/loan.decline/{id}', [App\Http\Controllers\LoanController::class, 'decline'])->name('loan.decline');
-Route::get('file.proof/{id}/download', [App\Http\Controllers\WorkOverTimeController::class, 'download'])->name('file.download');
+Route::get('file.proof/{id}/download', [App\Http\Controllers\WorkOverTimeController::class, 'download'])->name('work.download');
 Route::get('/work-overtime.approve/{id}', [App\Http\Controllers\WorkOverTimeController::class, 'approve'])->name('work-overtime.approve');
 Route::get('/work-overtime.decline/{id}', [App\Http\Controllers\WorkOverTimeController::class, 'decline'])->name('work-overtime.decline');
 });

@@ -62,7 +62,7 @@
                                 <td>{{$perdeims->perdeim_id }}</td>
                                 <td>{{$perdeims->amount_used }}</td>
                                 <td>{{$perdeims->file_title }}</td>
-                                <td><a href="{{ route('file.download', $perdeims->id) }}" target="_blank">download</a></td>
+                                <td><a href="{{ route('retire.download', $perdeims->id) }}" target="_blank">download</a></td>
                                 <td>
                                             @if(is_null($perdeims->status))
         <span class="p-2 mb-1 bg-primary text-white">Pending</span>
@@ -72,10 +72,10 @@
         <span class="p-2 mb-1 bg-danger text-white">Rejected</span>
                  @endif</td>
                                      
-                                        <td class="row">
+                                        <td class="d-flex">
                                         @if(is_null($perdeims->status))
-                                            <a href="{{route('perdeim.perdeimretire.approve',[ $perdeims->perdeim_id , $perdeims->id])}}" title="approve" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $perdeims->id; ?>">Approve</a>
-                                            <a href="{{route('perdeim.perdeimretire.decline',[ $perdeims->perdeim_id , $perdeims->id])}}" title="reject" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $perdeims->id; ?>" data-value="Rejected" >Reject</a><br>
+                                            <a href="{{route('perdeim.perdeimretire.approve',[ $perdeims->id])}}" title="approve" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $perdeims->id; ?>">Approve</a>
+                                            <a href="{{route('perdeim.perdeimretire.decline',[ $perdeims->id])}}" title="reject" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $perdeims->id; ?>" data-value="Rejected" >Reject</a><br>
                                             <a href="{{ route('perdeim.perdeimretire.edit',[ $perdeims->perdeim_id , $perdeims->id])}}" title="Edit" hidden="hidden" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapp" data-id="<?php echo $perdeims->id; ?>" >Edit</a>
                                             @elseif($perdeims->status == 1)
                                             @elseif($perdeims->status == 0)

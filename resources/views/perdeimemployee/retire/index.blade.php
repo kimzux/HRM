@@ -62,7 +62,7 @@
                                 <td>{{$perdeims->perdeim_id }}</td>
                                 <td>{{$perdeims->amount_used }}</td>
                                 <td>{{$perdeims->file_title }}</td>
-                                <td><a href="{{ route('file.download', $perdeims->id) }}" target="_blank">download</a></td>
+                                <td><a href="{{ route('retire.download', $perdeims->id) }}" target="_blank">download</a></td>
                                 <td>
                                             @if(is_null($perdeims->status))
         <span class="p-2 mb-1 bg-primary text-white">Pending</span>

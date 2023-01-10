@@ -76,7 +76,7 @@
                                         Rate B
                                         @endif
                                 <td>{{$work->amount}}</td>
-                                <td><a href="{{ route('file.download', $work->id) }}" target="_blank">download</a></td>
+                                <td><a href="{{ route('work.download', $work->id) }}" target="_blank">download</a></td>
 
                                 <td>
                                             @if(is_null($work->status))

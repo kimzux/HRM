@@ -109,11 +109,6 @@
                                                    @endforeach
                                                 </select>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="control-label col-md-3">Project Date</label>
-                                                <input type="text" value="{{$projects->project_startdate}}" name="project_startdate" class="form-control col-md-4" id="recipient-name1" readonly>
-                                                <input type="text" value="{{$projects->project_enddate}}" name="project_enddate" class="form-control col-md-4" id="recipient-name1" readonly>
-                                            </div>                                              
                                              <div class="form-group row">
                                                 <label class="control-label col-md-3">Assign To</label>
                                                 <div class="col-md-4 ">

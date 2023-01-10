@@ -73,7 +73,7 @@
         <span class="p-2 mb-1 bg-danger text-white">Rejected</span>
                  @endif</td>
                                      
-                                        <td class="row">
+                                        <td class="d-flex">
                                         @if(is_null($perdeims->status))
                                             <a href="{{route('perdeim.approve', $perdeims->id)}}" title="approve" class="m-2 btn btn-sm btn-info waves-effect waves-light leaveapproval" data-id="<?php echo $perdeims->id; ?>">Approve</a>
                                             <a href="{{route('perdeim.decline', $perdeims->id)}}" title="reject" class="m-2 btn btn-sm btn-info waves-effect waves-light  Status" data-id = "<?php echo $perdeims->id; ?>" data-value="Rejected" >Reject</a><br>
@@ -85,7 +85,7 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                            </tbody>   
+                                    </tbody>   
                             </table>
                                                
                                     
