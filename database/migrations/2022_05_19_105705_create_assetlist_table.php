@@ -15,11 +15,12 @@ class CreateAssetlistTable extends Migration {
 			$table->string('asset_model', 100);
 			$table->string('asset_code', 100);
 			$table->string('configuration', 200);
+            $table->float('depr_interval')->nullable();
+            $table->float('depr_rate')->nullable();
 			$table->date('purchase_date');
 			$table->double('price');
 			$table->double('quantity');
-
-
+            $table->double('remain_quantity');
 		});
 	}
 

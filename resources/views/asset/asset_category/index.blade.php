@@ -12,21 +12,21 @@
                 Category
                        </h1>
                     </div>
-                </div> 
-            </div> 
+                </div>
+            </div>
         </div>
     </div>
             <div class="container-fluid  mt-4">
-                <div class="row m-b-10"> 
+                <div class="row m-b-10">
                     <div class="col-12">
                         <button type="button" class="btn btn-info"><i class="fe fe-plus"></i><a data-toggle="modal" data-target="#assetsmodel" data-whatever="@getbootstrap" class="text-white TypeModal"><i class="" aria-hidden="true"></i> Add Category </a></button>
                     </div>
-                </div> 
+                </div>
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card card-outline-info">
                             <div class="card-header">
-                                <h4 class="m-b-0 "> Assets Category List                       
+                                <h4 class="m-b-0 "> Assets Category List
                                 </h4>
                             </div>
                             <div class="card-body">
@@ -59,7 +59,7 @@
                                                 </td>
                                             </tr>
                                             @endforeach
-                                               
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -76,11 +76,11 @@
                                     </div>
                                     <form method="post" action="{{route('asset.store')}}" id="assetsform" enctype="multipart/form-data">
                                     <div class="modal-body">
-                                        
+
                                         <div class="form-group">
                                        <label>Category Type </label>
                                         <select name="cattype" class="form-control custom-select" required>
-                                            <option>Select Category</option>
+                                            <option value="">Select Category</option>
                                             <option value="ASSETS">Assets</option>
                                             <option value="LOGISTIC">Logistice</option>
                                         </select>
@@ -88,11 +88,11 @@
                                         <div class="form-group">
                                         <label>Category Name </label>
                                         <input type="text" name="catname" class="form-control" value="" placeholder="Category name..." minlength="2" required>
-                                        </div>                                          
-                                        
+                                        </div>
+
                                     </div>
                                     <div class="modal-footer">
-                                    <input type="hidden" name="catid" value="" class="form-control" id="recipient-name1">                                       
+                                    <input type="hidden" name="catid" value="" class="form-control" id="recipient-name1">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
@@ -107,7 +107,7 @@
         lengthChange: false,
         buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
     } );
- 
+
     table.buttons().container()
         .appendTo( '#example_wrapper .col-md-6:eq(0)' );
 } );
