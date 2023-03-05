@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="form-group" id="expectedtime">
                                     <label class="control-label">Expected Delivery Time</label>
-                                    <input type="text" name="expected_time" class="form-control" id="recipient-name1">
+                                    <input type="date" name="expected_time" class="form-control" id="recipient-name1" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" id="hourlyFix">Start Date</label>

@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 
 class RateController extends Controller
 {
+    public function edit($id){
+
+    }
     public function store(Request $request)
     {
         abort_if(Auth::user()->cannot('create rate'), 403, 'Access Denied');
@@ -21,7 +24,7 @@ class RateController extends Controller
         $rate->save();
         Alert::success('Success!', 'Successfully added');
         return back();
-  
+
       }
-    
+
 }
