@@ -94,7 +94,7 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Employee</label>
-                                    <select class="js-example-basic-single" tabindex="1" name="first_name" style="width:100%" required>
+                                    <select class="js-example-basic-single" tabindex="1" name="employee_id" style="width:100%" required>
                                         <option value="">Select Here</option>
                                         @foreach($employee as $employees)
                                         <option value="{{ $employees->id}}">{{ $employees->first_name}}</option>
@@ -109,7 +109,7 @@
                                     <label class="control-label" id="hourlyFix">Expectations</label>
                                     <textarea name="expect" class="form-control" id="expectation" required></textarea>
                                 </div>
-                              
+
                                 <div class="form-group" id="expectedtime">
                                     <label class="control-label">Expected Delivery Time</label>
                                     <input type="date" name="expected_time" class="form-control" id="recipient-name1" required>

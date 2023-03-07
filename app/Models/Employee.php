@@ -14,7 +14,7 @@ class Employee extends Model
     public $timestamps = false;
     protected $fillable = [
 		'id','email','first_name','last_name','designation_id','department_id','em_code','em_address','status','em_gender',
-        'em_phone','em_birthday','em_joining_date','em_contract_end','em_nid','em_image',    
+        'em_phone','em_birthday','em_joining_date','em_contract_end','em_nid','em_image',
 	];
 
 
@@ -79,7 +79,7 @@ public function workOvertime()
 {
     return $this->hasMany(WorkOverTime::class);
 }
-  
+
 public function department()
 {
     return $this->belongsTo(Department::class);
@@ -115,6 +115,10 @@ public function designation()
 }
 
 public function getFullNameAttribute()
+{
+    return "{$this->first_name} {$this->last_name}";
+}
+public function getNameAttribute()
 {
     return "{$this->first_name} {$this->last_name}";
 }

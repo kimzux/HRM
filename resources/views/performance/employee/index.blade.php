@@ -94,7 +94,8 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Employee</label>
-                                    <input type="text" name="first_name" class="form-control" id="recipient-name1" value="{{ $employee->name}}" readonly>
+                                    <input type="hidden" name="employee_id" value="{{ @$employee->id}}">
+                                    <input type="text" name="first_name" class="form-control" id="recipient-name1" value="{{ @$employee->name}}" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" id="hourlyFix">Goals</label>

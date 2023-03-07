@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Performance;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -14,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        DB::table('permissions')->insert([
+        $permissions = [
             [
                 'name' => 'View Dashboard',
                 'guard_name' => 'web',
@@ -549,6 +552,27 @@ class DatabaseSeeder extends Seeder
                 'guard_name' => 'web',
             ],
             [
+                'name' => 'delete performance',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'create performance',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'view Performance',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'update performance',
+                'guard_name' => 'web',
+            ],
+           
+            [
+                'name' => 'edit performance',
+                'guard_name' => 'web',
+            ],
+            [
                 'name' => 'view loan apply',
                 'guard_name' => 'web',
             ],
@@ -564,7 +588,11 @@ class DatabaseSeeder extends Seeder
                 'name' => 'reject loan',
                 'guard_name' => 'web',
             ],
-        ]);
+
+        ];
+        foreach ($permissions as  $permission) {
+            Permission::firstOrCreate($permission);
+        }
         $this->call(AdminUserSeeder::class);
     }
 }

@@ -14,10 +14,11 @@ class PerformanceView extends Controller
     public function index()
     {
     abort_if(Auth::user()->cannot('view employee performance'), 403, 'Access Denied');
-    $employee = auth()->user();
+    $user = auth()->user();
+    $employee = Employee::where('id',$user->employee_id)->first();
     $performance = Performance::where('employee_id',auth()->user()->employee_id )->orderBy('created_at', 'desc')->get();;
     return view('performance.employee.index', compact('performance','employee'));
 
     }
-  
+
 }
